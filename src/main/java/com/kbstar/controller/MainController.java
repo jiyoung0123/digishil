@@ -24,9 +24,7 @@ public class MainController {
 
     @RequestMapping("/")
     public String main(Model model) throws Exception {
-
         return "index";
     }
-
 
 }
