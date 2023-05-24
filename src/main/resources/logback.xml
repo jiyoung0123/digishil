@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--logs폴더에 저장하겠다! 라는 뜻-->
+<!--    <property name="LOGS_DIR" value="c://project/logs" />-->
+    <property name="LOGS_DIR" value="/root/logs" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+     <!--화면에 출력할 때는 이렇게 출력해라! 라는 뜻-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+<!--            <Pattern>[%d{MM-dd HH:mm:ss}[%thread] %-5level %logger{36} - %msg%n</Pattern>-->
+            <Pattern>[%d{MM-dd HH:mm:ss}%-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/logback.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_ABSOLUTE_PATH}/logback.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="FILE2" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/custinfo.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}, %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_DIR}/custinfo.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+        <!--root :일반적인 모든 실행되는 내역에 대해서 출력을 해라!
+            이걸 error로 바꿔야, error가 아니면 화면에 출력이 안된다. error 일때만 로그로 확인하는것
+            STDOUT:스탠다드 아웃풋..
+            서비스되어지는 시점에서<root level="INFO"> 여기서 "info"를 원하는걸로 바꾸면 됨. ex)"error" -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <logger name="org.springframework.web" level="DEBUG">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <logger name="com.kbstar.controller.CustController" level="INFO">
+        <appender-ref ref="FILE2" />
+    </logger>
+<!--     서비스 할 때 이걸 이용해서 확인하기-->
+    <logger name="jdbc" level="OFF" />
+	<logger name="jdbc.sqlonly" level="INFO" />
+	<logger name="jdbc.sqltiming" level="OFF" />
+	<logger name="jdbc.audit" level="OFF" />
+	<logger name="jdbc.resultset" level="OFF" />
+	<logger name="jdbc.resultsettable" level="INFO" />
+	<logger name="jdbc.connection" level="OFF" />
+
+    <!-- INFO(trace > debug > info > warn > error)  -->
+</configuration>
