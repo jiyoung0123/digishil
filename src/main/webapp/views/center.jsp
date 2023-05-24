@@ -23,7 +23,7 @@
                 <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
                     <form action="#">
                         <div class="row">
-                            <div class="col-lg-5 d-flex align-items-center form-group">
+                            <div class="col-lg-4 d-flex align-items-center form-group">
                                 <input class="form-control border-0 shadow-0" type="text" name="search" placeholder="지역, 이름 등 키워드를 입력하세요">
                             </div>
 <%--                            <div class="col-lg-3 d-flex align-items-center form-group">--%>
@@ -32,15 +32,24 @@
 <%--                                    <input class="form-control border-0 shadow-0" type="text" name="location" placeholder="Location" id="location">--%>
 <%--                                </div>--%>
 <%--                            </div>--%>
-                            <div class="col-lg-4 d-flex align-items-center form-group no-divider">
+                            <div class="col-lg-3 d-flex align-items-center form-group no-divider">
                                 <select class="selectpicker" title="상세지역을 선택하세요" data-style="btn-form-control">
-                                    <option value="small">Restaurants</option>
-                                    <option value="medium">Hotels</option>
-                                    <option value="large">Cafes</option>
-                                    <option value="x-large">Garages</option>
+                                    <option value="small">서울</option>
+                                    <option value="medium">부산</option>
+                                    <option value="large">제주</option>
+                                    <option value="x-large">그밖의 지역</option>
                                 </select>
                             </div>
-                            <div class="col-lg-3 d-grid">
+
+                            <div class="col-lg-3 d-flex align-items-center form-group no-divider">
+                                <select class="selectpicker" title="객실 타입을 선택하세요" data-style="btn-form-control">
+                                    <option value="small">아파트</option>
+                                    <option value="medium">오피스텔</option>
+                                    <option value="large">주택</option>
+                                    <option value="x-large">기상천외한숙소</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-2 d-grid">
                                 <button class="btn btn-primary rounded-pill h-100" type="submit">검색 </button>
                             </div>
                         </div>

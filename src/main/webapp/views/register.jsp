@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,36 +38,36 @@
     <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
       <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
         <div class="mb-4"><img class="img-fluid mb-4" src="img/logo-square.svg" alt="..." style="max-width: 4rem;">
-          <h2>Sign up</h2>
-          <p class="text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</p>
+          <h2>회원가입</h2>
+          <p class="text-muted">DIGI실에 오신 것을 환영합니다.</p>
         </div>
         <form class="form-validate">
           <div class="mb-4">
-            <label class="form-label" for="loginUsername"> Email Address</label>
+            <label class="form-label" for="loginUsername">메일주소</label>
             <input class="form-control" name="loginUsername" id="loginUsername" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
           </div>
           <div class="mb-4">
-            <label class="form-label" for="loginPassword"> Password</label>
+            <label class="form-label" for="loginPassword">비밀번호</label>
             <input class="form-control" name="loginPassword" id="loginPassword" placeholder="Password" type="password" required data-msg="Please enter your password">
           </div>
           <div class="mb-4">
-            <label class="form-label" for="loginPassword2"> Confirm your password</label>
+            <label class="form-label" for="loginPassword2">비밀번호확인</label>
             <input class="form-control" name="loginPassword2" id="loginPassword2" placeholder="Password" type="password" required data-msg="Please enter your password">
           </div>
           <div class="d-grid gap-2">
-            <button class="btn btn-lg btn-primary" type="submit">Sign up</button>
+            <button class="btn btn-lg btn-primary" type="submit">회원 가입 하기</button>
           </div>
           <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
           <div class="d-grid gap-2">
-            <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>
-            <button class="btn btn btn-outline-muted btn-social"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Google</span></button>
+<%--            <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>--%>
+            <button class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 로그인하기</span></button>
           </div>
-          <hr class="my-4">
-          <p class="text-sm text-muted">By signing up you agree to Directory's <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</p>
-        </form><a class="close-absolute me-md-5 me-xl-6 pt-5" href="index.html">
-        <svg class="svg-icon w-3rem h-3rem">
-          <use xlink:href="#close-1"> </use>
-        </svg></a>
+<%--          <hr class="my-4">--%>
+<%--          <p class="text-sm text-muted">By signing up you agree to Directory's <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</p>--%>
+<%--        </form><a class="close-absolute me-md-5 me-xl-6 pt-5" href="index.html">--%>
+<%--        <svg class="svg-icon w-3rem h-3rem">--%>
+<%--          <use xlink:href="#close-1"> </use>--%>
+<%--        </svg></a>--%>
       </div>
     </div>
     <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
