@@ -19,32 +19,35 @@
                     <p class="subtitle letter-spacing-4 mb-2 text-secondary text-shadow">The best holiday experience</p>
                     <h1 class="display-3 fw-bold text-shadow">Stay like a local</h1>
                 </div>
+
                 <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
                     <form action="#">
                         <div class="row">
-                            <div class="col-lg-4 d-flex align-items-center form-group">
-                                <input class="form-control border-0 shadow-0" type="text" name="search" placeholder="What are you searching for?">
+                            <div class="col-lg-5 d-flex align-items-center form-group">
+                                <input class="form-control border-0 shadow-0" type="text" name="search" placeholder="지역, 이름 등 키워드를 입력하세요">
                             </div>
-                            <div class="col-lg-3 d-flex align-items-center form-group">
-                                <div class="input-label-absolute input-label-absolute-right w-100">
-                                    <label class="label-absolute" for="location"><i class="fa fa-crosshairs"></i><span class="sr-only">City</span></label>
-                                    <input class="form-control border-0 shadow-0" type="text" name="location" placeholder="Location" id="location">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 d-flex align-items-center form-group no-divider">
-                                <select class="selectpicker" title="Categories" data-style="btn-form-control">
+<%--                            <div class="col-lg-3 d-flex align-items-center form-group">--%>
+<%--                                <div class="input-label-absolute input-label-absolute-right w-100">--%>
+<%--                                    <label class="label-absolute" for="location"><i class="fa fa-crosshairs"></i><span class="sr-only">City</span></label>--%>
+<%--                                    <input class="form-control border-0 shadow-0" type="text" name="location" placeholder="Location" id="location">--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+                            <div class="col-lg-4 d-flex align-items-center form-group no-divider">
+                                <select class="selectpicker" title="상세지역을 선택하세요" data-style="btn-form-control">
                                     <option value="small">Restaurants</option>
                                     <option value="medium">Hotels</option>
                                     <option value="large">Cafes</option>
                                     <option value="x-large">Garages</option>
                                 </select>
                             </div>
-                            <div class="col-lg-2 d-grid">
-                                <button class="btn btn-primary rounded-pill h-100" type="submit">Search </button>
+                            <div class="col-lg-3 d-grid">
+                                <button class="btn btn-primary rounded-pill h-100" type="submit">검색 </button>
                             </div>
                         </div>
                     </form>
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -222,7 +225,7 @@
                         <div class="card h-100 border-0 shadow">
                             <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="Modern Apt - Vibrant Neighborhood!"/><a class="tile-link" href="detail-rooms.html"></a>
                                 <div class="card-img-overlay-bottom z-index-20">
-                                    <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="img/avatar/avatar-8.jpg" alt="Julie"/>
+                                    <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="img/avatar/ma.jpg" alt="Julie"/>
                                         <div>Julie</div>
                                     </div>
                                 </div>

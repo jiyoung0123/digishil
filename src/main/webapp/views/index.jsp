@@ -138,7 +138,7 @@
                                                 <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-personal.html">Personal info - forms   </a></li>
                                                 <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-security.html">Password & security - forms   </a></li>
                                                 <li class="megamenu-list-item"><a class="megamenu-list-link" href="login.html">Sign in   </a></li>
-                                                <li class="megamenu-list-item"><a class="megamenu-list-link" href="signup.html">Sign up   </a></li>
+                                                <li class="megamenu-list-item"><a class="megamenu-list-link" href="/signup">Sign up   </a></li>
                                                 <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-1.html">Booking process - 4 pages   </a></li>
                                                 <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-grid.html">Bookings &mdash; grid view   </a></li>
                                                 <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-detail.html">Booking detail   </a></li>
@@ -200,9 +200,9 @@
                         </div>
                     </li>
                     <!-- /Megamenu end-->
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a>
                     </li>
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="/index" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Docs</a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
                             <h6 class="dropdown-header fw-normal">Documentation</h6><a class="dropdown-item" href="docs/docs-introduction.html">Introduction </a><a class="dropdown-item" href="docs/docs-directory-structure.html">Directory structure </a><a class="dropdown-item" href="docs/docs-gulp.html">Gulp </a><a class="dropdown-item" href="docs/docs-customizing-css.html">Customizing CSS </a><a class="dropdown-item" href="docs/docs-credits.html">Credits </a><a class="dropdown-item" href="docs/docs-changelog.html">Changelog </a>
@@ -210,9 +210,9 @@
                             <h6 class="dropdown-header fw-normal">Components</h6><a class="dropdown-item" href="docs/components-bootstrap.html">Bootstrap </a><a class="dropdown-item" href="docs/components-directory.html">Theme </a>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="login.html">Sign in</a></li>
-                    <li class="nav-item"><a class="nav-link" href="signup.html">Sign up</a></li>
-                    <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="user-add-0.html">Add a listing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/register">회원가입</a></li>
+                    <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="user-add-0.html">당신의 공간을 DIGI실 하세요</a></li>
                 </ul>
             </div>
         </div>
