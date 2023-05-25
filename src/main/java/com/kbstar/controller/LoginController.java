@@ -22,18 +22,20 @@ public class LoginController {
     @RequestMapping("/loginImpl")
     public String loginimpl(Model model, String guestId, String guestPwd, HttpSession session) throws Exception {
         Guest guest = null;
-        String nextPage = "loginfail";
         try {
             guest = guestService.get(guestId);
+            log.info(guest.toString());
             if(guest != null && encoder.matches(guestPwd,guest.getGuestPwd())){
-                nextPage = "center";
                 session.setMaxInactiveInterval(1000000);
                 session.setAttribute("loginGuest",guest);
+                model.addAttribute("center","center");
+            }if(guest == null){
+                model.addAttribute("msg","아이디 혹은 비밀번호를 확인하세요.");
+                model.addAttribute("center","login");
             }
         } catch (Exception e) {
-            throw new Exception("시스템 장애 잠시 후 다시 로그인 하세요.");
+            e.printStackTrace();
         }
-        model.addAttribute("center",nextPage);
         return "index";
     }
 
