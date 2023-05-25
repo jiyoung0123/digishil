@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    let loginForm = {
+        init:function(){
+            $("#loginBtn").click(function(){
+                loginForm.send();
+            });
+        },
+        send:function(){
+            $("#loginForm").attr({
+                'action':'/loginImpl',
+                'method':'post'
+            });
+            $("#loginForm").submit();
+        }
+    };
+    $(function(){
+        loginForm.init();
+    });
+</script>
 
 
 <body>
@@ -11,19 +30,19 @@
         <div class="mb-5">
           <h2>로그인</h2>
         </div>
-        <form class="form-validate">
+        <form class="form-validate" id="loginForm">
           <div class="mb-4">
-            <label class="form-label" for="loginUsername"> 메일주소</label>
-            <input class="form-control" name="loginUsername" id="loginUsername" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
+            <label class="form-label" for="guestId"> 메일주소</label>
+            <input class="form-control" name="guestId" id="guestId" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
           </div>
           <div class="mb-4">
             <div class="row">
               <div class="col">
-                <label class="form-label" for="loginPassword"> 비밀번호</label>
+                <label class="form-label" for="guestPwd"> 비밀번호</label>
               </div>
               <div class="col-auto"><a class="form-text small text-primary" href="#">비밀번호 찾기</a></div>
             </div>
-            <input class="form-control" name="loginPassword" id="loginPassword" placeholder="Password" type="password" required data-msg="Please enter your password">
+            <input class="form-control" name="guestPwd" id="guestPwd" placeholder="Password" type="password" required data-msg="Please enter your password">
           </div>
           <div class="mb-4">
             <div class="form-check">
@@ -33,7 +52,7 @@
           </div>
           <!-- Submit-->
           <div class="d-grid">
-            <button class="btn btn-lg btn-primary">로그인 하기</button>
+            <button id="loginBtn" class="btn btn-lg btn-primary">로그인 하기</button>
           </div>
           <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
           <div class="d-grid gap-2">
