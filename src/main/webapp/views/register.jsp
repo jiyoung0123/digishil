@@ -1,37 +1,78 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Directory Theme by Bootstrapious</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="all,follow">
-  <!-- Price Slider Stylesheets -->
-  <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
-  <!-- Google fonts - Playfair Display-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
-  <!-- Google fonts - Poppins-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700">
-  <!-- swiper-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
-  <!-- Magnigic Popup-->
-  <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
-  <!-- theme stylesheet-->
-  <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
-  <!-- Custom stylesheet - for your changes-->
-  <link rel="stylesheet" href="css/custom.css">
-  <!-- Favicon-->
-  <link rel="shortcut icon" href="img/favicon.png">
-  <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-  <!-- Font Awesome CSS-->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-</head>
+<script>
+
+  let register_form = {
+    init:function(){
+      $('#register_btn').addClass('disabled');
+
+      $('#register_btn').click(function(){
+        register_form.send();
+      });
+
+      $('#name').keyup(function(){
+        var guestid = $('#guestid').val();
+        var guestpwd = $('#guestpwd').val();
+        var name = $('#name').val();
+        if(guestid != '' && guestpwd != '' && name != ''){
+          $('#register_btn').removeClass('disabled');
+        }
+
+      })
+      $('#guestid').keyup(function(){
+
+        var txt_id = $(this).val();
+        if(txt_id.length<=3){
+          return;
+        }
+        $.ajax({
+          url:'/checkid',
+          data:{'id':txt_id},
+          //success일때는 콤마, 세미콜론 둘 다 없다 주의하기!
+          success:function(result){
+            if(result==0){
+              $('#check_id').text('사용가능합니다.');
+              $('#guestpwd').focus();
+            }else{
+              $('#check_id').text('사용불가능합니다.');
+
+            }
+          }
+        });
+      });
+    },
+    send:function(){
+      var guestid = $('#guestid').val();
+      var guestpwd = $('#guestpwd').val();
+      var name = $('#name').val();
+      if(guestid.length<=3){
+        $('#check_id').text('4자리 이상이어야 합니다.');
+        $('#guestid').focus();
+        return;
+      }
+      if(guestpwd == ''){
+        $('#guestpwd').focus();
+        return;
+      }
+      if(name == ''){
+        $('#name').focus();
+        return;
+      }
+
+      $('#register_form').attr({
+        'action':'/registerimpl',
+        'method':'post'
+      });
+      $('#register_form').submit();
+    }
+  };
+  $(function(){
+    register_form.init();
+  });
+
+</script>
+
 <body>
 <div class="container-fluid px-3">
   <div class="row min-vh-100">
@@ -41,28 +82,30 @@
           <h2>회원가입</h2>
           <p class="text-muted">DIGI실에 오신 것을 환영합니다.</p>
         </div>
-        <form class="form-validate">
+        <form id="register_form" class="form-validate">
           <div class="mb-4">
-            <label class="form-label" for="loginUsername">메일주소</label>
-            <input class="form-control" name="loginUsername" id="loginUsername" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
+            <label class="form-label" for="guestid">메일주소</label>
+            <input class="form-control" name="guestid" id="guestid" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="메일 주소를 입력해 주세요!">
           </div>
           <div class="mb-4">
-            <label class="form-label" for="loginPassword">비밀번호</label>
-            <input class="form-control" name="loginPassword" id="loginPassword" placeholder="Password" type="password" required data-msg="Please enter your password">
+            <label class="form-label" for="guestpwd">비밀번호</label>
+            <input class="form-control" name="guestpwd" id="guestpwd" placeholder="비밀번호" type="password" required data-msg="비밀번호를 입력해 주세요!">
           </div>
           <div class="mb-4">
-            <label class="form-label" for="loginPassword2">비밀번호확인</label>
-            <input class="form-control" name="loginPassword2" id="loginPassword2" placeholder="Password" type="password" required data-msg="Please enter your password">
+            <label class="form-label" for="guestpwd1">비밀번호확인</label>
+            <input class="form-control" name="guestpwd1" id="guestpwd1" placeholder="비밀번호" type="password" required data-msg="비밀번호를 입력해 주세요!">
           </div>
           <div class="d-grid gap-2">
             <button class="btn btn-lg btn-primary" type="submit">회원 가입 하기</button>
           </div>
+
           <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
+
           <div class="d-grid gap-2">
 <%--            <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>--%>
-            <button class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 회원가입 하기</span></button>
+            <button id="register_btn" type="button" class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 회원가입 하기</span></button>
           </div>
-          <hr class="my-4">
+
         </form>
       </div>
     </div>
@@ -115,5 +158,3 @@
 <script>var basePath = ''</script>
 <!-- Main Theme JS file    -->
 <script src="js/theme.js"></script>
-</body>
-</html>

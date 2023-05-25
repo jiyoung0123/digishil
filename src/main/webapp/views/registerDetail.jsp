@@ -11,37 +11,32 @@
         </div>
         <form class="form-validate">
           <div class="mb-4">
-            <label class="form-label" for="loginUsername">내 사진 올리기</label>
-            <input class="form-control" name="loginUsername" id="loginUsername" type="email" placeholder="나의 사진을 올려주세요" autocomplete="off" required data-msg="Please enter your email">
+            <label class="form-label" for="guestpic">내 사진 올리기</label>
+            <input class="form-control" name="guestpic" id="guestpic" type="file" placeholder="나의 사진을 올려주세요" autocomplete="off">
           </div>
           <div class="mb-4">
             <div class="row">
               <div class="col">
-                <label class="form-label" for="loginPassword">구사언어</label>
+                <label class="form-label" for="guestlan">구사언어</label>
               </div>
             </div>
-            <input class="form-control" name="loginPassword" id="loginPassword" placeholder="구사언어를 적어주세요" type="password" required data-msg="Please enter your password">
+            <input class="form-control" name="guestlan" id="guestlan" placeholder="구사언어를 적어주세요" type="text" >
           </div>
 
           <div class="mb-4">
             <div class="row">
               <div class="col">
-                <label class="form-label" for="loginPassword">자기소개</label>
+                <label class="form-label">자기소개</label>
               </div>
             </div>
-            <input class="form-control" name="loginPassword" placeholder="호스트가 회원님에 대해 알 수 있도록 간략하게 자기소개를 해주세요." type="password" required data-msg="Please enter your password">
+            <textarea class="form-control" name="introduce" rows="4" cols="50">호스트가 회원님에 대해 알 수 있도록 간략하게 자기소개를 해주세요.</textarea>
           </div>
           <!-- Submit-->
           <div class="d-grid">
             <button class="btn btn-lg btn-primary">프로필 수정하기</button>
           </div>
           <hr class="my-3 hr-text letter-spacing-2" data-content="">
-
-
-        </form><a class="close-absolute me-md-5 me-xl-6 pt-5" href="index.html">
-        <svg class="svg-icon w-3rem h-3rem">
-          <use xlink:href="#close-1"> </use>
-        </svg></a>
+        </form>
       </div>
     </div>
     <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">

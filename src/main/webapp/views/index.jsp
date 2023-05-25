@@ -3,11 +3,11 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Directory Theme by Bootstrapious</title>
+    <title>단기임대 No.1 DIGI실</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -40,7 +40,7 @@
 
         <div class="container-fluid">
 <%--            요기 이미지가 diretory 로고임--%>
-            <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="index.html"><img src="img/logo.svg" alt="Directory logo"></a>
+            <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="/"><img src="img/logo.svg" alt="Directory logo"></a>
                 <form class="form-inline d-none d-sm-flex" action="#" id="search">
                     <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
                         <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
