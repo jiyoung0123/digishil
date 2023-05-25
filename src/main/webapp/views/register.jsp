@@ -4,19 +4,9 @@
 <script>
   let registerForm = {
     init:function(){
-      // $('#registerBtn').addClass('disabled');
       $('#registerBtn').click(function(){
         registerForm.send();
       });
-
-      // $('#guestPwd1').keyup(function(){
-      //   var guestId = $('#guestId').val();
-      //   var guestPwd = $('#guestPwd').val();
-      //   var guestName = $('#guestName').val();
-      //   if(guestId != '' && guestPwd != '' && guestName != ''){
-      //     $('#registerBtn').removeClass('disabled');
-      //   }
-      // })
       $('#guestId').keyup(function(){
         var txtId = $(this).val();
         if(txtId.length<=8){
@@ -24,8 +14,7 @@
         }
         // $.ajax({
         //   url:'/checkId',
-        //   data:{'id':txtId},
-        //   //success일때는 콤마, 세미콜론 둘 다 없다 주의하기!
+        //   data:{'guestId':txtId},
         //   success:function(result){
         //     if(result==0){
         //       $('#checkId').text('사용가능합니다.');
@@ -40,21 +29,21 @@
     send:function(){
       var guestId = $('#guestId').val();
       var guestPwd = $('#guestPwd').val();
+      var guestPwd1 = $('#guestPwd1').val();
       var guestName = $('#guestName').val();
       // if(guestId.length<=3){
       //   $('#checkId').text('4자리 이상이어야 합니다.');
       //   $('#guestId').focus();
       //   return;
       // }
-      if(guestPwd == ''){
-        $('#guestPwd').focus();
+      if(guestPwd != guestPwd1){
+        alert("비밀번호를 확인하세요");
         return;
       }
-      if(guestName == ''){
-        $('#Name').focus();
-        return;
-      }
-
+      // if(guestName == ''){
+      //   $('#Name').focus();
+      //   return;
+      // }
       $('#registerForm').attr({
         'action':'/registerImpl',
         'method':'post'
@@ -85,7 +74,7 @@
             </div>
             <div class="mb-4">
                 <label class="form-label" for="guestName">이름</label>
-                <input class="form-control" name="guestName" id="guestName" type="text" placeholder="홍길동" autocomplete="off" required data-msg="메일 주소를 입력해 주세요!">
+                <input class="form-control" name="guestName" id="guestName" type="text" placeholder="홍길동" autocomplete="off" required data-msg="이름을 입력해 주세요!">
             </div>
           <div class="mb-4">
             <label class="form-label" for="guestPwd">비밀번호</label>
@@ -96,7 +85,7 @@
             <input class="form-control" name="guestPwd1" id="guestPwd1" placeholder="비밀번호를 똑같이 한번 더 입력해 주세요" type="password" required data-msg="비밀번호를 입력해 주세요!">
           </div>
           <div class="d-grid gap-2">
-            <button class="btn btn-lg btn-primary" id="registerBtn" type="submit">회원 가입 하기</button>
+            <button class="btn btn-lg btn-primary" id="registerBtn" type="button">회원 가입 하기</button>
           </div>
           <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
 

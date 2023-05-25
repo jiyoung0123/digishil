@@ -8,6 +8,10 @@
     </select>
 
     <insert id="insert" parameterType="Guest">
-        INSERT INTO guest VALUES (#{guestId},#{guestPwd},#{guestName})
+        INSERT INTO guest(guestId, guestPwd, guestName, guestCoupon, guestRegDate) VALUES (#{guestId},#{guestPwd},#{guestName}, 0, SYSDATE)
     </insert>
+
+    <update id="update" parameterType="Guest">
+        UPDATE guest SET guestImage=#{guestImage}, guestLang=#{guestLang}, guestIntro=#{guestIntro} WHERE guestId=#{guestId}
+    </update>
 </mapper>

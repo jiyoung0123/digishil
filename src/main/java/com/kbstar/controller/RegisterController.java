@@ -35,8 +35,8 @@ public class RegisterController {
             e.printStackTrace();
             throw new Exception("가입 오류");
         }
-        model.addAttribute("guest", guest);
-        model.addAttribute("center", "login");
+//        model.addAttribute("guest", guest);
+        model.addAttribute("center", "registerDetail");
         return "index";
     }
 }

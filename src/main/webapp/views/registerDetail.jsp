@@ -7,20 +7,21 @@
     <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
       <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
         <div class="mb-5">
+<%--          <div class="mb-4"><img class="img-fluid mb-4" src="img/logo-square.svg" alt="..." style="max-width: 4rem;">--%>
           <h2>프로필 완성하기</h2>
         </div>
         <form class="form-validate">
           <div class="mb-4">
-            <label class="form-label" for="guestpic">내 사진 올리기</label>
-            <input class="form-control" name="guestpic" id="guestpic" type="file" placeholder="나의 사진을 올려주세요" autocomplete="off">
+            <label class="form-label" for="guestPic">내 사진 올리기</label>
+            <input class="form-control" name="guestPic" id="guestPic" type="file" placeholder="나의 사진을 올려주세요" autocomplete="off">
           </div>
           <div class="mb-4">
             <div class="row">
               <div class="col">
-                <label class="form-label" for="guestlan">구사언어</label>
+                <label class="form-label" for="guestLan">구사언어</label>
               </div>
             </div>
-            <input class="form-control" name="guestlan" id="guestlan" placeholder="구사언어를 적어주세요" type="text" >
+            <input class="form-control" name="guestLan" id="guestLan" placeholder="구사언어를 적어주세요" type="text" >
           </div>
 
           <div class="mb-4">
