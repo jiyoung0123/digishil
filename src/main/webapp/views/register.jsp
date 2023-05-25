@@ -37,7 +37,7 @@
   <div class="row min-vh-100">
     <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
       <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
-        <div class="mb-4"><img class="img-fluid mb-4" src="img/logo-square.svg" alt="..." style="max-width: 4rem;">
+        <div class="mb-4">
           <h2>회원가입</h2>
           <p class="text-muted">DIGI실에 오신 것을 환영합니다.</p>
         </div>
@@ -62,12 +62,8 @@
 <%--            <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>--%>
             <button class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 회원가입 하기</span></button>
           </div>
-<%--          <hr class="my-4">--%>
-<%--          <p class="text-sm text-muted">By signing up you agree to Directory's <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</p>--%>
-<%--        </form><a class="close-absolute me-md-5 me-xl-6 pt-5" href="index.html">--%>
-<%--        <svg class="svg-icon w-3rem h-3rem">--%>
-<%--          <use xlink:href="#close-1"> </use>--%>
-<%--        </svg></a>--%>
+          <hr class="my-4">
+        </form>
       </div>
     </div>
     <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">

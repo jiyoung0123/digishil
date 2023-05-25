@@ -38,7 +38,7 @@
   <div class="row min-vh-100">
     <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
       <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
-        <div class="mb-5"><img class="img-fluid mb-3" src="img/logo-square.svg" alt="..." style="max-width: 4rem;">
+        <div class="mb-5">
           <h2>로그인</h2>
         </div>
         <form class="form-validate">
@@ -72,10 +72,7 @@
           </div>
           <hr class="my-4">
           <p class="text-center"><small class="text-muted text-center"><a href="/register">회원 가입 하러 가기</a></small></p>
-        </form><a class="close-absolute me-md-5 me-xl-6 pt-5" href="index.html">
-        <svg class="svg-icon w-3rem h-3rem">
-          <use xlink:href="#close-1"> </use>
-        </svg></a>
+        </form>
       </div>
     </div>
     <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
