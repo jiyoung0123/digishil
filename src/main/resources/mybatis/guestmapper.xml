@@ -7,4 +7,7 @@
         SELECT * FROM guest WHERE guestId=#{guestId}
     </select>
 
+    <insert id="insert" parameterType="Guest">
+        INSERT INTO guest VALUES (#{guestId},#{guestPwd},#{guestName})
+    </insert>
 </mapper>

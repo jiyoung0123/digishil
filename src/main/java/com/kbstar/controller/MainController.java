@@ -1,6 +1,7 @@
 package com.kbstar.controller;
 
 
+import com.kbstar.service.GuestService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,8 @@ public class MainController {
 
     Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
+
+
     @RequestMapping("/")
     public String main(Model model) throws Exception {
         return "index";
@@ -32,6 +35,8 @@ public class MainController {
         model.addAttribute("center","register");
         return "index";
     }
+
+
 
     @RequestMapping("/registerDetail")
     public String registerDetail(Model model){

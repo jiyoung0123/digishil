@@ -1,78 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
-
-  let register_form = {
+  let registerForm = {
     init:function(){
-      $('#register_btn').addClass('disabled');
-
-      $('#register_btn').click(function(){
-        register_form.send();
+      // $('#registerBtn').addClass('disabled');
+      $('#registerBtn').click(function(){
+        registerForm.send();
       });
 
-      $('#name').keyup(function(){
-        var guestid = $('#guestid').val();
-        var guestpwd = $('#guestpwd').val();
-        var name = $('#name').val();
-        if(guestid != '' && guestpwd != '' && name != ''){
-          $('#register_btn').removeClass('disabled');
-        }
-
-      })
-      $('#guestid').keyup(function(){
-
-        var txt_id = $(this).val();
-        if(txt_id.length<=3){
+      // $('#guestPwd1').keyup(function(){
+      //   var guestId = $('#guestId').val();
+      //   var guestPwd = $('#guestPwd').val();
+      //   var guestName = $('#guestName').val();
+      //   if(guestId != '' && guestPwd != '' && guestName != ''){
+      //     $('#registerBtn').removeClass('disabled');
+      //   }
+      // })
+      $('#guestId').keyup(function(){
+        var txtId = $(this).val();
+        if(txtId.length<=8){
           return;
         }
-        $.ajax({
-          url:'/checkid',
-          data:{'id':txt_id},
-          //success일때는 콤마, 세미콜론 둘 다 없다 주의하기!
-          success:function(result){
-            if(result==0){
-              $('#check_id').text('사용가능합니다.');
-              $('#guestpwd').focus();
-            }else{
-              $('#check_id').text('사용불가능합니다.');
-
-            }
-          }
-        });
+        // $.ajax({
+        //   url:'/checkId',
+        //   data:{'id':txtId},
+        //   //success일때는 콤마, 세미콜론 둘 다 없다 주의하기!
+        //   success:function(result){
+        //     if(result==0){
+        //       $('#checkId').text('사용가능합니다.');
+        //       $('#guestPwd').focus();
+        //     }else{
+        //       $('#checkId').text('사용불가능합니다.');
+        //     }
+        //   }
+        // });
       });
     },
     send:function(){
-      var guestid = $('#guestid').val();
-      var guestpwd = $('#guestpwd').val();
-      var name = $('#name').val();
-      if(guestid.length<=3){
-        $('#check_id').text('4자리 이상이어야 합니다.');
-        $('#guestid').focus();
+      var guestId = $('#guestId').val();
+      var guestPwd = $('#guestPwd').val();
+      var guestName = $('#guestName').val();
+      // if(guestId.length<=3){
+      //   $('#checkId').text('4자리 이상이어야 합니다.');
+      //   $('#guestId').focus();
+      //   return;
+      // }
+      if(guestPwd == ''){
+        $('#guestPwd').focus();
         return;
       }
-      if(guestpwd == ''){
-        $('#guestpwd').focus();
-        return;
-      }
-      if(name == ''){
-        $('#name').focus();
+      if(guestName == ''){
+        $('#Name').focus();
         return;
       }
 
-      $('#register_form').attr({
-        'action':'/registerimpl',
+      $('#registerForm').attr({
+        'action':'/registerImpl',
         'method':'post'
       });
-      $('#register_form').submit();
+      $('#registerForm').submit();
     }
   };
   $(function(){
-    register_form.init();
+      registerForm.init();
   });
-
 </script>
-
 <body>
 <div class="container-fluid px-3">
   <div class="row min-vh-100">
@@ -82,28 +75,34 @@
           <h2>회원가입</h2>
           <p class="text-muted">DIGI실에 오신 것을 환영합니다.</p>
         </div>
-        <form id="register_form" class="form-validate">
+        <form id="registerForm" class="form-validate">
+            <div class="mb-4">
+            <label class="form-label" for="guestId">메일주소</label>
+            <input class="form-control" name="guestId" id="guestId" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="메일 주소를 입력해 주세요!">
+          </div>
+            <div class="mb-4">
+                <span id="checkId" class="bg-danger"></span>
+            </div>
+            <div class="mb-4">
+                <label class="form-label" for="guestName">이름</label>
+                <input class="form-control" name="guestName" id="guestName" type="text" placeholder="홍길동" autocomplete="off" required data-msg="메일 주소를 입력해 주세요!">
+            </div>
           <div class="mb-4">
-            <label class="form-label" for="guestid">메일주소</label>
-            <input class="form-control" name="guestid" id="guestid" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="메일 주소를 입력해 주세요!">
+            <label class="form-label" for="guestPwd">비밀번호</label>
+            <input class="form-control" name="guestPwd" id="guestPwd" placeholder="비밀번호를 입력 해 주세요" type="password" required data-msg="비밀번호를 입력해 주세요!">
           </div>
           <div class="mb-4">
-            <label class="form-label" for="guestpwd">비밀번호</label>
-            <input class="form-control" name="guestpwd" id="guestpwd" placeholder="비밀번호" type="password" required data-msg="비밀번호를 입력해 주세요!">
-          </div>
-          <div class="mb-4">
-            <label class="form-label" for="guestpwd1">비밀번호확인</label>
-            <input class="form-control" name="guestpwd1" id="guestpwd1" placeholder="비밀번호" type="password" required data-msg="비밀번호를 입력해 주세요!">
+            <label class="form-label" for="guestPwd1">비밀번호확인</label>
+            <input class="form-control" name="guestPwd1" id="guestPwd1" placeholder="비밀번호를 똑같이 한번 더 입력해 주세요" type="password" required data-msg="비밀번호를 입력해 주세요!">
           </div>
           <div class="d-grid gap-2">
-            <button class="btn btn-lg btn-primary" type="submit">회원 가입 하기</button>
+            <button class="btn btn-lg btn-primary" id="registerBtn" type="submit">회원 가입 하기</button>
           </div>
-
           <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
 
           <div class="d-grid gap-2">
 <%--            <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>--%>
-            <button id="register_btn" type="button" class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 회원가입 하기</span></button>
+            <button id="KakaoRegisterBtn" type="button" class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 회원가입 하기</span></button>
           </div>
 
         </form>
