@@ -60,7 +60,7 @@
           <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
           <div class="d-grid gap-2">
 <%--            <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>--%>
-            <button class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 로그인하기</span></button>
+            <button class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 회원가입 하기</span></button>
           </div>
 <%--          <hr class="my-4">--%>
 <%--          <p class="text-sm text-muted">By signing up you agree to Directory's <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</p>--%>

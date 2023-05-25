@@ -33,6 +33,12 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/registerDetail")
+    public String registerDetail(Model model){
+        model.addAttribute("center","registerDetail");
+        return "index";
+    }
+
     @RequestMapping("/login")
     public String login(Model model){
         model.addAttribute("center","login");
