@@ -20,16 +20,15 @@ public class LoginController {
     @Autowired
     private BCryptPasswordEncoder encoder;
     @RequestMapping("/loginImpl")
-    public String loginimpl(Model model, String guestId, String guestPwd, HttpSession session) throws Exception {
+    public String loginImpl(Model model, String guestId, String guestPwd, HttpSession session) {
         Guest guest = null;
         try {
             guest = guestService.get(guestId);
-            log.info(guest.toString());
             if(guest != null && encoder.matches(guestPwd,guest.getGuestPwd())){
                 session.setMaxInactiveInterval(1000000);
                 session.setAttribute("loginGuest",guest);
                 model.addAttribute("center","center");
-            }if(guest == null){
+            }if(guest == null || !encoder.matches(guestPwd,guest.getGuestPwd())){
                 model.addAttribute("msg","아이디 혹은 비밀번호를 확인하세요.");
                 model.addAttribute("center","login");
             }
