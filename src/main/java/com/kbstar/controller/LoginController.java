@@ -2,14 +2,19 @@ package com.kbstar.controller;
 
 import com.kbstar.dto.Guest;
 import com.kbstar.service.GuestService;
+import com.kbstar.util.MailUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.UUID;
 
 @Controller
 @Slf4j
@@ -37,5 +42,7 @@ public class LoginController {
         }
         return "index";
     }
+
+
 
 }

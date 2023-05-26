@@ -328,13 +328,13 @@
 <!-- jQuery-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Magnific Popup - Lightbox for the gallery-->
 <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 <!-- Smooth scroll-->
 <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
 <!-- Bootstrap Select-->
-<script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
 <script src="vendor/object-fit-images/ofi.min.js"></script>
 <!-- Swiper Carousel                       -->

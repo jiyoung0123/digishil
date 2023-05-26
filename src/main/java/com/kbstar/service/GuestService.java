@@ -5,11 +5,13 @@ import com.kbstar.frame.KBService;
 import com.kbstar.mapper.GuestMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 @Slf4j
+@Component
 public class GuestService implements KBService<String, Guest> {
 
     @Autowired
@@ -38,5 +40,13 @@ public class GuestService implements KBService<String, Guest> {
     @Override
     public List<Guest> get() throws Exception {
         return mapper.selectall();
+    }
+
+    public Guest searchPwd(String s) throws Exception {
+        return mapper.select(s);
+    }
+
+    public void updatePwd(Guest guest) throws Exception {
+        mapper.update(guest);
     }
 }

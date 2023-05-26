@@ -11,7 +11,7 @@
         <h1 class="display-3 fw-bold mb-5">Oops, that page is not here.</h1>
         <p class="fw-light mb-5">Elit adipisicing aliquip irure non consequat quis ex fugiat dolor in irure pariatur eu aute. Ea tempor nisi sit in Lorem exercitation mollit ut veniam in do eu excepteur. </p>
         <p class="mb-6"> <a class="btn btn-outline-light" href="index.html"><i class="fa fa-home me-2"></i>Start from the Homepage</a></p>
-        <p class="h4 text-shadow">Error 404</p>
+        <p class="h4 text-shadow">${msg}</p>
     </div>
 </div>
 </body>

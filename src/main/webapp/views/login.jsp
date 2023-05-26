@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
 <script>
     let loginForm = {
         init:function(){
@@ -23,8 +25,29 @@
             alert(msg);
         }
     });
-</script>
 
+    $(function(){
+        $("#pwdBtn").click(function(){
+            let guestId = $("#searchPwd").val();
+            $.ajax({
+                url:"/findPwd",
+                dataType:'json',
+                data:{"guestId":guestId},
+                success:function(data){
+                    if(data==true){
+                        alert("임시 비밀번호가 발급되었습니다.메일함을 확인해 주세요");
+                        console.log(data);
+                    }else{
+                        alert("아이디를 정확하게 입력해 주세요");
+                        console.log(data);
+                    }
+                }
+            });
+        });
+    });
+
+
+</script>
 
 <body>
 <div class="container-fluid px-3">
@@ -44,7 +67,7 @@
               <div class="col">
                 <label class="form-label" for="guestPwd"> 비밀번호</label>
               </div>
-              <div class="col-auto"><a class="form-text small text-primary" href="#">비밀번호 찾기</a></div>
+              <div class="col-auto"><a class="form-text small text-primary" data-toggle="modal" href="#" data-target="#pwdModal">비밀번호 찾기</a></div>
             </div>
             <input class="form-control" name="guestPwd" id="guestPwd" placeholder="Password" type="password" required data-msg="Please enter your password">
           </div>
@@ -74,7 +97,40 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<form action="/findPwd" method="post">
+
+<div class="modal fade" id="pwdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">비밀번호를 잊으셨나요?</h5>
+                <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>임시 비밀번호 발급</h2>
+                <label class="form-label" for="guestId"> 메일주소</label>
+                <input id="searchPwd" class="form-control" name="guestId" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="pwdBtn">Temp Passwoord</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+
+</body>
+
 <!-- JavaScript files-->
+
+
+
 <script>
   // ------------------------------------------------------- //
   //   Inject SVG Sprite -
@@ -100,3 +156,5 @@
   injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
 
 </script>
+
+
