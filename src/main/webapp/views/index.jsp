@@ -224,6 +224,7 @@
                                 <img class="avatar avatar-border-white flex-shrink-0 me-2" src="/uimg/${loginGuest.guestImage}" alt="Julie"/>
                             </c:if>
                             <li class="nav-item"><a class="nav-link" href="/login">${loginGuest.guestName}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/logouts">로그아웃</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="user-add-0.html">당신의 공간을 DIGI실 하세요</a></li>
