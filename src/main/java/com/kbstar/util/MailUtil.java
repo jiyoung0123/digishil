@@ -20,15 +20,15 @@ public class MailUtil {
 
         //Mail Server 설정
         String charSet="utf-8";
-        String hostSMTP="smtp.gmail.com";
-        String hostSMTPid=""; //관리자 이메일 아이디
-        String hostSMTPpw=""; //관리자 이메일 비밀번호
+        String hostSMTP="smtp.mail.nate.com";
+        String hostSMTPid="digishil"; //관리자 이메일 아이디
+        String hostSMTPpw="qw12er34!!"; //관리자 이메일 비밀번호
 
         //보내는 사람
-        String fromEmail=""; //보내는 사람 이메일
-        String fromName=""; //보내는 사람 이름
+        String fromEmail="digishil@nate.com"; //보내는 사람 이메일
+        String fromName="DIGISHIL"; //보내는 사람 이름
 
-        String subject=""; //메일 제목
+        String subject="[DIGISHIL] 임시 비밀번호 안내입니다."; //메일 제목
         String msg="";
 
         msg +="<div align='lift'";

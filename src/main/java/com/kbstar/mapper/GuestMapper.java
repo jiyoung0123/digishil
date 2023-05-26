@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Repository
 @Mapper
 public interface GuestMapper extends KBMapper<String, Guest> {
-
+    public void updatePwd(Guest guest);
 }

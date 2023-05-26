@@ -15,12 +15,9 @@
         UPDATE guest SET guestLang=#{guestLang}, guestIntro=#{guestIntro}, guestImage=#{guestImage} WHERE guestId=#{guestId}
     </update>
 
-<!--    //아이디와 이메일이 DB에 존재하는지 먼저 검사-->
-    <select id="searchPwd" parameterType="Guest" resultType="Guest">
-        SELECT * FROM guest WHERE guestId=#{guestId}
-    </select>
+
 <!--    //임시비밀번호 발급을 위한 업데이트-->
     <update id="updatePwd" parameterType="Guest">
-        UPDATE guest  SET guestPwd=#{guestPwd} WHERE guestId=#{guestId}
+        UPDATE guest SET guestPwd=#{guestPwd} WHERE guestId=#{guestId}
     </update>
 </mapper>

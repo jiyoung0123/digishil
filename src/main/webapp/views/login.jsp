@@ -99,7 +99,7 @@
 </div>
 
 <!-- Modal -->
-<form action="/findPwd" method="post">
+<form action="/findPwd" method="get">
 
 <div class="modal fade" id="pwdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

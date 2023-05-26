@@ -22,6 +22,9 @@ public class AjaxImplController {
     @Autowired
     GuestService guestService;
 
+    @Autowired
+    BCryptPasswordEncoder encoder= new BCryptPasswordEncoder();
+
     @RequestMapping("/checkId")
     public Object checkid(String guestId) throws Exception {
         int result = 0;
@@ -33,35 +36,31 @@ public class AjaxImplController {
         return result;
     }
 
+// 참고 url - https://velog.io/@duawldms/spring-email-%EC%9E%84%EC%8B%9C%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8-%EB%B0%9C%EA%B8%89
     @GetMapping(value = "/findPwd",produces = {MediaType.APPLICATION_JSON_VALUE})
     public @ResponseBody String findPw(String guestId, Guest guest) throws Exception {
-        log.info("--------------------------"+guestId);
-        BCryptPasswordEncoder encoder= new BCryptPasswordEncoder();
+
         String result = null;
 
         //회원정보 불러오기
-        Guest vo1 = guestService.searchPwd(guestId);
-        System.out.println(vo1);
+        Guest guest1 = guestService.get(guestId);
+        System.out.println(guest1);
 
         //가입된 이메일이 존재한다면 이메일 전송
-        if(vo1!=null) {
+        if(guest1!=null) {
 
             //임시 비밀번호 생성(UUID이용)
             String tempPw= UUID.randomUUID().toString().replace("-", "");//-를 제거
             tempPw = tempPw.substring(0,10);//tempPw를 앞에서부터 10자리 잘라줌
 
-            vo1.setGuestPwd(tempPw);//임시 비밀번호 담기
+            guest1.setGuestPwd(tempPw);//임시 비밀번호 담기
+            MailUtil mail = new MailUtil(); //메일 전송하기
+            mail.sendEmail(guest1);
 
-            MailUtil mail=new MailUtil(); //메일 전송하기
-            mail.sendEmail(vo1);
+            //회원 비밀번호를 암호화하면 vo객체에 다시 저장
+            guest1.setGuestPwd(encoder.encode(guest1.getGuestPwd()));
+            guestService.updatePwd(guest1);
 
-            guestService.updatePwd(vo1);
-
-            String securePwd = encoder.encode(vo1.getGuestPwd());
-            vo1.setGuestPwd(securePwd);
-
-            String securePw = encoder.encode(vo1.getGuestPwd());//회원 비밀번호를 암호화하면 vo객체에 다시 저장
-            vo1.setGuestPwd(securePw);
 
             result="true";
 

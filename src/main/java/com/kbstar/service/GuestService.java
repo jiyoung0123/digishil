@@ -42,11 +42,9 @@ public class GuestService implements KBService<String, Guest> {
         return mapper.selectall();
     }
 
-    public Guest searchPwd(String s) throws Exception {
-        return mapper.select(s);
-    }
+
 
     public void updatePwd(Guest guest) throws Exception {
-        mapper.update(guest);
+        mapper.updatePwd(guest);
     }
 }
