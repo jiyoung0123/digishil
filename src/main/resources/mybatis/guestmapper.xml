@@ -12,6 +12,6 @@
     </insert>
 
     <update id="update" parameterType="Guest">
-        UPDATE guest SET guestImage=#{guestImage}, guestLang=#{guestLang}, guestIntro=#{guestIntro} WHERE guestId=#{guestId}
+        UPDATE guest SET guestLang=#{guestLang}, guestIntro=#{guestIntro}, guestImage=#{guestImage} WHERE guestId=#{guestId}
     </update>
 </mapper>

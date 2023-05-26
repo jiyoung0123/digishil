@@ -1,6 +1,7 @@
 package com.kbstar.dto;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
@@ -21,6 +22,7 @@ public class Guest {
     private Date guestRegDate;
     private Date guestDelDate;
 
+
     public Guest(String guestId, String guestPwd, String guestName) {
         this.guestId = guestId;
         this.guestPwd = guestPwd;
@@ -29,9 +31,9 @@ public class Guest {
 
     public Guest(String guestId, String guestIntro, String guestLang, String guestImage) {
         this.guestId = guestId;
-        this.guestIntro = guestIntro;
-        this.guestLang = guestLang;
         this.guestImage = guestImage;
+        this.guestLang = guestLang;
+        this.guestIntro = guestIntro;
     }
 }
 

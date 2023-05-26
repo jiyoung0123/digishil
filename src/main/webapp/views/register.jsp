@@ -9,21 +9,21 @@
       });
       $('#guestId').keyup(function(){
         var txtId = $(this).val();
-        if(txtId.length<=8){
+        if(txtId.length<=3){
           return;
         }
-        // $.ajax({
-        //   url:'/checkId',
-        //   data:{'guestId':txtId},
-        //   success:function(result){
-        //     if(result==0){
-        //       $('#checkId').text('사용가능합니다.');
-        //       $('#guestPwd').focus();
-        //     }else{
-        //       $('#checkId').text('사용불가능합니다.');
-        //     }
-        //   }
-        // });
+        $.ajax({
+          url:'/checkId',
+          data:{'guestId':txtId},
+          success:function(result){
+            if(result==0){
+              $('#checkId').text('사용가능합니다.');
+              $('#guestPwd').focus();
+            }else{
+              $('#checkId').text('사용불가능합니다.');
+            }
+          }
+        });
       });
     },
     send:function(){
@@ -31,19 +31,20 @@
       var guestPwd = $('#guestPwd').val();
       var guestPwd1 = $('#guestPwd1').val();
       var guestName = $('#guestName').val();
-      // if(guestId.length<=3){
-      //   $('#checkId').text('4자리 이상이어야 합니다.');
-      //   $('#guestId').focus();
-      //   return;
-      // }
+      if(guestId.length<=3){
+        $('#checkId').text('4자리 이상이어야 합니다.');
+        $('#guestId').focus();
+        return;
+      }
+      if(guestName == ''){
+            $('#Name').focus();
+            return;
+      }
       if(guestPwd != guestPwd1){
         alert("비밀번호를 확인하세요");
         return;
       }
-      // if(guestName == ''){
-      //   $('#Name').focus();
-      //   return;
-      // }
+
       $('#registerForm').attr({
         'action':'/registerImpl',
         'method':'post'

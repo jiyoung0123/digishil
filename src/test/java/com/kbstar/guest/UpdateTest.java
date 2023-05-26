@@ -21,5 +21,4 @@ class UpdateTest {
             log.info("수정에러..");
             e.printStackTrace();
         }
-
     }}

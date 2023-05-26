@@ -17,11 +17,11 @@ public class AjaxImplController {
     @Autowired
     GuestService guestService;
 
-    @RequestMapping("/checkid")
-    public Object checkid(String id) throws Exception {
+    @RequestMapping("/checkId")
+    public Object checkid(String guestId) throws Exception {
         int result = 0;
         Guest guest = null;
-        guest = guestService.get(id);
+        guest = guestService.get(guestId);
         if(guest != null){
             result=1;
         }
