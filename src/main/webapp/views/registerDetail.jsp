@@ -54,12 +54,13 @@
                 <label class="form-label">자기소개</label>
               </div>
             </div>
-            <textarea class="form-control" name="guestIntro" rows="4" cols="50">호스트가 회원님에 대해 알 수 있도록 간략하게 자기소개를 해주세요.</textarea>
+            <textarea class="form-control" name="guestIntro" rows="4" cols="50"  placeholder="호스트가 회원님에 대해 알 수 있도록 간략하게 자기소개를 해주세요."></textarea>
           </div>
           <!-- Submit-->
           <div class="d-grid">
             <button class="btn btn-lg btn-primary" id="registerDetailBtn" type="button">프로필 수정하기</button>
           </div>
+
           <hr class="my-3 hr-text letter-spacing-2" data-content="">
         </form>
       </div>

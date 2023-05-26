@@ -2,28 +2,51 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
+
+  let idCheck = {
+      init:function(){
+          $('#idCheck').click(function(){
+              idCheck.send();
+          });
+      },
+      send:function(){
+          var guestId = $('#guestId').val();
+          if (!validateEmail(guestId)) {
+              $('#checkId').text('ID는 메일 주소 형식입니다.');
+              return;
+          }
+          $.ajax({
+              url:'/checkId',
+              data:{'guestId':guestId},
+              success:function(result){
+                  if(result==0){
+                      $('#checkId').text('룔룔사용가능합니다.');
+                      $('#guestName').focus();
+                  }else{
+                      $('#checkId').text('중복된 ID 입니다.');
+                      // $('#checkId').text('룔룔사용불가능합니다.');
+                  }
+              }
+          });
+      }
+  };
   let registerForm = {
     init:function(){
+        $('#guestPwd').keyup(function(){
+            var guestPwd = $('#guestPwd').val();
+            var guestPwd1 = $('#guestPwd1').val();
+            if(guestPwd.length<=3){
+                $('#checkPwd').text('비밀번호는 4자리 이상입니다.');
+            }else{
+                $('#checkPwd').text('사용가능한 비밀번호 입니다.');
+            }
+            // if(guestPwd != guestPwd1){
+            //     alert("동일한 비밀번호를 입력해 주세요");
+            //     return;
+            // }
+        });
       $('#registerBtn').click(function(){
         registerForm.send();
-      });
-      $('#guestId').keyup(function(){
-        var txtId = $(this).val();
-        if(txtId.length<=3){
-          return;
-        }
-        $.ajax({
-          url:'/checkId',
-          data:{'guestId':txtId},
-          success:function(result){
-            if(result==0){
-              $('#checkId').text('사용가능합니다.');
-              $('#guestPwd').focus();
-            }else{
-              $('#checkId').text('사용불가능합니다.');
-            }
-          }
-        });
       });
     },
     send:function(){
@@ -31,20 +54,14 @@
       var guestPwd = $('#guestPwd').val();
       var guestPwd1 = $('#guestPwd1').val();
       var guestName = $('#guestName').val();
-      if(guestId.length<=3){
-        $('#checkId').text('4자리 이상이어야 합니다.');
-        $('#guestId').focus();
-        return;
-      }
       if(guestName == ''){
             $('#Name').focus();
             return;
       }
       if(guestPwd != guestPwd1){
-        alert("비밀번호를 확인하세요");
+        alert("동일한 비밀번호를 입력해 주세요");
         return;
       }
-
       $('#registerForm').attr({
         'action':'/registerImpl',
         'method':'post'
@@ -52,8 +69,13 @@
       $('#registerForm').submit();
     }
   };
+  function validateEmail(email) {
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+  }
   $(function(){
       registerForm.init();
+      idCheck.init();
   });
 </script>
 <body>
@@ -65,13 +87,20 @@
           <h2>회원가입</h2>
           <p class="text-muted">DIGI실에 오신 것을 환영합니다.</p>
         </div>
+          <br>
         <form id="registerForm" class="form-validate">
             <div class="mb-4">
-            <label class="form-label" for="guestId">메일주소</label>
+                <div class="row">
+                     <div class="col">
+                        <label class="form-label" for="guestId">아이디(e-mail)</label>
+                     </div>
+                    <div class="col-auto"><a class="form-text small text-primary" id="idCheck">아이디 중복체크</a></div>
+                </div>
             <input class="form-control" name="guestId" id="guestId" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="메일 주소를 입력해 주세요!">
           </div>
+
             <div class="mb-4">
-                <span id="checkId" class="bg-danger"></span>
+                <span id="checkId" style="color:rgb(77,102,247)"></span>
             </div>
             <div class="mb-4">
                 <label class="form-label" for="guestName">이름</label>
@@ -81,6 +110,9 @@
             <label class="form-label" for="guestPwd">비밀번호</label>
             <input class="form-control" name="guestPwd" id="guestPwd" placeholder="비밀번호를 입력 해 주세요" type="password" required data-msg="비밀번호를 입력해 주세요!">
           </div>
+            <div class="mb-4">
+                <span id="checkPwd" style="color:rgb(77,102,247)"></span>
+            </div>
           <div class="mb-4">
             <label class="form-label" for="guestPwd1">비밀번호확인</label>
             <input class="form-control" name="guestPwd1" id="guestPwd1" placeholder="비밀번호를 똑같이 한번 더 입력해 주세요" type="password" required data-msg="비밀번호를 입력해 주세요!">
@@ -92,7 +124,8 @@
 
           <div class="d-grid gap-2">
 <%--            <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>--%>
-            <button id="KakaoRegisterBtn" type="button" class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 회원가입 하기</span></button>
+<%--            <button class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 회원가입 하기</span></button>--%>
+            <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=2fcf1ae3889fb2cc04ae6d2eac555670&redirect_uri=http://127.0.0.1/register/kakao" ><img style="width: 408px; height: 51.5px;" src="img/photo/kakao11.jpg"/></a>
           </div>
 
         </form>

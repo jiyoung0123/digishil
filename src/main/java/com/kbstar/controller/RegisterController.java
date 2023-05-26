@@ -55,6 +55,4 @@ public class RegisterController {
         FileUploadUtil.saveFile(file,imgdir);
         return "redirect:/login";
     }
-
-
 }
