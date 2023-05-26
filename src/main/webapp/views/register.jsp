@@ -1,7 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
+    // window.Kakao.init("2fcf1ae3889fb2cc04ae6d2eac555670");
+    // function kakaoLogin(){
+    //     window.Kakao.Auth.login({
+    //         scope:'profile_nickname, profile_image, account_email',
+    //         success:function(authObj){
+    //             console.log(authObj);
+    //             window.Kakao.API.request({
+    //                 url:'/v2/user/me',
+    //             })
+    //         }
+    //     })
+    // };
 
   let idCheck = {
       init:function(){
@@ -125,7 +138,7 @@
           <div class="d-grid gap-2">
 <%--            <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>--%>
 <%--            <button class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 회원가입 하기</span></button>--%>
-            <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=2fcf1ae3889fb2cc04ae6d2eac555670&redirect_uri=http://127.0.0.1/register/kakao" ><img style="width: 408px; height: 51.5px;" src="img/photo/kakao11.jpg"/></a>
+            <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=2fcf1ae3889fb2cc04ae6d2eac555670&redirect_uri=http://127.0.0.1/register/kakao"><img style="width: 408px; height: 51.5px;" src="img/photo/kakao11.jpg"/></a>
           </div>
 
         </form>
