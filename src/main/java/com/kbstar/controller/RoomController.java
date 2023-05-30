@@ -1,5 +1,6 @@
 package com.kbstar.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.kbstar.dto.Room;
 import com.kbstar.service.RoomService;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -19,12 +21,18 @@ public class RoomController {
     String dir ="room/";
 
     @RequestMapping("/list")
-    public String list(Model model) throws Exception {
-        List<Room> list = null;
-        list = roomService.get();
+    public String list(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model) throws Exception {
+        PageInfo<Room> p = null;
+        try {
+            p = new PageInfo<>(roomService.getPage(pageNo), 5); // 5:하단 네비게이션 개수
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        model.addAttribute("roomList", list);
+        model.addAttribute("target","room");
+        model.addAttribute("roomList",p);
         model.addAttribute("center",dir+"list");
         return "index";
     }
+
 }

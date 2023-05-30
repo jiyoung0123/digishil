@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 
@@ -346,7 +347,7 @@
             </div>
             <div class="row">
                 <!-- place item-->
-                <c:forEach var="roomList" items="${roomList}">
+                <c:forEach var="roomList" items="${roomList.getList()}">
                     <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
                         <div class="card h-100 border-0 shadow">
                             <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="detail-rooms.html"></a>
@@ -368,22 +369,15 @@
                                         <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
                                         </p>
                                     </div>
-                                    <p class="card-text text-muted"><span class="h4 text-primary"><fmt:formatNumber type="number" pattern="###,###원" value="${roomList.roomPrice}"/></span> per night</p>
+                                    <p class="card-text text-muted"><span class="h4 text-primary"><fmt:formatNumber type="number" pattern="###,###won" value="${roomList.roomPrice}"/></span> per night</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
-            <!-- Pagination -->
-            <nav aria-label="Page navigation example">
-                <ul class="pagination pagination-template d-flex justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a></li>
-                </ul>
-            </nav>
+            <%-- pagination start --%>
+            <jsp:include page="../page.jsp"/>
+            <%-- pagination end--%>
         </div>
         <div class="col-lg-6 map-side-lg pe-lg-0">
             <div class="map-full shadow-left" id="categorySideMap"></div>

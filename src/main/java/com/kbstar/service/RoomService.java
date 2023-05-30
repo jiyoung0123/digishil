@@ -1,5 +1,7 @@
 package com.kbstar.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.kbstar.dto.Room;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.RoomMapper;
@@ -37,5 +39,10 @@ public class RoomService implements KBService<Integer, Room> {
     @Override
     public List<Room> get() throws Exception {
         return mapper.selectall();
+    }
+
+    public Page<Room> getPage(int pageNo) throws Exception {
+        PageHelper.startPage(pageNo, 6); // 3: 한화면에 출력되는 개수
+        return mapper.getpage();
     }
 }
