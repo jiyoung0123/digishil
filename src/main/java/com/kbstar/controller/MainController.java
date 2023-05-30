@@ -57,4 +57,10 @@ public class MainController {
         return "redirect:/";
     }
 
+    @RequestMapping("/pay")
+    public String pay(Model model){
+        model.addAttribute("center","pay");
+        return "index";
+    }
+
 }
