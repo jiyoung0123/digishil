@@ -77,7 +77,6 @@ public class RegisterController {
 
     @GetMapping("/auth/kakao/callback")
     public String kakaoCallback(String code, HttpSession session, Model model) throws Exception {   //data를 리턴해주는 컨트롤러 함수
-
         //Post 방식으로 key=value 데이터를 요청(카카오쪽으로)
 
         //HttpHeader 오브젝트 생성
@@ -114,7 +113,7 @@ public class RegisterController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        System.out.println("카카오 엑세스 토큰:"+oauthToken.getAccess_token());
+//        System.out.println("카카오 엑세스 토큰:"+oauthToken.getAccess_token());
 
         RestTemplate rt2 = new RestTemplate();
 
@@ -134,7 +133,7 @@ public class RegisterController {
                 kakaoProfileRequest2,
                 String.class
         );
-        System.out.println(response2.getBody());
+//        System.out.println(response2.getBody());
 
         ObjectMapper objectMapper2 = new ObjectMapper();
         KakaoProfile kakaoProfile = null;
@@ -145,24 +144,22 @@ public class RegisterController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
         Guest guest = new Guest();
         guest.setGuestId(kakaoProfile.getKakao_account().getEmail());
         guest.setGuestPwd(cosKey);
         guest.setGuestName(kakaoProfile.getProperties().getNickname());
-        System.out.println(guest);
 
         Guest guestIdCheck = null;
         guestIdCheck = guestService.get(kakaoProfile.getKakao_account().getEmail());
         if(guestIdCheck == null){
             guestService.register(guest);
             session.setAttribute("loginGuest",guest);
-            model.addAttribute("center","center");
+            model.addAttribute("center", "registerDetail");
         }else{
             session.setAttribute("loginGuest",guest);
-            model.addAttribute("center","center");
+            model.addAttribute("center", "center");
         }
-        return "redirect:/";
+        return "index";
     }
 
 }

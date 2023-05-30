@@ -31,6 +31,7 @@
     <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
       <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
         <div class="mb-5">
+          <div class="col-auto"><a href="/" class="form-text small text-primary">Home 으로 가기</a></div>
           <h2>프로필 완성하기</h2>
         </div>
         <form class="form-validate" id="registerDetail">
@@ -67,7 +68,7 @@
     </div>
     <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
       <!-- Image-->
-      <div class="bg-cover h-100 me-n3" style="background-image: url(img/photo/photo-1497436072909-60f360e1d4b1.jpg);"></div>
+      <div class="bg-cover h-100 me-n3" style="background-image: url(/img/photo/photo-1497436072909-60f360e1d4b1.jpg);"></div>
     </div>
   </div>
 </div>
@@ -98,20 +99,20 @@
 
 </script>
 <!-- jQuery-->
-<script src="vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
 <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Magnific Popup - Lightbox for the gallery-->
-<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 <!-- Smooth scroll-->
-<script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+<script src="/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
 <!-- Bootstrap Select-->
-<script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-<script src="vendor/object-fit-images/ofi.min.js"></script>
+<script src="/vendor/object-fit-images/ofi.min.js"></script>
 <!-- Swiper Carousel                       -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script>var basePath = ''</script>
 <!-- Main Theme JS file    -->
-<script src="js/theme.js"></script>
+<script src="/js/theme.js"></script>
 </body>
