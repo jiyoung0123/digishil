@@ -37,8 +37,8 @@ function createListingsMap(options) {
         zoom: 14,
         scrollWheelZoom: false,
         dragging: dragging,
-        tap: tap,
-        scrollWheelZoom: false
+        tap: tap
+        // scrollWheelZoom: false
     });
 
     map.once('focus', function () {

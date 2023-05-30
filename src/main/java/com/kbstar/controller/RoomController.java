@@ -13,8 +13,6 @@ public class RoomController {
 
     @RequestMapping("/list")
     public String list(Model model) throws Exception {
-        log.info("------------------------------------");
-
         model.addAttribute("center",dir+"list");
         return "index";
     }

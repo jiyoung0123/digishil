@@ -357,5 +357,8 @@
 <script>var basePath = ''</script>
 <!-- Main Theme JS file    -->
 <script src="/js/theme.js"></script>
+
+<%--rooms daterange--%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js"> </script>
 </body>
 </html>
