@@ -19,5 +19,8 @@
         FROM room
         JOIN host ON room.hostId = host.hostId
     </select>
+    <select id="select" parameterType="Integer" resultType="Room">
+        SELECT * FROM room WHERE roomId=#{roomId}
+    </select>
 
 </mapper>

@@ -35,4 +35,13 @@ public class RoomController {
         return "index";
     }
 
+    @RequestMapping("/detail")
+    public String detail(Model model, Integer id) throws Exception {
+        Room room = null;
+        room = roomService.get(id);
+
+        model.addAttribute("center",dir+"detail");
+        return "index";
+    }
+
 }
