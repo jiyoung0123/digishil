@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -20,13 +20,13 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="/img/favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -41,7 +41,7 @@
 
         <div class="container-fluid">
 <%--            요기 이미지가 diretory 로고임--%>
-            <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="/"><img src="img/logo.svg" alt="Directory logo"></a>
+            <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="/"><img src="/img/logo.svg" alt="Directory logo"></a>
                 <form class="form-inline d-none d-sm-flex" action="#" id="search">
                     <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
                         <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
@@ -197,7 +197,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
+                                <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="/img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
                             </div>
                         </div>
                     </li>
@@ -219,7 +219,7 @@
                         </c:when>
                         <c:otherwise>
                             <c:if test="${loginGuest.guestImage == null}">
-                                <img class="avatar avatar-border-white flex-shrink-0 me-2" src="img/avatar/default_profile.png" alt="Julie"/>
+                                <img class="avatar avatar-border-white flex-shrink-0 me-2" src="/img/avatar/default_profile.png" alt="Julie"/>
                             </c:if>
                             <c:if test="${loginGuest.guestImage != null}">
                                 <img class="avatar avatar-border-white flex-shrink-0 me-2" src="/uimg/${loginGuest.guestImage}" alt="Julie"/>
@@ -303,10 +303,10 @@
                 </div>
                 <div class="col-md-6">
                     <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                        <li class="list-inline-item"><img class="w-2rem" src="img/visa.svg" alt="..."></li>
-                        <li class="list-inline-item"><img class="w-2rem" src="img/mastercard.svg" alt="..."></li>
-                        <li class="list-inline-item"><img class="w-2rem" src="img/paypal.svg" alt="..."></li>
-                        <li class="list-inline-item"><img class="w-2rem" src="img/western-union.svg" alt="..."></li>
+                        <li class="list-inline-item"><img class="w-2rem" src="/img/visa.svg" alt="..."></li>
+                        <li class="list-inline-item"><img class="w-2rem" src="/img/mastercard.svg" alt="..."></li>
+                        <li class="list-inline-item"><img class="w-2rem" src="/img/paypal.svg" alt="..."></li>
+                        <li class="list-inline-item"><img class="w-2rem" src="/img/western-union.svg" alt="..."></li>
                     </ul>
                 </div>
             </div>
@@ -341,21 +341,21 @@
 </script>
 
 <!-- jQuery-->
-<script src="vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
 <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
 <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Magnific Popup - Lightbox for the gallery-->
-<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 <!-- Smooth scroll-->
-<script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+<script src="/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
 <!-- Bootstrap Select-->
 <script src="/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-<script src="vendor/object-fit-images/ofi.min.js"></script>
+<script src="/vendor/object-fit-images/ofi.min.js"></script>
 <!-- Swiper Carousel                       -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script>var basePath = ''</script>
 <!-- Main Theme JS file    -->
-<script src="js/theme.js"></script>
+<script src="/js/theme.js"></script>
 </body>
 </html>
