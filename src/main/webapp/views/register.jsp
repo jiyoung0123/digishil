@@ -138,7 +138,7 @@
           <div class="d-grid gap-2">
 <%--            <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>--%>
 <%--            <button class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 회원가입 하기</span></button>--%>
-            <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=2fcf1ae3889fb2cc04ae6d2eac555670&redirect_uri=http://127.0.0.1/register/kakao&response_type=code"><img style="width: 408px; height: 51.5px;" src="img/photo/kakao11.jpg"/></a>
+            <a href="https://kauth.kakao.com/oauth/authorize?client_id=9b7c02c3cdf81109f8023cd5a12156ee&redirect_uri=http://127.0.0.1/auth/kakao/callback&response_type=code"><img style="width: 408px; height: 51.5px;" src="img/photo/kakao11.jpg"/></a>
           </div>
 
         </form>
