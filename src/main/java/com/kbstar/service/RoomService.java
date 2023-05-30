@@ -11,13 +11,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class RoomService implements KBService<Integer, Room> {
-    /**
-     * 등록 및 가입 진행
-     * argument : Object
-     * return: null
-     *
-     * @param room
-     */
+
     @Autowired
     RoomMapper mapper;
     @Override
