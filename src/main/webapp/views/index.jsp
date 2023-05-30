@@ -61,7 +61,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="homeDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Home</a>
-                        <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="index.html">Rooms</a><a class="dropdown-item" href="index-2.html">Restaurants</a><a class="dropdown-item" href="index-3.html">Travel</a><a class="dropdown-item" href="index-4.html">Real Estate <span class="badge badge-info-light ms-1 mt-n1">New</span></a></div>
+                        <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="/room/list">Rooms</a><a class="dropdown-item" href="index-2.html">Restaurants</a><a class="dropdown-item" href="index-3.html">Travel</a><a class="dropdown-item" href="index-4.html">Real Estate <span class="badge badge-info-light ms-1 mt-n1">New</span></a></div>
                     </li>
                     <!-- Megamenu-->
                     <li class="nav-item dropdown position-static"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Template</a>
@@ -73,7 +73,7 @@
                                             <!-- Megamenu list-->
                                             <h6 class="text-uppercase">Homepage</h6>
                                             <ul class="megamenu-list list-unstyled">
-                                                <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Rooms   </a></li>
+                                                <li class="megamenu-list-item"><a class="megamenu-list-link" href="/room/list">Rooms   </a></li>
                                                 <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-2.html">Restaurants   </a></li>
                                                 <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-3.html">Travel   </a></li>
                                                 <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-4.html">Real estate <span class="badge badge-info-light ms-1">New</span>   </a></li>
@@ -99,6 +99,7 @@
                                             <!-- Megamenu list-->
                                             <h6 class="text-uppercase">Blog</h6>
                                             <ul class="megamenu-list list-unstyled">
+
                                                 <li class="megamenu-list-item"><a class="megamenu-list-link" href="blog.html">Blog   </a></li>
                                                 <li class="megamenu-list-item"><a class="megamenu-list-link" href="post.html">Post   </a></li>
                                             </ul>
