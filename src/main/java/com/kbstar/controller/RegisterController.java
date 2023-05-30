@@ -37,7 +37,7 @@ import java.util.UUID;
 @Controller
 @Slf4j
 public class RegisterController {
-    @Value("${cos.key}")
+    @Value("${kakaoKey}")
     private String cosKey;
 
     @Value("${uploadimgdir}")
@@ -121,7 +121,6 @@ public class RegisterController {
         //HttpHeader 오브젝트 생성
         HttpHeaders headers2 = new HttpHeaders();
         headers2.add("Authorization", "Bearer "+oauthToken.getAccess_token());
-//        headers2.add("Authorization", "KakaoAK"+oauthToken.get)
         headers2.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 
         //HttpHeader와 HttpBody를 하나의 오브젝트에 담기
@@ -137,7 +136,6 @@ public class RegisterController {
         );
         System.out.println(response2.getBody());
 
-
         ObjectMapper objectMapper2 = new ObjectMapper();
         KakaoProfile kakaoProfile = null;
         try {
@@ -152,7 +150,6 @@ public class RegisterController {
         guest.setGuestId(kakaoProfile.getKakao_account().getEmail());
         guest.setGuestPwd(cosKey);
         guest.setGuestName(kakaoProfile.getProperties().getNickname());
-        guest.setGuestImage(kakaoProfile.getProperties().getProfile_image());
         System.out.println(guest);
 
         Guest guestIdCheck = null;
