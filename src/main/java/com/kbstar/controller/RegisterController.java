@@ -18,6 +18,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
@@ -36,6 +37,8 @@ import java.util.UUID;
 @Controller
 @Slf4j
 public class RegisterController {
+    @Value("${cos.key}")
+    private String cosKey;
 
     @Value("${uploadimgdir}")
     String imgdir;
@@ -73,7 +76,7 @@ public class RegisterController {
     }
 
     @GetMapping("/auth/kakao/callback")
-    public @ResponseBody String kakaoCallback(String code){   //data를 리턴해주는 컨트롤러 함수
+    public String kakaoCallback(String code, HttpSession session, Model model) throws Exception {   //data를 리턴해주는 컨트롤러 함수
 
         //Post 방식으로 key=value 데이터를 요청(카카오쪽으로)
 
@@ -144,49 +147,25 @@ public class RegisterController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        System.out.println("카카오 아이디(번호):" + kakaoProfile.getId());
-        System.out.println("카카오 이메일:" + kakaoProfile.getKakao_account().getEmail());
 
-        System.out.println("디지실ID :"+ kakaoProfile.getKakao_account().getEmail());
-        UUID gabagePassword = UUID.randomUUID();
-        System.out.println("디지실 패스워드: "+ gabagePassword);
-        System.out.println("------------------");
+        Guest guest = new Guest();
+        guest.setGuestId(kakaoProfile.getKakao_account().getEmail());
+        guest.setGuestPwd(cosKey);
+        guest.setGuestName(kakaoProfile.getProperties().getNickname());
+        guest.setGuestImage(kakaoProfile.getProperties().getProfile_image());
+        System.out.println(guest);
 
-
-//        Guest guest = Guest.builder();
-//        guestService.register(guest);
-
-        return response2.getBody();
+        Guest guestIdCheck = null;
+        guestIdCheck = guestService.get(kakaoProfile.getKakao_account().getEmail());
+        if(guestIdCheck == null){
+            guestService.register(guest);
+            session.setAttribute("loginGuest",guest);
+            model.addAttribute("center","center");
+        }else{
+            session.setAttribute("loginGuest",guest);
+            model.addAttribute("center","center");
+        }
+        return "redirect:/";
     }
-
-//    @RestController
-//    @AllArgsConstructor
-//    @RequestMapping("/register")
-//    public class OAuthController {
-//
-//        /**
-//         * 카카오 callback
-//         * [GET] /oauth/kakao/callback
-//         */
-//        @ResponseBody
-//        @GetMapping("/kakao")
-//        public void kakaoCallback(@RequestParam String code) {
-//            System.out.println(code);
-//        }
-//    }
-
-//    @Controller
-//    public class kakaoController {
-//
-//        // 1번 카카오톡에 사용자 코드 받기(jsp의 a태그 href에 경로 있음)
-//        @RequestMapping(value = "/kakaoLogin", method = RequestMethod.GET)
-//        public ModelAndView kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Throwable {
-//            // 1번
-//            System.out.println("code:" + code);
-//            return null;
-//            // return에 페이지를 해도 되고, 여기서는 코드가 넘어오는지만 확인할거기 때문에 따로 return 값을 두지는 않았음
-//        }
-//    }
-
 
 }

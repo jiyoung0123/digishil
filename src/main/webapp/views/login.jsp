@@ -79,13 +79,13 @@
           </div>
           <!-- Submit-->
           <div class="d-grid">
-            <button id="loginBtn" class="btn btn-lg btn-primary">로그인 하기</button>
+            <button style="height: 61.28px;" id="loginBtn" class="btn btn-lg btn-primary">로그인 하기</button>
           </div>
           <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
-          <div class="d-grid gap-2">
-<%--            <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>--%>
-            <button class="btn btn btn-outline-muted btn-social"><span class="d-none d-sm-inline">카카오톡으로 로그인 하기</span></button>
-          </div>
+            <div class="d-grid gap-2">
+                <a href="https://kauth.kakao.com/oauth/authorize?client_id=9b7c02c3cdf81109f8023cd5a12156ee&redirect_uri=http://127.0.0.1/auth/kakao/callback&response_type=code">
+                    <img class="img-fluid" src="img/photo/kakaoLogin.jpg"></a>
+            </div>
           <hr class="my-4">
           <p class="text-center"><small class="text-muted text-center"><a href="/register">회원 가입 하러 가기</a></small></p>
         </form>
