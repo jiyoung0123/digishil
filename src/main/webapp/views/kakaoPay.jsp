@@ -10,7 +10,6 @@
     $('#payBtn').click(function(){
       $.ajax({
         url:'payment/ready',
-        // url:'/cls/jq/kakaopay.cls'
         dataType:'json',
         success: function(data){
           // alert(data.tid);

@@ -27,9 +27,9 @@ public class KakaoPayService {
         parameters.add("cid", cid);
         parameters.add("partner_order_id", "가맹점 주문 번호");
         parameters.add("partner_user_id", "가맹점 회원 ID");
-        parameters.add("item_name", "초코파이");
-        parameters.add("quantity", "1");
-        parameters.add("total_amount", "2000");
+        parameters.add("item_name", "Healing room_수고한당신에게#통유리뷰#서울역5분#꿀갬성#쉼표");
+        parameters.add("quantity", "3");
+        parameters.add("total_amount", "300000");
         parameters.add("vat_amount", "0");
         parameters.add("tax_free_amount", "0");
         parameters.add("approval_url", "http://127.0.0.1/payment/success"); // 성공 시 redirect url
