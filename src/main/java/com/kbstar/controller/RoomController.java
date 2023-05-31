@@ -40,6 +40,7 @@ public class RoomController {
         Room room = null;
         room = roomService.get(id);
 
+        model.addAttribute("roomDetail",room);
         model.addAttribute("center",dir+"detail");
         return "index";
     }

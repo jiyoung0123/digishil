@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Slf4j
@@ -24,6 +25,16 @@ public class AjaxImplController {
 
     @Autowired
     BCryptPasswordEncoder encoder= new BCryptPasswordEncoder();
+
+    @RequestMapping("/reserveImpl")
+    public void reserveImpl(String reserveCap, String roomId, String guestId, String roomPrice, String bookingDate) throws Exception {
+        log.info("------------------------"+reserveCap);
+        log.info("------------------------"+roomId);
+        log.info("------------------------"+guestId);
+        log.info("------------------------"+roomPrice);
+        log.info("------------------------"+bookingDate);
+
+    }
 
     @RequestMapping("/checkId")
     public Object checkid(String guestId) throws Exception {
