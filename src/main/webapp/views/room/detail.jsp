@@ -224,6 +224,7 @@
         </div>
     </div>
 </div>
+
 <div class="py-6 bg-gray-100">
     <div class="container">
         <h5 class="mb-0">Similar places</h5>
