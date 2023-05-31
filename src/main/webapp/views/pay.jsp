@@ -1,18 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
 
 <script>
   $(function(){
-    ('#payBtn').click(function(){
+    $('#payBtn').click(function(){
       $.ajax({
-        url:'cls/jq/kakaopay.cls',
+        url:'pay/kakaopay',
+        // url:'/cls/jq/kakaopay.cls'
         dataType:'json',
         success: function(data){
-          alert(data);
+          // alert(data.tid);
+          var box = data.next_redirect_pc_url;
+          window.open(box);
         },
         error: function(error){
           alert(error);
@@ -20,9 +23,6 @@
       })
     })
   });
-
-
-
 </script>
 
 
@@ -83,11 +83,6 @@
           </form>
         </div>
         <div class="text-block">
-          <h6>환불 정책</h6>
-          <p class="text-sm text-muted">7일 전에 취소하면 부분 환불을 받으실 수 있습니다. 그 이후에는 취소 시점에 따라 환불액이 결정됩니다. </p>
-        </div>
-
-        <div class="text-block">
           <h6>기본 규칙</h6>
           <h9>훌륭한 게스트가 되기 위한 몇 가지 간단한 규칙을 지켜주실 것을 모든 게스트에게 당부드리고 있습니다. </h9>
           <p class="text-sm text-muted">
@@ -98,10 +93,22 @@
           </p>
 <%--          <p class="text-sm text-muted">호스트의 집도 자신의 집처럼 아껴주세요.</p>--%>
         </div>
+
+        <%--        message box to host for reserve start--%>
+        <div class="text-block">
+          <div class="d-flex">
+            <div>
+              <h5>Say hello to your host</h5>
+              <p class="text-sm text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar .</p>
+            </div><img class="avatar avatar-md p-1 flex-shrink-0 ms-4" src="img/avatar/avatar-10.jpg" alt="Jack London">
+          </div>
+          <textarea class="form-control" name="hello" rows="4"></textarea>
+        </div>
+        <%--        message box to host for reserve end--%>
         <div class="row form-block flex-column flex-sm-row">
           <div class="col text-center text-sm-start"><a class="btn btn-link text-muted" href="user-booking-2.html"> <i class="fa-chevron-left fa me-2"></i>이전으로</a>
           </div>
-          <div class="col text-center text-sm-end"><button id="payBtn" class="btn btn-primary px-3" onclick="requestPay()">확인 및 결제<i class="fa-chevron-right fa ms-2"></i></button></div>
+          <div class="col text-center text-sm-end"><button id="payBtn" class="btn btn-primary px-3" type="button">확인 및 결제<i class="fa-chevron-right fa ms-2"></i></button></div>
         </div>
       </div>
       <div class="col-lg-5 ps-xl-5">
@@ -149,7 +156,7 @@
             <div class="d-flex align-items-center">
               <div>
 <%--                <h6 class="text-primary">Flexible – free cancellation</h6>--%>
-                <p class="text-sm text-primary opacity-8 mb-0">해외에서 결제가 처리되기 때문에 카드 발행사에서 추가 수수료를 부과할 수 있습니다.<a href="#" class="text-reset ms-3">More details</a></p>
+                <p class="text-sm text-primary opacity-8 mb-0"> 환불정책 : 7일 전에 취소하면 부분 환불을 받으실 수 있습니다. 그 이후에는 취소 시점에 따라 환불액이 결정됩니다. <a href="#" class="text-reset ms-3">세부사항 보기</a></p>
               </div>
             </div>
           </div>
@@ -161,29 +168,29 @@
 
 
 <!-- JavaScript files-->
-<script>
-  // ------------------------------------------------------- //
-  //   Inject SVG Sprite -
-  //   see more here
-  //   https://css-tricks.com/ajaxing-svg-sprite/
-  // ------------------------------------------------------ //
-  function injectSvgSprite(path) {
+<%--<script>--%>
+<%--  // ------------------------------------------------------- //--%>
+<%--  //   Inject SVG Sprite ---%>
+<%--  //   see more here--%>
+<%--  //   https://css-tricks.com/ajaxing-svg-sprite/--%>
+<%--  // ------------------------------------------------------ //--%>
+<%--  function injectSvgSprite(path) {--%>
 
-    var ajax = new XMLHttpRequest();
-    ajax.open("GET", path, true);
-    ajax.send();
-    ajax.onload = function(e) {
-      var div = document.createElement("div");
-      div.className = 'd-none';
-      div.innerHTML = ajax.responseText;
-      document.body.insertBefore(div, document.body.childNodes[0]);
-    }
-  }
-  // to avoid CORS issues when viewing using file:// protocol, using the demo URL for the SVG sprite
-  // use your own URL in production, please :)
-  // https://demo.bootstrapious.com/directory/1-0/icons/orion-svg-sprite.svg
-  //- injectSvgSprite('${path}icons/orion-svg-sprite.svg');
-  injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
+<%--    var ajax = new XMLHttpRequest();--%>
+<%--    ajax.open("GET", path, true);--%>
+<%--    ajax.send();--%>
+<%--    ajax.onload = function(e) {--%>
+<%--      var div = document.createElement("div");--%>
+<%--      div.className = 'd-none';--%>
+<%--      div.innerHTML = ajax.responseText;--%>
+<%--      document.body.insertBefore(div, document.body.childNodes[0]);--%>
+<%--    }--%>
+<%--  }--%>
+<%--  // to avoid CORS issues when viewing using file:// protocol, using the demo URL for the SVG sprite--%>
+<%--  // use your own URL in production, please :)--%>
+<%--  // https://demo.bootstrapious.com/directory/1-0/icons/orion-svg-sprite.svg--%>
+<%--  //- injectSvgSprite('${path}icons/orion-svg-sprite.svg');--%>
+<%--  injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');--%>
 
 </script>
 <!-- jQuery-->
