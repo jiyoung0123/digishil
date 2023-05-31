@@ -6,10 +6,10 @@
 <section class="hero-home">
     <div class="swiper-container hero-slider">
         <div class="swiper-wrapper dark-overlay">
-            <div class="swiper-slide" style="background-image:url(img/photo/photo-1497436072909-60f360e1d4b1.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(img/photo/photo-1514890547357-a9ee288728e0.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(img/photo/photo-1495562569060-2eec283d3391.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(img/photo/photo-1534850336045-c6c6d287f89e.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(/img/photo/photo-1497436072909-60f360e1d4b1.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(/img/photo/photo-1514890547357-a9ee288728e0.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(/img/photo/photo-1495562569060-2eec283d3391.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(/img/photo/photo-1471189641895-16c58a695bcb.jpg)"></div>
 <%--            <div class="swiper-slide" style="background-image:url(img/photo/photo-1519974719765-e6559eac2575.jpg)"></div>--%>
 <%--            <div class="swiper-slide" style="background-image:url(img/photo/photo-1490578474895-699cd4e2cf59.jpg)"></div>--%>
 <%--            <div class="swiper-slide" style="background-image:url(img/photo/photo-1534850336045-c6c6d287f89e.jpg)"></div>--%>
