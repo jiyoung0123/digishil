@@ -4,19 +4,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <script>
+    var reserveDate = $('#bookingDate').val();
     let reserveForm = {
+
         init:function(){
             $('#reserveBtn').click(function(){
-                let bookingDate = $('#bookingDate').val();
-                if(bookingDate==''){
+            // var reserveDate = $('#bookingDate').val();
+                if(reserveDate==''){
                     $('#checkDate').text("예약일을 입력하세요");
                     return;
                 }else{
+                    console.log(${roomId});
                     reserveForm.send();
                 }
             })
         },
         send:function(){
+            // let reserveDate = $('#bookingDate').val();
+            reserveDate = $('#bookingDate').val();
+
+            let reserveCheckIn = reserveDate.substring(0, 10);
+            let reserveCheckOut = reserveDate.substring(13);
+            $('input[name="reserveCheckIn"]').val(reserveCheckIn);
+            $('input[name="reserveCheckOut"]').val(reserveCheckOut);
+
             $('#reserveForm').attr({
                 'action':'/reserve',
                 'method':'post'
@@ -110,8 +121,14 @@
                 <div class="d-flex"><img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="/img/avatar/avatar-10.jpg" alt="Jack London">
                     <div>
                         <p> <span class="text-muted text-uppercase text-sm">Hosted by </span><br><strong>${roomDetail.hostName}</strong></p>
-                        <p class="text-muted text-sm mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
-                        <p class="text-muted text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <c:choose>
+                            <c:when test="${roomDetail.hostIntro == null}">
+                                <p class="text-muted fw-light">호스트소개 페이지입니다..</p>
+                            </c:when>
+                            <c:otherwise>
+                                <p class="text-muted fw-light">${roomDetail.hostIntro}</p>
+                            </c:otherwise>
+                        </c:choose>
                         <p class="text-sm"><a href="user-profile.html">See Jack's 3 other listings <i class="fa fa-long-arrow-alt-right ms-2"></i></a></p>
                     </div>
                 </div>
@@ -195,7 +212,7 @@
                                 <label class="form-label" for="review">Review text *</label>
                                 <textarea class="form-control" rows="4" name="review" id="review" placeholder="Enter your review" required="required"></textarea>
                             </div>
-                            <button class="btn btn-primary" type="submit">Post review</button>
+                            <button class="btn btn-primary" type="button">Post review</button>
                         </form>
                     </div>
                 </div>
@@ -210,6 +227,8 @@
                     <input type="hidden" name="roomId" value="${roomDetail.roomId}"/>
                     <input type="hidden" name="roomPrice" value="${roomDetail.roomPrice}"/>
                     <input type="hidden" name="guestId" value="${loginGuest.guestId}"/>
+                    <input type="hidden" name="reserveCheckIn"/>
+                    <input type="hidden" name="reserveCheckOut"/>
                     <div class="mb-4">
                         <label class="form-label" for="bookingDate">Your stay *</label>
                         <div class="datepicker-container datepicker-container-right">

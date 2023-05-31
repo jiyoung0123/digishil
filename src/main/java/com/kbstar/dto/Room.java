@@ -34,5 +34,5 @@ public class Room {
     // roomList를 불러오기 위한 항목 추가
     private String hostImage;
     private String hostName;
-
+    private String hostIntro;
 }
