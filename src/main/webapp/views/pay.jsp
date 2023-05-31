@@ -108,8 +108,17 @@
         <div class="row form-block flex-column flex-sm-row">
           <div class="col text-center text-sm-start"><a class="btn btn-link text-muted" href="user-booking-2.html"> <i class="fa-chevron-left fa me-2"></i>이전으로</a>
           </div>
-          <div class="col text-center text-sm-end"><button id="payBtn" class="btn btn-primary px-3" type="button">카카오페이로 결제하기<i class="fa-chevron-right fa ms-2"></i></button></div>
+<%--          <div class="col text-center text-sm-end">--%>
+<%--            <button id="payBtn" class="btn btn-link">--%>
+<%--              <img class="img-fluid" src="img/kakaoPay_medium.jpg" alt="Kakao Pay">--%>
+<%--            </button>--%>
+<%--          </div>--%>
+          <div class="col text-center text-sm-end">
+            <img class="img-fluid" src="img/kakaoPay_small.jpg" alt="Kakao Pay">
+            <button id="payBtn" class="btn btn-primary px-3" type="button">카카오페이로 결제하기<i class="fa-chevron-right fa ms-2"></i></button>
+          </div>
         </div>
+
       </div>
       <div class="col-lg-5 ps-xl-5">
         <div class="card border-0 shadow">
