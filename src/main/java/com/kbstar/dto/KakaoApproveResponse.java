@@ -24,8 +24,6 @@ public class KakaoApproveResponse {
     private String approved_at; // 결제 승인 시간
     private String payload; // 결제 승인 요청에 대해 저장 값, 요청 시 전달 내용
 
-
-
     /**
      * 결제 금액 정보
      */

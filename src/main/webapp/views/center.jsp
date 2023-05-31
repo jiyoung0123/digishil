@@ -108,8 +108,8 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-md-8">
-                <p class="subtitle text-primary">Stay and eat like a local</p>
-                <h2>Our guides</h2>
+                <p class="subtitle text-primary">현지인처럼 살아보기</p>
+                <h2>DIGI실 추천 여행지</h2>
             </div>
             <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm" href="category.html">
                 See all guides<i class="fas fa-angle-double-right ms-2"></i></a></div>
@@ -119,34 +119,42 @@
             <div class="swiper-wrapper pb-5">
                 <!-- Slides-->
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="img/photo/new-york.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/seoul1.jpg" alt="Card image">
                         <div class="card-body overlay-content">
-                            <h6 class="card-title text-shadow text-uppercase">New York</h6>
-                            <p class="card-text text-sm">The big apple</p>
+                            <h6 class="card-title text-shadow text-uppercase">서울</h6>
+                            <p class="card-text text-sm">Seoul</p>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="img/photo/paris.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/busan1.jpg" alt="Card image">
                         <div class="card-body overlay-content">
-                            <h6 class="card-title text-shadow text-uppercase">Paris</h6>
-                            <p class="card-text text-sm">Artist capital of Europe</p>
+                            <h6 class="card-title text-shadow text-uppercase">부산</h6>
+                            <p class="card-text text-sm">Busan</p>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="img/photo/barcelona.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/jeju.jpg" alt="Card image">
                         <div class="card-body overlay-content">
-                            <h6 class="card-title text-shadow text-uppercase">Barcelona</h6>
-                            <p class="card-text text-sm">Dalí, Gaudí, Barrio Gotico</p>
+                            <h6 class="card-title text-shadow text-uppercase">제주</h6>
+                            <p class="card-text text-sm">Jeju</p>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="img/photo/prague.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/kang.jpg" alt="Card image">
                         <div class="card-body overlay-content">
-                            <h6 class="card-title text-shadow text-uppercase">Prague</h6>
-                            <p class="card-text text-sm">City of hundred towers</p>
+                            <h6 class="card-title text-shadow text-uppercase">강원도</h6>
+                            <p class="card-text text-sm">KangWonDo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide h-auto px-2">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/kang1.jpg" alt="Card image">
+                        <div class="card-body overlay-content">
+                            <h6 class="card-title text-shadow text-uppercase">경주</h6>
+                            <p class="card-text text-sm">NewYork</p>
                         </div>
                     </div>
                 </div>

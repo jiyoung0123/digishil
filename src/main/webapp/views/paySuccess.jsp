@@ -2,6 +2,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+<script>
+    $(function(){
+        $('#refundBtn').click(function(){
+            $.ajax({
+                url:'refund',
+                dataType:'json',
+                success: function(data){
+                    // alert(data.tid);
+                    var box = data.next_redirect_pc_url;
+                    window.open(box);
+                },
+                error: function(error){
+                    alert(error);
+                }
+            })
+        })
+    });
+</script>
+
+
 
 <body style="padding-top: 72px;">
 
@@ -24,6 +44,11 @@
                     <p class="mb-5 text-center"><img class="img-fluid" src="/img/illustration/undraw_celebration_0jvk.svg" alt="" style="width: 400px;"></p>
                 </div>
             </div>
+
+<%--            <div class="col text-center text-sm-end">--%>
+<%--                <img class="img-fluid" src="img/kakaoPay_small.jpg" alt="Kakao Pay">--%>
+<%--                <button id="refundBtn" class="btn btn-primary px-3" type="button">환불하기<i class="fa-chevron-right fa ms-2"></i></button>--%>
+<%--            </div>--%>
             <div class="col-lg-5 ps-xl-5">
                 <div class="card border-0 shadow">
                     <div class="card-body p-4">

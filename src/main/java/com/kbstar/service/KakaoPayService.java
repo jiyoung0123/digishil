@@ -1,6 +1,7 @@
 package com.kbstar.service;
 
 import com.kbstar.dto.KakaoApproveResponse;
+import com.kbstar.dto.KakaoCancelResponse;
 import com.kbstar.dto.KakaoReadyResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -19,6 +20,11 @@ public class KakaoPayService {
     static final String cid = "TC0ONETIME"; // 가맹점 테스트 코드
     static final String admin_Key = "82d23bc5d3ba7c6d4dcf3e5df33ee2dd"; // 공개 조심! 본인 애플리케이션의 어드민 키를 넣어주세요
     private KakaoReadyResponse kakaoReady;
+    private KakaoApproveResponse approveResponse;
+
+    public KakaoPayService(KakaoApproveResponse approveResponse) {
+        this.approveResponse = approveResponse;
+    }
 
     public KakaoReadyResponse kakaoPayReady() {
 
@@ -74,6 +80,29 @@ public class KakaoPayService {
                 KakaoApproveResponse.class);
 
         return approveResponse;
+    }
+
+    public KakaoCancelResponse kakaoCancel() {
+        // 카카오페이 요청
+        MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
+        parameters.add("cid", cid);
+        parameters.add("tid", "tid 넣어주기");
+        parameters.add("cancel_amount", "300000");
+        parameters.add("cancel_tax_free_amount", "0");
+        parameters.add("cancel_vat_amount", "0");
+
+        // 파라미터, 헤더
+        HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(parameters, this.getHeaders());
+
+        // 외부에 보낼 url
+        RestTemplate restTemplate = new RestTemplate();
+
+        KakaoCancelResponse cancelResponse = restTemplate.postForObject(
+                "https://kapi.kakao.com/v1/payment/cancel",
+                requestEntity,
+                KakaoCancelResponse.class);
+
+        return cancelResponse;
     }
 
     /**

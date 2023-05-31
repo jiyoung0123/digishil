@@ -1,9 +1,12 @@
 package com.kbstar.controller;
 
+import com.kbstar.dto.KakaoCancelResponse;
 import com.kbstar.dto.KakaoReadyResponse;
 import com.kbstar.service.KakaoPayService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
@@ -55,5 +58,14 @@ public class KakaoPayRestController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 환불
+     */
+    @RequestMapping("/refund")
+    public ResponseEntity refund() {
+        KakaoCancelResponse kakaoCancelResponse = kakaoPayService.kakaoCancel();
+        return new ResponseEntity<>(kakaoCancelResponse, HttpStatus.OK);
     }
 }
