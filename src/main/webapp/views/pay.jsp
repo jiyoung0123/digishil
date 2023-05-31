@@ -47,41 +47,41 @@
             </div>
           </div>
         </div>
-        <div class="text-block">
-          <form action="#">
-            <div class="d-flex justify-content-between align-items-end mb-4">
-              <h5 class="mb-0">Pay with your card</h5>
-              <div class="text-muted"><i class="fab fa-cc-amex fa-2x me-2"> </i><i class="fab fa-cc-visa fa-2x me-2"> </i><i class="fab fa-cc-mastercard fa-2x"></i></div>
-            </div>
-            <select class="selectpicker form-control mb-3" name="payment" id="form_payment" data-style="btn-selectpicker">
-              <option value="">Visa •••• 5687</option>
-              <option value="">Mastercard •••• 4569</option>
-            </select>
-            <button class="btn btn-link btn-collapse ps-0 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#addNewCard" aria-expanded="false" aria-controls="addNewCard" data-expanded-text="Close" data-collapsed-text="Add a new card">Add a new card</button>
-            <div class="row collapse" id="addNewCard">
-              <div class="mb-4 col-md-6">
-                <label class="form-label" for="card-name">Name on Card</label>
-                <input class="form-control" type="text" name="card-name" placeholder="Name on card" id="card-name">
-              </div>
-              <div class="mb-4 col-md-6">
-                <label class="form-label" for="card-number">Card Number</label>
-                <input class="form-control" type="text" name="card-number" placeholder="Card number" id="card-number">
-              </div>
-              <div class="mb-4 col-md-4">
-                <label class="form-label" for="expiry-date">Expiry Date</label>
-                <input class="form-control" type="text" name="expiry-date" placeholder="MM/YY" id="expiry-date">
-              </div>
-              <div class="mb-4 col-md-4">
-                <label class="form-label" for="cvv">CVC/CVV</label>
-                <input class="form-control" type="text" name="cvv" placeholder="123" id="cvv">
-              </div>
-              <div class="mb-4 col-md-4">
-                <label class="form-label" for="zip">ZIP</label>
-                <input class="form-control" type="text" name="zip" placeholder="123" id="zip">
-              </div>
-            </div>
-          </form>
-        </div>
+<%--        <div class="text-block">--%>
+<%--          <form action="#">--%>
+<%--            <div class="d-flex justify-content-between align-items-end mb-4">--%>
+<%--              <h5 class="mb-0">카카오페이로 결제하기</h5>--%>
+<%--              <div class="text-muted"><i class="fab fa-cc-amex fa-2x me-2"> </i><i class="fab fa-cc-visa fa-2x me-2"> </i><i class="fab fa-cc-mastercard fa-2x"></i></div>--%>
+<%--            </div>--%>
+<%--            <select class="selectpicker form-control mb-3" name="payment" id="form_payment" data-style="btn-selectpicker">--%>
+<%--              <option value="">Visa •••• 5687</option>--%>
+<%--              <option value="">Mastercard •••• 4569</option>--%>
+<%--            </select>--%>
+<%--            <button class="btn btn-link btn-collapse ps-0 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#addNewCard" aria-expanded="false" aria-controls="addNewCard" data-expanded-text="Close" data-collapsed-text="Add a new card">Add a new card</button>--%>
+<%--            <div class="row collapse" id="addNewCard">--%>
+<%--              <div class="mb-4 col-md-6">--%>
+<%--                <label class="form-label" for="card-name">Name on Card</label>--%>
+<%--                <input class="form-control" type="text" name="card-name" placeholder="Name on card" id="card-name">--%>
+<%--              </div>--%>
+<%--              <div class="mb-4 col-md-6">--%>
+<%--                <label class="form-label" for="card-number">Card Number</label>--%>
+<%--                <input class="form-control" type="text" name="card-number" placeholder="Card number" id="card-number">--%>
+<%--              </div>--%>
+<%--              <div class="mb-4 col-md-4">--%>
+<%--                <label class="form-label" for="expiry-date">Expiry Date</label>--%>
+<%--                <input class="form-control" type="text" name="expiry-date" placeholder="MM/YY" id="expiry-date">--%>
+<%--              </div>--%>
+<%--              <div class="mb-4 col-md-4">--%>
+<%--                <label class="form-label" for="cvv">CVC/CVV</label>--%>
+<%--                <input class="form-control" type="text" name="cvv" placeholder="123" id="cvv">--%>
+<%--              </div>--%>
+<%--              <div class="mb-4 col-md-4">--%>
+<%--                <label class="form-label" for="zip">ZIP</label>--%>
+<%--                <input class="form-control" type="text" name="zip" placeholder="123" id="zip">--%>
+<%--              </div>--%>
+<%--            </div>--%>
+<%--          </form>--%>
+<%--        </div>--%>
         <div class="text-block">
           <h6>기본 규칙</h6>
           <h9>훌륭한 게스트가 되기 위한 몇 가지 간단한 규칙을 지켜주실 것을 모든 게스트에게 당부드리고 있습니다. </h9>
@@ -98,8 +98,8 @@
         <div class="text-block">
           <div class="d-flex">
             <div>
-              <h5>Say hello to your host</h5>
-              <p class="text-sm text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar .</p>
+              <h5>질문이 있으신가요? 호스트에게 메시지를 보내 문의하세요.</h5>
+              <p class="text-sm text-muted">이 숙소의 체크인 시간은 오후 3:00부터 오후 11:00까지입니다이며, 체크아웃은 오전 12:00입니다.</p>
             </div><img class="avatar avatar-md p-1 flex-shrink-0 ms-4" src="img/avatar/avatar-10.jpg" alt="Jack London">
           </div>
           <textarea class="form-control" name="hello" rows="4"></textarea>
@@ -108,7 +108,7 @@
         <div class="row form-block flex-column flex-sm-row">
           <div class="col text-center text-sm-start"><a class="btn btn-link text-muted" href="user-booking-2.html"> <i class="fa-chevron-left fa me-2"></i>이전으로</a>
           </div>
-          <div class="col text-center text-sm-end"><button id="payBtn" class="btn btn-primary px-3" type="button">확인 및 결제<i class="fa-chevron-right fa ms-2"></i></button></div>
+          <div class="col text-center text-sm-end"><button id="payBtn" class="btn btn-primary px-3" type="button">카카오페이로 결제하기<i class="fa-chevron-right fa ms-2"></i></button></div>
         </div>
       </div>
       <div class="col-lg-5 ps-xl-5">

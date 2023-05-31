@@ -18,6 +18,14 @@ import java.net.URL;
 @Slf4j
 @Controller
 public class KakaoPayController {
+
+
+    @RequestMapping("/success")
+    public String success(Model model){
+        model.addAttribute("center","success");
+        return "index";
+    }
+
     @RequestMapping("/pay/kakaopay")
     @ResponseBody
     public String kakaoPay() {
