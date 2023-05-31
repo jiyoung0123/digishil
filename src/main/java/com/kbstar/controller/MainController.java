@@ -63,4 +63,10 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/kakaoPay")
+    public String kakaoPay(Model model){
+        model.addAttribute("center","kakaoPay");
+        return "index";
+    }
+
 }
