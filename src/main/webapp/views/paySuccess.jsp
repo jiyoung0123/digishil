@@ -67,8 +67,8 @@
                     <div class="card-footer bg-primary-light py-4 border-0">
                         <div class="d-flex align-items-center">
                             <div>
-                                <h6 class="text-primary">Flexible – free cancellation</h6>
-                                <p class="text-sm text-primary opacity-8 mb-0">Cancel within 48 hours of booking to get a full refund. <a href="#" class="text-reset ms-3">More details</a></p>
+<%--                                <h6 class="text-primary">Flexible – free cancellation</h6>--%>
+                                <p class="text-sm text-primary opacity-8 mb-0">환불정책 : 7일 전에 취소하면 부분 환불을 받으실 수 있습니다. 그 이후에는 취소 시점에 따라 환불액이 결정됩니다. <a href="#" class="text-reset ms-3">세부사항 보기</a></p>
                             </div>
                         </div>
                     </div>

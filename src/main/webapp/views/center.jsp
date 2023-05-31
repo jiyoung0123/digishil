@@ -17,7 +17,7 @@
             <div class="col-xl-10">
                 <div class="text-center text-lg-start">
                     <p class="subtitle letter-spacing-4 mb-2 text-secondary text-shadow">The best holiday experience</p>
-                    <h1 class="display-3 fw-bold text-shadow">Stay like a local</h1>
+                    <h1 class="display-3 fw-bold text-shadow">여행은 살아보는 거야</h1>
                 </div>
 
                 <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
@@ -64,8 +64,8 @@
 <section class="py-6 bg-gray-100">
     <div class="container">
         <div class="text-center pb-lg-4">
-            <p class="subtitle text-secondary">One-of-a-kind vacation rentals</p>
-            <h2 class="mb-5">Booking with us is easy</h2>
+            <p class="subtitle text-secondary">The best holiday experience</p>
+            <h2 class="mb-5">No.1 단기 임대 플랫폼 DIGI실</h2>
         </div>
         <div class="row">
             <div class="col-lg-4 mb-3 mb-lg-0 text-center">
@@ -75,8 +75,8 @@
                             <use xlink:href="#destination-map-1"> </use>
                         </svg>
                     </div>
-                    <h3 class="h5">Find the perfect rental</h3>
-                    <p class="text-muted">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in</p>
+                    <h3 class="h5">가장 완벽한 단기 임대</h3>
+<%--                    <p class="text-muted">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in</p>--%>
                 </div>
             </div>
             <div class="col-lg-4 mb-3 mb-lg-0 text-center">
@@ -86,8 +86,8 @@
                             <use xlink:href="#pay-by-card-1"> </use>
                         </svg>
                     </div>
-                    <h3 class="h5">Book with confidence</h3>
-                    <p class="text-muted">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pit</p>
+                    <h3 class="h5">안전하고 빠른 예약 </h3>
+<%--                    <p class="text-muted">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pit</p>--%>
                 </div>
             </div>
             <div class="col-lg-4 mb-3 mb-lg-0 text-center">
@@ -97,8 +97,8 @@
                             <use xlink:href="#heart-1"> </use>
                         </svg>
                     </div>
-                    <h3 class="h5">Enjoy your vacation</h3>
-                    <p class="text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar </p>
+                    <h3 class="h5">휴가를 즐기세요!</h3>
+<%--                    <p class="text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar </p>--%>
                 </div>
             </div>
         </div>
@@ -355,7 +355,7 @@
 <section class="py-7 position-relative dark-overlay"><img class="bg-image" src="img/photo/photo-1497436072909-60f360e1d4b1.jpg" alt="">
     <div class="container">
         <div class="overlay-content text-white py-lg-5">
-            <h3 class="display-3 fw-bold text-serif text-shadow mb-5">Ready for your next holidays?</h3><a class="btn btn-light" href="category-rooms.html">Get started</a>
+            <h3 class="display-3 fw-bold text-serif text-shadow mb-5">Ready for your next holidays?</h3><a class="btn btn-light" href="category-rooms.html">DIGI와 함께 시작하기</a>
         </div>
     </div>
 </section>
