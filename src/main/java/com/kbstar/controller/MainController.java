@@ -1,6 +1,7 @@
 package com.kbstar.controller;
 
 
+import com.kbstar.dto.KakaoApproveResponse;
 import com.kbstar.service.GuestService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -9,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -63,9 +66,15 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/kakaoPay")
-    public String kakaoPay(Model model){
+    @RequestMapping("/kakaopay")
+    public String kakaopay(Model model){
         model.addAttribute("center","kakaoPay");
+        return "index";
+    }
+
+    @RequestMapping("/paysuccess")
+    public String paysuccess(Model model){
+        model.addAttribute("center","paySuccess");
         return "index";
     }
 

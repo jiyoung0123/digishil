@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
@@ -26,15 +27,13 @@ public class KakaoPayController {
     }
 
     /**
-     * 결제 성공
+     * 결제 성공 kakaController에서 처리
      */
-    @GetMapping("/success")
-    public ResponseEntity afterPayRequest(@RequestParam("pg_token") String pgToken) {
-
-        KakaoApproveResponse kakaoApprove = kakaoPayService.ApproveResponse(pgToken);
-
-        return new ResponseEntity<>(kakaoApprove, HttpStatus.OK);
-    }
+//    @GetMapping("/success")
+//    public ResponseEntity afterPayRequest(@RequestParam("pg_token") String pgToken, Model model) {
+//        KakaoApproveResponse kakaoApprove = kakaoPayService.ApproveResponse(pgToken);
+//        return new ResponseEntity<>(kakaoApprove, HttpStatus.OK);
+//    }
 
 
     /**
