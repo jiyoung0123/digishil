@@ -246,7 +246,7 @@
                         </select>
                     </div>
                     <div class="d-grid mb-4">
-                        <button id="reserveBtn" class="btn btn-primary" type="submit">Reserve DIGISHIL</button>
+                        <button id="reserveBtn" class="btn btn-primary" type="submit">Reserve DIGI실</button>
                     </div>
                 </form>
                 <p class="text-muted text-sm text-center">Some additional text can be also placed here.</p>

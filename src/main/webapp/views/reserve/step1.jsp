@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="text-block">
-          <h5 class="mb-4">${days} night in ${room.roomLoc}</h5>
+          <h5 class="mb-4">${days} 박 in ${room.roomLoc}</h5>
           <div class="row mb-3">
             <div class="col-md-6 d-flex align-items-center mb-3 mb-md-0">
               <div class="date-tile me-3">
@@ -97,18 +97,14 @@
               <table class="w-100">
                 <tbody>
                 <tr>
-                  <th class="fw-normal py-2">₩${room.roomPrice} x ${days} night</th>
-                  <td class="text-end py-2"><fmt:formatNumber type="number" pattern="₩###,###" value="${reserve.reservePrice}"/></td>
-                </tr>
-                <tr>
-                  <th class="fw-normal pt-2 pb-3">Service fee</th>
-                  <td class="text-end pt-2 pb-3">$67.48</td>
+                  <th class="fw-normal py-2">${days} 박</th>
+                  <td class="text-end py-2">1박 당 ₩${room.roomPrice}</td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr class="border-top">
-                  <th class="pt-3">Total</th>
-                  <td class="fw-bold text-end pt-3">$499.50</td>
+                  <th class="pt-3">합계</th>
+                  <td class="fw-bold text-end pt-3"><fmt:formatNumber type="number" pattern="₩###,###" value="${reserve.reservePrice}"/></td>
                 </tr>
                 </tfoot>
               </table>
