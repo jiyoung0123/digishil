@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <section>
     <!-- Slider main container-->
     <div class="swiper-container detail-slider slider-gallery">
@@ -25,10 +25,10 @@
         <div class="col-lg-8">
             <div class="text-block">
                 <p class="text-primary"><i class="fa-map-marker-alt fa me-1"></i> Brooklyn, New York</p>
-                <h1>Mid-Century Modern Garden Paradise</h1>
-                <p class="text-muted text-uppercase mb-4">Entire Apartment </p>
+                <h1>${roomDetail.roomName}</h1>
+                <p class="text-muted text-uppercase mb-4">${roomDetail.roomType}</p>
                 <ul class="list-inline text-sm mb-4">
-                    <li class="list-inline-item me-3"><i class="fa fa-users me-1 text-secondary"></i> 4 guests</li>
+                    <li class="list-inline-item me-3"><i class="fa fa-users me-1 text-secondary"></i> ${roomDetail.roomCap} guests</li>
                     <li class="list-inline-item me-3"><i class="fa fa-door-open me-1 text-secondary"></i> 1 bedroom</li>
                     <li class="list-inline-item me-3"><i class="fa fa-bed me-1 text-secondary"></i> 3 beds</li>
                     <li class="list-inline-item me-3"><i class="fa fa-bath me-1 text-secondary"></i> 1 bath</li>
@@ -87,7 +87,7 @@
             <div class="text-block">
                 <div class="d-flex"><img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="/img/avatar/avatar-10.jpg" alt="Jack London">
                     <div>
-                        <p> <span class="text-muted text-uppercase text-sm">Hosted by </span><br><strong>Jack London</strong></p>
+                        <p> <span class="text-muted text-uppercase text-sm">Hosted by </span><br><strong>${roomDetail.hostName}</strong></p>
                         <p class="text-muted text-sm mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
                         <p class="text-muted text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                         <p class="text-sm"><a href="user-profile.html">See Jack's 3 other listings <i class="fa fa-long-arrow-alt-right ms-2"></i></a></p>
@@ -191,9 +191,12 @@
         </div>
         <div class="col-lg-4">
             <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 100px;">
-                <p class="text-muted"><span class="text-primary h2">$120</span> per night</p>
+                <p class="text-muted"><span class="text-primary h2"><fmt:formatNumber type="number" pattern="₩###,###" value="${roomDetail.roomPrice}"/></span> per night</p>
                 <hr class="my-4">
-                <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
+                <form class="form" id="reserveForm" method="post" action="/reserveImpl" autocomplete="off">
+                    <input type="hidden" name="roomId" value="${roomDetail.roomId}"/>
+                    <input type="hidden" name="roomPrice" value="${roomDetail.roomPrice}"/>
+                    <input type="hidden" name="guestId" value="${loginGuest.guestId}"/>
                     <div class="mb-4">
                         <label class="form-label" for="bookingDate">Your stay *</label>
                         <div class="datepicker-container datepicker-container-right">
@@ -202,12 +205,10 @@
                     </div>
                     <div class="mb-4">
                         <label class="form-label" for="guests">Guests *</label>
-                        <select class="form-control" name="guests" id="guests">
-                            <option value="1">1 Guest</option>
-                            <option value="2">2 Guests</option>
-                            <option value="3">3 Guests</option>
-                            <option value="4">4 Guests</option>
-                            <option value="5">5 Guests</option>
+                        <select class="form-control" name="reserveCap" id="guests">
+                            <c:forEach var="roomCap" begin="1" end="${roomDetail.roomCap}">
+                                <option value="${roomCap}">${roomCap} Guest${roomCap > 1 ? 's' : ''}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="d-grid mb-4">
@@ -443,7 +444,8 @@
 </script>
 
 <!-- Map-->
-<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+<%-- Map 임 일단 죽여놨음--%>
+<%--<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>--%>
 <!-- Available tile layers-->
 <script src="/js/map-layers.js"> </script>
 <script src="/js/map-detail.js"></script>
@@ -459,4 +461,4 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"> </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js"> </script>
-<script src="/js/datepicker-detail.js">   </script>
+<script src="/js/datepicker-detail.js"></script>
