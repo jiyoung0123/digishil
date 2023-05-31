@@ -1,6 +1,11 @@
 package com.kbstar.controller;
 
+import com.kbstar.dto.Reserve;
+import com.kbstar.service.ReserveService;
+import com.kbstar.service.RoomService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,19 +19,21 @@ import static java.lang.Integer.parseInt;
 @Controller
 @Slf4j
 public class ReserveController {
+    @Autowired
+    ReserveService reserveService;
+    @Autowired
+    RoomService roomService;
 
     String dir = "reserve/";
     @RequestMapping("/reserve")
     public String reserveImpl(Model model, String reserveCap, String roomId, String guestId,
                               String roomPrice, String reserveDate, String reserveCheckIn, String reserveCheckOut) throws Exception {
-        log.info("------------------------"+reserveCap);
-        log.info("------------------------"+roomId);
-        log.info("------------------------"+guestId);
-        log.info("------------------------"+roomPrice);
-        log.info("------------------------"+reserveDate);
-        log.info("------------------------"+reserveCheckIn);
-        log.info("------------------------"+reserveCheckOut);
 
+        if(guestId==""){
+            model.addAttribute("center","login");
+            return "index";
+        }
+        else{
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date checkInDate = dateFormat.parse(reserveCheckIn);
         Date checkOutDate = dateFormat.parse(reserveCheckOut);
@@ -35,13 +42,17 @@ public class ReserveController {
         long daysBetween = TimeUnit.MILLISECONDS.toDays(duration);
         int reservePrice = (int) daysBetween * parseInt(roomPrice);
 
-        log.info("------------------------ 가격    : " + reservePrice);
-        log.info("------------------------ 경과 일수: " + daysBetween);
-        log.info("------------------------ 체크인  : " + checkInDate);
-        log.info("------------------------ 체크아웃 : " + checkOutDate);
+        Reserve reserve = null;
+        reserve = new Reserve(guestId,parseInt(roomId),checkInDate,checkOutDate,reservePrice,parseInt(reserveCap));
+        reserveService.register(reserve);
+        Object room = roomService.get(parseInt(roomId));
 
+        model.addAttribute("room",room);
+        model.addAttribute("days",daysBetween);
+        model.addAttribute("reserve",reserve);
         model.addAttribute("center",dir+"step1");
         return "index";
+        }
 
     }
 }

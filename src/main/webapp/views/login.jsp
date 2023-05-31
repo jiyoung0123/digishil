@@ -84,7 +84,7 @@
           <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
             <div class="d-grid gap-2">
                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=9b7c02c3cdf81109f8023cd5a12156ee&redirect_uri=http://127.0.0.1/auth/kakao/callback&response_type=code">
-                    <img class="img-fluid" src="img/photo/kakaoLogin.jpg"></a>
+                    <img class="img-fluid" src="/img/photo/kakaoLogin.jpg"></a>
             </div>
           <hr class="my-4">
           <p class="text-center"><small class="text-muted text-center"><a href="/register">회원 가입 하러 가기</a></small></p>

@@ -31,4 +31,13 @@ public class Reserve {
     private int reserveAccount;
     private int reserveApi;
     private int reserveRefund;
+
+    public Reserve(String guestId, int roomId, Date reserveCheckIn, Date reserveCheckOut, int reservePrice, int reserveCap) {
+        this.guestId = guestId;
+        this.roomId = roomId;
+        this.reserveCheckIn = reserveCheckIn;
+        this.reserveCheckOut = reserveCheckOut;
+        this.reservePrice = reservePrice;
+        this.reserveCap = reserveCap;
+    }
 }

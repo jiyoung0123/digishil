@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="progress rounded-0 sticky-top" style="height: 8px; top: 72px;">
   <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -21,19 +22,19 @@
           </div>
         </div>
         <div class="text-block">
-          <h5 class="mb-4">1 night in London</h5>
+          <h5 class="mb-4">${days} night in ${room.roomLoc}</h5>
           <div class="row mb-3">
             <div class="col-md-6 d-flex align-items-center mb-3 mb-md-0">
               <div class="date-tile me-3">
-                <div class="text-uppercase"> <span class="text-sm">Apr</span><br><strong class="text-lg">17</strong></div>
+                <div class="text-uppercase"> <span class="text-sm"><fmt:formatDate value="${reserve.reserveCheckIn}" pattern="MMM"/></span><br><strong class="text-lg"><fmt:formatDate value="${reserve.reserveCheckIn}" pattern="dd"/></strong></div>
               </div>
-              <p class="text-sm mb-0">Wednesday check-in<br>3PM - 7PM</p>
+              <p class="text-sm mb-0"><fmt:formatDate value="${reserve.reserveCheckIn}" pattern="EEE"/>요일 체크인</p>
             </div>
             <div class="col-md-6 d-flex align-items-center">
               <div class="date-tile me-3">
-                <div class="text-uppercase"> <span class="text-sm">Apr</span><br><strong class="text-lg">18</strong></div>
+                <div class="text-uppercase"> <span class="text-sm"><fmt:formatDate value="${reserve.reserveCheckOut}" pattern="MMM"/></span><br><strong class="text-lg"><fmt:formatDate value="${reserve.reserveCheckOut}" pattern="dd"/></strong></div>
               </div>
-              <p class="text-sm mb-0">Thursday check-out<br>11AM</p>
+              <p class="text-sm mb-0"><fmt:formatDate value="${reserve.reserveCheckOut}" pattern="EEE"/>요일 체크아웃</p>
             </div>
           </div>
         </div>
@@ -79,8 +80,8 @@
             <div class="text-block pb-3">
               <div class="d-flex align-items-center">
                 <div>
-                  <h6> <a class="text-reset" href="detail-rooms.html">Modern Apt - Vibrant Neighborhood</a></h6>
-                  <p class="text-muted text-sm mb-0">Entire home in New York</p>
+                  <h6> <a class="text-reset" href="detail-rooms.html">${room.roomName}</a></h6>
+                  <p class="text-muted text-sm mb-0">${room.roomType}</p>
                   <div class="mt-n1"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
                   </div>
                 </div><a class="flex-shrink-0" href="detail-rooms.html"><img class="ms-3 rounded" src="img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></a>
@@ -88,16 +89,16 @@
             </div>
             <div class="text-block py-3">
               <ul class="list-unstyled mb-0">
-                <li class="mb-3"><i class="fas fa-users fa-fw text-muted me-2"></i>3 guests</li>
-                <li class="mb-0"><i class="far fa-calendar fa-fw text-muted me-2"></i>Apr 17, 2019 <i class="fas fa-arrow-right fa-fw text-muted mx-3"></i>Apr 18, 2019</li>
+                <li class="mb-3"><i class="fas fa-users fa-fw text-muted me-2"></i>${reserve.reserveCap} guests</li>
+                <li class="mb-0"><i class="far fa-calendar fa-fw text-muted me-2"></i><fmt:formatDate value="${reserve.reserveCheckIn}" pattern="MMM dd,yyyy"/><i class="fas fa-arrow-right fa-fw text-muted mx-3"></i><fmt:formatDate value="${reserve.reserveCheckOut}" pattern="MMM dd,yyyy"/></li>
               </ul>
             </div>
             <div class="text-block pt-3 pb-0">
               <table class="w-100">
                 <tbody>
                 <tr>
-                  <th class="fw-normal py-2">$432.02 x 1 night</th>
-                  <td class="text-end py-2">$432.02</td>
+                  <th class="fw-normal py-2">₩${room.roomPrice} x ${days} night</th>
+                  <td class="text-end py-2"><fmt:formatNumber type="number" pattern="₩###,###" value="${reserve.reservePrice}"/></td>
                 </tr>
                 <tr>
                   <th class="fw-normal pt-2 pb-3">Service fee</th>

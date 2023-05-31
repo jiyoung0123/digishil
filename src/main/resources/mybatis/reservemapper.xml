@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbstar.mapper.ReserveMapper">
+    <insert id="insert" parameterType="reserve">
+        INSERT INTO reserve (reserveId ,guestId, roomId, reserveCheckIn, reserveCheckOut, reservePrice, reserveCap)
+        VALUES (reserveSeq.NEXTVAL, #{guestId}, #{roomId}, #{reserveCheckIn}, #{reserveCheckOut}, #{reservePrice}, #{reserveCap})
+    </insert>
+
+</mapper>

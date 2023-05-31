@@ -27,7 +27,6 @@
             let reserveCheckOut = reserveDate.substring(13);
             $('input[name="reserveCheckIn"]').val(reserveCheckIn);
             $('input[name="reserveCheckOut"]').val(reserveCheckOut);
-
             $('#reserveForm').attr({
                 'action':'/reserve',
                 'method':'post'
