@@ -122,7 +122,7 @@
             <div class="swiper-wrapper pb-5">
                 <!-- Slides-->
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/seoul1.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/야경.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">서울</h6>
                             <p class="card-text text-sm">Seoul</p>
@@ -363,13 +363,13 @@
 </section>
 
 <!-- Divider Section-->
-<section class="py-7 position-relative dark-overlay"><img class="bg-image" src="img/photo/photo-1497436072909-60f360e1d4b1.jpg" alt="">
-    <div class="container">
-        <div class="overlay-content text-white py-lg-5">
-            <h3 class="display-3 fw-bold text-serif text-shadow mb-5">Ready for your next holidays?</h3><a class="btn btn-light" href="category-rooms.html">DIGI와 함께 시작하기</a>
-        </div>
-    </div>
-</section>
+<%--<section class="py-7 position-relative dark-overlay"><img class="bg-image" src="img/photo/photo-1497436072909-60f360e1d4b1.jpg" alt="">--%>
+<%--    <div class="container">--%>
+<%--        <div class="overlay-content text-white py-lg-5">--%>
+<%--            <h3 class="display-3 fw-bold text-serif text-shadow mb-5">Ready for your next holidays?</h3><a class="btn btn-light" href="category-rooms.html">DIGI와 함께 시작하기</a>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</section>--%>
 <section class="py-7">
     <div class="container">
         <div class="text-center">
