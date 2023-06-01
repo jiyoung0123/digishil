@@ -35,14 +35,15 @@
     <div class="row">
       <div class="col-lg-7">
         <p class="subtitle text-primary">Book your holiday home</p>
-        <h1 class="h2 mb-5">확인 및 결제<span class="text-muted float-end">Step 3</span>      </h1>
+        <p class="subtitle text-primary">${guest.guestName}</p>
+        <h1 class="h2 mb-5">확인 및 결제<span class="text-muted float-end">${reserve.reserveId}</span>      </h1>
         <div class="text-block">
           <div class="alert alert-warning text-sm mb-3">
             <div class="d-flex align-items-center">
               <svg class="svg-icon svg-icon svg-icon-light w-2rem h-2rem me-3 text-reset flex-shrink-0">
                 <use xlink:href="#heart-1"> </use>
               </svg>
-              <div><strong>흔치 않은 기회 입니다.</strong> 00님의 숙소는 보통 예약이 가득 차 있습니다.</div>
+              <div><strong>흔치 않은 기회 입니다.</strong><br> ${room.hostName}님의 숙소는 보통 예약이 가득 차 있습니다.</div>
             </div>
           </div>
         </div>
@@ -125,7 +126,7 @@
             <div class="text-block pb-3">
               <div class="d-flex align-items-center">
                 <div>
-                  <h6> <a class="text-reset" href="detail-rooms.html">Modern Apt - Vibrant Neighborhood</a></h6>
+                  <h6> <a class="text-reset" href="detail-rooms.html">${room.roomName}</a></h6>
                   <p class="text-muted text-sm mb-0">Entire home in New York</p>
                   <div class="mt-n1"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
                   </div>
@@ -134,8 +135,8 @@
             </div>
             <div class="text-block py-3">
               <ul class="list-unstyled mb-0">
-                <li class="mb-3"><i class="fas fa-users fa-fw text-muted me-2"></i>3 guests</li>
-                <li class="mb-0"><i class="far fa-calendar fa-fw text-muted me-2"></i>Apr 17, 2019 <i class="fas fa-arrow-right fa-fw text-muted mx-3"></i>Apr 18, 2019</li>
+                <li class="mb-3"><i class="fas fa-users fa-fw text-muted me-2"></i>${room.roomName}</li>
+                <li class="mb-0"><i class="far fa-calendar fa-fw text-muted me-2"></i>${reserve.reserveCheckIn} <i class="fas fa-arrow-right fa-fw text-muted mx-3"></i>${reserve.reserveCheckOut}</li>
               </ul>
             </div>
             <div class="text-block pt-3 pb-0">
@@ -143,18 +144,18 @@
                 <tbody>
                 <tr>
                   <h4>요금 세부 정보</h4>
-                  <th class="fw-normal py-2">$432.02 x 1 night</th>
-                  <td class="text-end py-2">$432.02</td>
+                  <th class="fw-normal py-2">${room.roomPrice}X</th>
+                  <td class="text-end py-2">${reserve.reservePayAmount}</td>
                 </tr>
                 <tr>
-                  <th class="fw-normal pt-2 pb-3">Service fee</th>
-                  <td class="text-end pt-2 pb-3">$67.48</td>
+                  <th class="fw-normal pt-2 pb-3">적립금</th>
+                  <td class="text-end pt-2 pb-3">${guest.guestCoupon}</td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr class="border-top">
                   <th class="pt-3">총 합계</th>
-                  <td class="fw-bold text-end pt-3">$499.50</td>
+                  <td class="fw-bold text-end pt-3">${reserve.reservePayAmount}</td>
                 </tr>
                 </tfoot>
               </table>

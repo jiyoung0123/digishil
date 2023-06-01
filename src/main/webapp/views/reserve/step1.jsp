@@ -17,7 +17,7 @@
               <svg class="svg-icon svg-icon svg-icon-light w-2rem h-2rem me-3 text-reset flex-shrink-0">
                 <use xlink:href="#heart-1"> </use>
               </svg>
-              <div><strong>This home is on people’s minds.</strong> It’s been viewed 43 times in the past week.</div>
+              <div><strong>흔치 않은 기회 입니다.</strong> 00님의 숙소는 보통 예약이 가득 차 있습니다.</div>
             </div>
           </div>
         </div>
@@ -71,8 +71,12 @@
         <div class="row form-block flex-column flex-sm-row">
           <div class="col text-center text-sm-start">
           </div>
-          <div class="col text-center text-sm-end"><a class="btn btn-primary px-3" href="user-booking-2.html"> Next step<i class="fa-chevron-right fa ms-2"></i></a></div>
+          <form action="/kakaopay" method="GET">
+            <input name="reserveId" value="${reserveId}">
+          <div class="col text-center text-sm-end"><button type="submit" class="btn btn-primary px-3" href="/kakaopay">결제하러 가기<i class="fa-chevron-right fa ms-2"></i></button></div>
+          </form>
         </div>
+
       </div>
       <div class="col-lg-5 ps-xl-5">
         <div class="card border-0 shadow">
@@ -113,9 +117,10 @@
           <div class="card-footer bg-primary-light py-4 border-0">
             <div class="d-flex align-items-center">
               <div>
-                <h6 class="text-primary">Flexible – free cancellation</h6>
-                <p class="text-sm text-primary opacity-8 mb-0">Cancel within 48 hours of booking to get a full refund. <a href="#" class="text-reset ms-3">More details</a></p>
+<%--                <h6 class="text-primary">Flexible – free cancellation</h6>--%>
+                <p class="text-sm text-primary opacity-8 mb-0"> 환불정책 : 7일 전에 취소하면 부분 환불을 받으실 수 있습니다. 그 이후에는 취소 시점에 따라 환불액이 결정됩니다. <a href="#" class="text-reset ms-3">세부사항 보기</a></p>
               </div>
+
             </div>
           </div>
         </div>

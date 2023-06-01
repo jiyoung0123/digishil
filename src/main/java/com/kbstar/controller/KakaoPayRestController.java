@@ -2,11 +2,13 @@ package com.kbstar.controller;
 
 import com.kbstar.dto.KakaoCancelResponse;
 import com.kbstar.dto.KakaoReadyResponse;
+import com.kbstar.dto.Reserve;
 import com.kbstar.service.KakaoPayService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
@@ -21,7 +23,6 @@ public class KakaoPayRestController {
      */
     @RequestMapping("/ready")
     public KakaoReadyResponse readyToKakaoPay() {
-
         return kakaoPayService.kakaoPayReady();
     }
 

@@ -2,7 +2,9 @@ package com.kbstar.controller;
 
 
 import com.kbstar.dto.KakaoApproveResponse;
+import com.kbstar.dto.Reserve;
 import com.kbstar.service.GuestService;
+import com.kbstar.service.ReserveService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +27,6 @@ public class MainController {
 
 
     Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
-
 
 
     @RequestMapping("/")
@@ -58,18 +59,6 @@ public class MainController {
             session.invalidate();
         }
         return "redirect:/";
-    }
-
-    @RequestMapping("/pay")
-    public String pay(Model model){
-        model.addAttribute("center","pay");
-        return "index";
-    }
-
-    @RequestMapping("/kakaopay")
-    public String kakaopay(Model model){
-        model.addAttribute("center","kakaoPay");
-        return "index";
     }
 
     @RequestMapping("/paysuccess")

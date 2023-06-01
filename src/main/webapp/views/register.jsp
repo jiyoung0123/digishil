@@ -125,7 +125,7 @@
 
           <div class="d-grid gap-2">
             <a href="https://kauth.kakao.com/oauth/authorize?client_id=9b7c02c3cdf81109f8023cd5a12156ee&redirect_uri=http://127.0.0.1/auth/kakao/callback&response_type=code">
-                <img class="img-fluid" src="img/photo/kakaoLogin.jpg"></a>
+                <img class="img-fluid" src="/img/photo/kakaoLogin.jpg"></a>
           </div>
 
         </form>

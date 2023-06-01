@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface ReserveMapper extends KBMapper<Integer, Reserve> {
     public Reserve searchId(Reserve reserve);
+    public Object getReserve(Integer i);
 }

@@ -15,4 +15,22 @@
           AND reserveCheckIn = #{reserveCheckIn}
           AND reserveCheckOut = #{reserveCheckOut}
     </select>
+
+    <select id="select" parameterType="Integer" resultType="reserve">
+        SELECT *
+        FROM reserve
+        WHERE reserveId = #{reserveId}
+    </select>
+
+    <select id="getReserve" parameterType="Integer" resultType="object">
+        SELECT *
+        FROM reserve
+        JOIN room ON reserve.roomId = room.roomId
+        WHERE reserve.reserveId = #{reserveId}
+    </select>
+
+
+
+
+
 </mapper>
