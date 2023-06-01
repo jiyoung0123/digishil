@@ -47,6 +47,10 @@ public class ReserveController {
         reserveService.register(reserve);
         Object room = roomService.get(parseInt(roomId));
 
+        Reserve reserve1  = reserveService.searchId(reserve);
+        int reserveId = reserve1.getReserveId();
+
+        model.addAttribute("reserveId",reserveId);
         model.addAttribute("room",room);
         model.addAttribute("days",daysBetween);
         model.addAttribute("reserve",reserve);
