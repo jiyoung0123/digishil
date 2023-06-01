@@ -7,5 +7,12 @@
         INSERT INTO reserve (reserveId ,guestId, roomId, reserveCheckIn, reserveCheckOut, reservePrice, reserveCap)
         VALUES (reserveSeq.NEXTVAL, #{guestId}, #{roomId}, #{reserveCheckIn}, #{reserveCheckOut}, #{reservePrice}, #{reserveCap})
     </insert>
-
+    <select id="searchId" parameterType="reserve">
+        SELECT reserveId
+        FROM reserve
+        WHERE roomId = #{roomId}
+          AND guestId = #{guestId}
+          AND reserveCheckIn = #{checkInDate}
+          AND reserveCheckOut = #{checkOutDate}
+    </select>
 </mapper>
