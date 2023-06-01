@@ -34,12 +34,12 @@ $(function () {
         },
 
         // 주말 부킹부분 없애기
-        beforeShowDay: function (t) {
-            var valid = !(t.getDay() == 0 || t.getDay() == 6); //disable saturday and sunday
-            var _class = "";
-            var _tooltip = valid ? "" : "Booked";
-            return [valid, _class, _tooltip];
-        },
+        // beforeShowDay: function (t) {
+        //     var valid = !(t.getDay() == 0 || t.getDay() == 6); //disable saturday and sunday
+        //     var _class = "";
+        //     var _tooltip = valid ? "" : "Booked";
+        //     return [valid, _class, _tooltip];
+        // },
 
         customOpenAnimation: function (cb) {
             $(this).fadeIn(300, cb);
@@ -48,7 +48,7 @@ $(function () {
             $(this).fadeOut(300, cb);
         },
     };
-    $("#bookingDate")
+    $("#reserveDate")
         .dateRangePicker(dateRangeConfig)
         .bind("datepicker-opened", function () {
             /* This event will be triggered after date range picker open animation */

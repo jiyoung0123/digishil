@@ -28,8 +28,7 @@ public class ReserveController {
     @RequestMapping("/reserve")
     public String reserveImpl(Model model, String reserveCap, String roomId, String guestId,
                               String roomPrice, String reserveDate, String reserveCheckIn, String reserveCheckOut) throws Exception {
-
-        if(guestId==""){
+        if(guestId.equals("")){
             model.addAttribute("center","login");
             return "index";
         }

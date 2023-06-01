@@ -28,7 +28,11 @@
         JOIN room ON reserve.roomId = room.roomId
         WHERE reserve.reserveId = #{reserveId}
     </select>
-
+    <select id="reserveDate" parameterType="Integer" resultType="reserve">
+        SELECT *
+        FROM reserve
+        WHERE roomId= #{roomId}
+    </select>
 
 
 

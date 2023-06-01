@@ -4,27 +4,29 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <script>
-    var reserveDate = $('#bookingDate').val();
+    let reserveDate = $('#reserveDate').val();
     let reserveForm = {
 
         init:function(){
             $('#reserveBtn').click(function(){
-            // var reserveDate = $('#bookingDate').val();
                 if(reserveDate==''){
                     $('#checkDate').text("예약일을 입력하세요");
                     return;
                 }else{
-                    console.log(${roomId});
                     reserveForm.send();
                 }
             })
         },
         send:function(){
-            // let reserveDate = $('#bookingDate').val();
-            reserveDate = $('#bookingDate').val();
+            reserveDate = $('#reserveDate').val();
 
             let reserveCheckIn = reserveDate.substring(0, 10);
-            let reserveCheckOut = reserveDate.substring(13);
+            let reserveCheckOut = reserveDate.substring(14);
+            if (reserveCheckIn == reserveCheckOut) {
+                $('#checkDate').text("체크인과 체크아웃 날짜가 동일합니다.");
+                return;
+            }
+
             $('input[name="reserveCheckIn"]').val(reserveCheckIn);
             $('input[name="reserveCheckOut"]').val(reserveCheckOut);
             $('#reserveForm').attr({
@@ -229,9 +231,9 @@
                     <input type="hidden" name="reserveCheckIn"/>
                     <input type="hidden" name="reserveCheckOut"/>
                     <div class="mb-4">
-                        <label class="form-label" for="bookingDate">Your stay *</label>
+                        <label class="form-label" for="reserveDate">Your stay *</label>
                         <div class="datepicker-container datepicker-container-right">
-                            <input class="form-control" type="text" name="reserveDate" id="bookingDate" placeholder="Choose your dates" required="required">
+                            <input class="form-control" type="text" name="reserveDate" id="reserveDate" placeholder="Choose your dates" required="required">
                         </div>
                     </div>
                     <div class="mb-4">
@@ -246,7 +248,7 @@
                         </select>
                     </div>
                     <div class="d-grid mb-4">
-                        <button id="reserveBtn" class="btn btn-primary" type="submit">Reserve DIGI실</button>
+                        <button id="reserveBtn" class="btn btn-primary" type="button">Reserve DIGI실</button>
                     </div>
                 </form>
                 <p class="text-muted text-sm text-center">Some additional text can be also placed here.</p>
