@@ -13,7 +13,7 @@ function createDetailMap(options) {
         mapCenter: [51.505, -0.09],
         markerShow: true,
         markerPosition: [51.505, -0.09],
-        markerPath: 'img/marker.svg',
+        markerPath: '/img/marker.svg',
         circleShow: false,
         circleColour: '#4E66F8',
         circleFill: '#8798fa',

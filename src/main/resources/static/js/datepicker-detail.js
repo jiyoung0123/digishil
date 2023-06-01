@@ -32,12 +32,15 @@ $(function () {
                         </div>"
             );
         },
+
+        // 주말 부킹부분 없애기
         beforeShowDay: function (t) {
             var valid = !(t.getDay() == 0 || t.getDay() == 6); //disable saturday and sunday
             var _class = "";
             var _tooltip = valid ? "" : "Booked";
             return [valid, _class, _tooltip];
         },
+
         customOpenAnimation: function (cb) {
             $(this).fadeIn(300, cb);
         },

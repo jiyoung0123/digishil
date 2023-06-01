@@ -45,4 +45,8 @@ public class ReserveService implements KBService<Integer, Reserve> {
     public List<Reserve> get() throws Exception {
         return mapper.selectall();
     }
+
+    public Reserve searchId(Reserve reserve) throws Exception {
+        return mapper.searchId(reserve);
+    }
 }

@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface ReserveMapper extends KBMapper<Integer, Reserve> {
+    public Reserve searchId(Reserve reserve);
 }
