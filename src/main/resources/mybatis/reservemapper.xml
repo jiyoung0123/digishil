@@ -12,7 +12,7 @@
         FROM reserve
         WHERE roomId = #{roomId}
           AND guestId = #{guestId}
-          AND reserveCheckIn = #{checkInDate}
-          AND reserveCheckOut = #{checkOutDate}
+          AND reserveCheckIn = #{reserveCheckIn}
+          AND reserveCheckOut = #{reserveCheckOut}
     </select>
 </mapper>
