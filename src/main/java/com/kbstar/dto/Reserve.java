@@ -40,4 +40,9 @@ public class Reserve {
         this.reservePrice = reservePrice;
         this.reserveCap = reserveCap;
     }
+
+    public Reserve(Date reserveCheckIn, Date reserveCheckOut) {
+        this.reserveCheckIn = reserveCheckIn;
+        this.reserveCheckOut = reserveCheckOut;
+    }
 }

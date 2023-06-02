@@ -1,7 +1,9 @@
 package com.kbstar.controller;
 
 import com.kbstar.dto.Guest;
+import com.kbstar.dto.Reserve;
 import com.kbstar.service.GuestService;
+import com.kbstar.service.ReserveService;
 import com.kbstar.util.MailUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -22,9 +26,19 @@ public class AjaxImplController {
 
     @Autowired
     GuestService guestService;
+    @Autowired
+    ReserveService reserveService;
 
     @Autowired
     BCryptPasswordEncoder encoder= new BCryptPasswordEncoder();
+
+    @RequestMapping("/reserved")
+    public List<Reserve> reserved(int id) throws Exception {
+        List<Reserve> reserved;
+        reserved = reserveService.reserveDate(id);
+
+        return reserved;
+    }
 
     @RequestMapping("/checkId")
     public Object checkid(String guestId) throws Exception {

@@ -20,8 +20,6 @@ import java.util.List;
 public class RoomController {
     @Autowired
     RoomService roomService;
-    @Autowired
-    ReserveService reserveService;
     String dir ="room/";
 
     @RequestMapping("/list")
@@ -43,10 +41,7 @@ public class RoomController {
     public String detail(Model model, Integer id) throws Exception {
         Room room = null;
         room = roomService.get(id);
-//        List<Reserve> reserve = reserveService.reserveDate(id);
 
-
-//        model.addAttribute()
         model.addAttribute("roomDetail",room);
         model.addAttribute("center",dir+"detail");
         return "index";
