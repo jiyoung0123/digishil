@@ -61,10 +61,6 @@ public class MainController {
         return "redirect:/";
     }
 
-    @RequestMapping("/paysuccess")
-    public String paysuccess(Model model){
-        model.addAttribute("center","paySuccess");
-        return "index";
-    }
+
 
 }

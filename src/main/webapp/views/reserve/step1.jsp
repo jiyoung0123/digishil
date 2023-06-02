@@ -67,16 +67,12 @@
             </li>
           </ul>
         </div>
-
         <div class="row form-block flex-column flex-sm-row">
-          <div class="col text-center text-sm-start">
-          </div>
           <form action="/kakaopay" method="GET">
             <input type="hidden" name="reserveId" value="${reserveId}">
           <div class="col text-center text-sm-end"><button type="submit" class="btn btn-primary px-3" href="/kakaopay">결제하러 가기<i class="fa-chevron-right fa ms-2"></i></button></div>
           </form>
         </div>
-
       </div>
       <div class="col-lg-5 ps-xl-5">
         <div class="card border-0 shadow">

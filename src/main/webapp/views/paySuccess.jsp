@@ -40,8 +40,13 @@
                     <p class="text-muted mb-5">총 결제금액 : <fmt:formatNumber type="number" pattern="###,###원" value="${payResult.amount.total}"/> <br>
                         결제 승인 시간 : ${payResult.approved_at}
                     </p>
-                    <p class="text-center mb-5"><a class="btn btn-primary mx-2 mb-2" href="user-booking-detail.html"> <i class="far fa-file me-2"></i>내 예약 확인하기</a><a class="btn btn-outline-muted mb-2" href="#">다른 숙소 둘러보기</a></p>
-                    <p class="mb-5 text-center"><img class="img-fluid" src="/img/illustration/undraw_celebration_0jvk.svg" alt="" style="width: 400px;"></p>
+
+<%--                    ======================================================예약 정보 확인하기===================================================--%>
+                    <form action="/reservelist" method="get" id="reserveList">
+                        <p class="text-center mb-5"><a class="btn btn-primary mx-2 mb-2" type="submit" href="user-booking-detail.html"> <i class="far fa-file me-2"></i>내 예약 확인하기</a><a class="btn btn-outline-muted mb-2" href="#">다른 숙소 둘러보기</a></p>
+                        <p class="mb-5 text-center"><img class="img-fluid" src="/img/illustration/undraw_celebration_0jvk.svg" alt="" style="width: 400px;"></p>
+                    </form>
+<%--             ======================================================예약 정보 확인하기===================================================--%>
                 </div>
             </div>
 

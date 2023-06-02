@@ -225,7 +225,11 @@
                                 <img class="avatar avatar-border-white flex-shrink-0 me-2" src="/uimg/${loginGuest.guestImage}" alt="Julie"/>
                             </c:if>
                             <li class="nav-item dropdown"><a id="loginDropdownMenuLink" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/login">${loginGuest.guestName}</a>
-                                <div class="dropdown-menu" aria-labelledby="loginDropdownMenuLink"><a class="dropdown-item" href="/guestInfo?id=${loginGuest.guestId}">회원정보 수정</a><a class="dropdown-item" href="/guestPwd?id=${loginGuest.guestId}">비밀번호 변경</a></div>
+                                <div class="dropdown-menu" aria-labelledby="loginDropdownMenuLink">
+                                    <a class="dropdown-item" href="/guestInfo?id=${loginGuest.guestId}">회원정보 수정</a>
+                                    <a class="dropdown-item" href="/guestPwd?id=${loginGuest.guestId}">비밀번호 변경</a>
+                                    <a class="dropdown-item" href="/reservelist?id=${loginGuest.guestId}">나의 예약정보</a>
+                                </div>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="/logouts">로그아웃</a></li>
                         </c:otherwise>

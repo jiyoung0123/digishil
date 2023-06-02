@@ -58,4 +58,10 @@ public class ReserveController {
         return "index";
         }
     }
+    @RequestMapping("/reservelist")
+    public String reserveList(Model model, String guestId){
+        model.addAttribute("center","reserve/reserveList");
+        return "index";
+    }
+
 }
