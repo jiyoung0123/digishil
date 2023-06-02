@@ -10,19 +10,19 @@
     <div class="row">
       <div class="col-lg-7">
         <p class="subtitle text-primary">Book your holiday home</p>
-        <h1 class="h2 mb-5"> Review house rules <span class="text-muted float-end">Step 1</span>      </h1>
+        <h1 class="h2 mb-5">${room.roomName}<span class="text-muted float-end">Step 1</span>      </h1>
         <div class="text-block">
           <div class="alert alert-warning text-sm mb-3">
             <div class="d-flex align-items-center">
               <svg class="svg-icon svg-icon svg-icon-light w-2rem h-2rem me-3 text-reset flex-shrink-0">
                 <use xlink:href="#heart-1"> </use>
               </svg>
-              <div><strong>흔치 않은 기회 입니다.</strong> ${room.hostName}님의 숙소는 보통 예약이 가득 차 있습니다.</div>
+              <div><strong>흔치 않은 기회 입니다.</strong> <br>${room.hostName}님의 숙소는 보통 예약이 가득 차 있습니다.</div>
             </div>
           </div>
         </div>
         <div class="text-block">
-          <h5 class="mb-4">${days} 박 in ${room.roomLoc}</h5>
+          <h5 class="mb-4">${room.roomLoc} 에서 ${days}박</h5>
           <div class="row mb-3">
             <div class="col-md-6 d-flex align-items-center mb-3 mb-md-0">
               <div class="date-tile me-3">
@@ -39,30 +39,30 @@
           </div>
         </div>
         <div class="text-block">
-          <h5 class="mb-4">Things to keep in mind</h5>
+          <h5 class="mb-4">기본 규칙</h5>
           <ul class="list-unstyled">
             <li class="mb-2">
               <div class="d-flex align-items-center mb-3">
                 <div class="icon-rounded icon-rounded-sm bg-secondary-light flex-shrink-0 me-4"><i class="fa fas fa-child text-secondary fa-fw text-center"></i></div>
-                <div><span class="text-sm">Not suitable for children and infants - The entrance staircase doesn't have handrails</span></div>
+                <div><span class="text-sm">훌륭한 게스트가 되기 위한 몇 가지 간단한 규칙을 지켜주실 것을 모든 게스트에게 당부드리고 있습니다.</span></div>
               </div>
             </li>
             <li class="mb-2">
               <div class="d-flex align-items-center mb-3">
                 <div class="icon-rounded icon-rounded-sm bg-secondary-light flex-shrink-0 me-4"><i class="fa fas fa-glass-cheers text-secondary fa-fw text-center"></i></div>
-                <div><span class="text-sm">No parties or events</span></div>
+                <div><span class="text-sm">호스트의 집도 자신의 집처럼 아껴주세요.</span></div>
               </div>
             </li>
             <li class="mb-2">
               <div class="d-flex align-items-center mb-3">
                 <div class="icon-rounded icon-rounded-sm bg-secondary-light flex-shrink-0 me-4"><i class="fa fa-smoking-ban text-secondary fa-fw text-center"></i></div>
-                <div><span class="text-sm">No smoking</span></div>
+                <div><span class="text-sm">숙소에서는 금연을 준수해 주세요.</span></div>
               </div>
             </li>
             <li class="mb-2">
               <div class="d-flex align-items-center mb-3">
                 <div class="icon-rounded icon-rounded-sm bg-secondary-light flex-shrink-0 me-4"><i class="fa fa-cat text-secondary fa-fw text-center"></i></div>
-                <div><span class="text-sm">No pets</span></div>
+                <div><span class="text-sm">${room.roomPet}</span></div>
               </div>
             </li>
           </ul>
