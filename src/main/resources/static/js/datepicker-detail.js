@@ -6,6 +6,7 @@
 
 "use strict";
 
+
 $(function () {
     var singleMonth = false;
     if ($(window).width() < 767) {
@@ -26,20 +27,39 @@ $(function () {
                             <span style="font-weight:bold">' +
                 date +
                 '</span>\
-                            <div class="day-subtitle">$' +
-                Math.round(Math.random() * 999) +
+                            <div class="day-subtitle">₩' +
+                roomPrice +
                 "</div>\
                         </div>"
             );
         },
 
-        // 주말 부킹부분 없애기
-        // beforeShowDay: function (t) {
-        //     var valid = !(t.getDay() == 0 || t.getDay() == 6); //disable saturday and sunday
-        //     var _class = "";
-        //     var _tooltip = valid ? "" : "Booked";
-        //     return [valid, _class, _tooltip];
-        // },
+        // 예약 날짜 비활성화 함수
+        beforeShowDay: function (t) {
+            let year = t.getFullYear();
+            let month = t.getMonth() + 1;
+            let day = t.getDate();
+
+            let isReserved = false;
+            if (reservedDates) {
+                for (let i = 0; i < reservedDates.length; i++) {
+                    let reserveCheckIn = new Date(reservedDates[i].reserveCheckIn);
+                    let reserveCheckOut = new Date(reservedDates[i].reserveCheckOut);
+                    if (year === reserveCheckIn.getFullYear() && month === reserveCheckIn.getMonth() + 1) {
+                        let reserveDay = reserveCheckIn.getDate();
+                        if (day >= reserveDay && day <= reserveCheckOut.getDate()) {
+                            isReserved = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (isReserved) {
+                return [false, "", "예약완료"];
+            }
+            return [true, "", ""];
+        },
 
         customOpenAnimation: function (cb) {
             $(this).fadeIn(300, cb);
@@ -48,6 +68,21 @@ $(function () {
             $(this).fadeOut(300, cb);
         },
     };
+
+
+    // 예약내역 확인 함수
+    let reservedDates = [];
+     function fetchReservedDates() {
+            $.ajax({
+                url: '/reserved',
+                data: { 'id': roomId },
+                success: function (result) {
+                    reservedDates = result;
+                },
+            });
+        }
+
+        fetchReservedDates(); // 예약된 날짜를 가져옴
     $("#reserveDate")
         .dateRangePicker(dateRangeConfig)
         .bind("datepicker-opened", function () {

@@ -29,7 +29,7 @@
         WHERE reserve.reserveId = #{reserveId}
     </select>
     <select id="reserveDate" parameterType="Integer" resultType="reserve">
-        SELECT *
+        SELECT reserveCheckIn, reserveCheckOut
         FROM reserve
         WHERE roomId= #{roomId}
     </select>
