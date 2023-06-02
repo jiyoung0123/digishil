@@ -54,8 +54,8 @@ public class ReserveController {
         model.addAttribute("days",daysBetween);
         model.addAttribute("reserve",reserve);
         model.addAttribute("center",dir+"step1");
+        log.info("-----------------------------------------------reserveId:"+reserveId);
         return "index";
         }
-
     }
 }

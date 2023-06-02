@@ -59,13 +59,47 @@ public class KakaoPayController {
 
         try {
             kakaoPayService.reserveComplete(reserve);
+            int reserveId2 = reserve.getReserveId();
+
+            // 변경된 reserve 정보를 데이터베이스에서 다시 조회
+            Reserve completeReserve = reserveService.get(reserveId2);
+            model.addAttribute("reserve", completeReserve);
+            log.info(String.valueOf(completeReserve));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+//        ======================================================
+        int roomId = reserve.getRoomId();
+        Room room = null;
+        try {
+            room=roomService.get(roomId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String guestId = reserve.getGuestId();
+        Guest guest= null;
+        try {
+            guest=guestService.get(guestId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        model.addAttribute("reserve", reserve);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date reserveCheckIn = reserve.getReserveCheckIn();
+        Date reserveCheckOut = reserve.getReserveCheckOut();
+        String checkInDateStr = dateFormat.format(reserveCheckIn);
+        String checkOutDateStr = dateFormat.format(reserveCheckOut);
+        Date checkInDate = dateFormat.parse(checkInDateStr);
+        Date checkOutDate = dateFormat.parse(checkOutDateStr);
+        long duration = checkOutDate.getTime() - checkInDate.getTime();
+        long daysBetween = TimeUnit.MILLISECONDS.toDays(duration);
+
+        model.addAttribute("days",daysBetween);
+        model.addAttribute("guest", guest);
+        model.addAttribute("room", room);
+//        ======================================================
+
         model.addAttribute("payResult", kakaoApprove);
-        log.info(String.valueOf(reserve));
         model.addAttribute("center", "paySuccess");
         log.info("cccccccccccccccccccccccccccccccccccc  : afterPayRequest 끝");
         return "index";

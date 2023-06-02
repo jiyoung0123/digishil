@@ -1,5 +1,7 @@
 package com.kbstar.frame;
 
+import com.kbstar.dto.Reserve;
+
 import java.util.List;
 
 public interface KBMapper<K,V> {

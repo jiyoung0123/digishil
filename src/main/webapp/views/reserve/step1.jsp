@@ -17,7 +17,7 @@
               <svg class="svg-icon svg-icon svg-icon-light w-2rem h-2rem me-3 text-reset flex-shrink-0">
                 <use xlink:href="#heart-1"> </use>
               </svg>
-              <div><strong>흔치 않은 기회 입니다.</strong> 00님의 숙소는 보통 예약이 가득 차 있습니다.</div>
+              <div><strong>흔치 않은 기회 입니다.</strong> ${room.hostName}님의 숙소는 보통 예약이 가득 차 있습니다.</div>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@
           <div class="col text-center text-sm-start">
           </div>
           <form action="/kakaopay" method="GET">
-            <input name="reserveId" value="${reserveId}">
+            <input type="hidden" name="reserveId" value="${reserveId}">
           <div class="col text-center text-sm-end"><button type="submit" class="btn btn-primary px-3" href="/kakaopay">결제하러 가기<i class="fa-chevron-right fa ms-2"></i></button></div>
           </form>
         </div>
@@ -102,13 +102,13 @@
                 <tbody>
                 <tr>
                   <th class="fw-normal py-2">${days} 박</th>
-                  <td class="text-end py-2">1박 당 ₩${room.roomPrice}</td>
+                  <td class="text-end py-2">1박 당 <fmt:formatNumber type="number" pattern="###,###원" value="${room.roomPrice}"/></td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr class="border-top">
                   <th class="pt-3">합계</th>
-                  <td class="fw-bold text-end pt-3"><fmt:formatNumber type="number" pattern="₩###,###" value="${reserve.reservePrice}"/></td>
+                  <td class="fw-bold text-end pt-3"><fmt:formatNumber type="number" pattern="###,###원" value="${reserve.reservePrice}"/></td>
                 </tr>
                 </tfoot>
               </table>

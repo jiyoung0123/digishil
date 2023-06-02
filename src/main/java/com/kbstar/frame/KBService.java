@@ -1,5 +1,6 @@
 package com.kbstar.frame;
 
+import com.kbstar.dto.Reserve;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

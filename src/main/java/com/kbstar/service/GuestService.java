@@ -1,6 +1,7 @@
 package com.kbstar.service;
 
 import com.kbstar.dto.Guest;
+import com.kbstar.dto.Reserve;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.GuestMapper;
 import lombok.extern.slf4j.Slf4j;

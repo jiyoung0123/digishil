@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 <script>
     $(function(){
         $('#refundBtn').click(function(){
@@ -35,9 +35,9 @@
                 <p class="subtitle text-primary">Book your holiday home</p>
                 <h1 class="h2 mb-5">예약 완료<span class="text-muted float-end">Step 4</span>      </h1>
                 <div class="text-block">
-                    <p class="text-muted">예약해 주셔서 감사합니다.${reserve.reserveId}</p>
-                    <p class="text-muted mb-5">${payResult.item_name}을 ${payResult.quantity}박 예약 하셨습니다.</p>
-                    <p class="text-muted mb-5">총 결제금액 : ${payResult.amount.total} 원 <br>
+                    <p class="text-muted">${guest.guestName}님, 예약해 주셔서 감사합니다.</p>
+                    <p class="text-muted mb-5">${room.roomName}을 ${days}박 예약 하셨습니다.</p>
+                    <p class="text-muted mb-5">총 결제금액 : <fmt:formatNumber type="number" pattern="###,###원" value="${payResult.amount.total}"/> <br>
                         결제 승인 시간 : ${payResult.approved_at}
                     </p>
                     <p class="text-center mb-5"><a class="btn btn-primary mx-2 mb-2" href="user-booking-detail.html"> <i class="far fa-file me-2"></i>내 예약 확인하기</a><a class="btn btn-outline-muted mb-2" href="#">다른 숙소 둘러보기</a></p>
@@ -55,8 +55,8 @@
                         <div class="text-block pb-3">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h6> <a class="text-reset" href="detail-rooms.html">Modern Apt - Vibrant Neighborhood</a></h6>
-                                    <p class="text-muted text-sm mb-0">Entire home in New York</p>
+                                    <h6> <a class="text-reset" href="detail-rooms.html">${room.roomName}</a></h6>
+                                    <p class="text-muted text-sm mb-0">#${room.roomLoc}&nbsp #${room.roomType}&nbsp #좋아요${room.roomLikes}</p>
                                     <div class="mt-n1"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
                                     </div>
                                 </div><a class="flex-shrink-0" href="detail-rooms.html"><img class="ms-3 rounded" src="/img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></a>
@@ -64,8 +64,9 @@
                         </div>
                         <div class="text-block py-3">
                             <ul class="list-unstyled mb-0">
-                                <li class="mb-3"><i class="fas fa-users fa-fw text-muted me-2"></i>3 guests</li>
-                                <li class="mb-0"><i class="far fa-calendar fa-fw text-muted me-2"></i>Apr 17, 2019 <i class="fas fa-arrow-right fa-fw text-muted mx-3"></i>Apr 18, 2019</li>
+                                <li class="mb-3"><i class="fas fa-users fa-fw text-muted me-2"></i>${reserve.reserveCap}명 예약</li>
+                                <li class="mb-0">
+                                    <i class="far fa-calendar fa-fw text-muted me-2"></i><fmt:formatDate value="${reserve.reserveCheckIn}" pattern="MMM dd,yyyy"/><i class="fas fa-arrow-right fa-fw text-muted mx-3"></i><fmt:formatDate value="${reserve.reserveCheckOut}" pattern="MMM dd,yyyy"/></li>
                             </ul>
                         </div>
                         <div class="text-block pt-3 pb-0">
@@ -73,17 +74,17 @@
                                 <tbody>
                                 <tr>
                                     <th class="fw-normal py-2">$432.02 x 1 night</th>
-                                    <td class="text-end py-2">$432.02</td>
+                                    <td class="text-end py-2">${reserve.reservePrice}원</td>
                                 </tr>
                                 <tr>
-                                    <th class="fw-normal pt-2 pb-3">Service fee</th>
-                                    <td class="text-end pt-2 pb-3">$67.48</td>
+                                    <th class="fw-normal pt-2 pb-3">적립금</th>
+                                    <td class="text-end pt-2 pb-3">${guest.guestCoupon}</td>
                                 </tr>
                                 </tbody>
                                 <tfoot>
                                 <tr class="border-top">
-                                    <th class="pt-3">Total</th>
-                                    <td class="fw-bold text-end pt-3">$499.50</td>
+                                    <th class="pt-3">합계 금액</th>
+                                    <td class="fw-bold text-end pt-3"><fmt:formatNumber type="number" pattern="###,###원" value="${reserve.reservePayAmount}"/></td>
                                 </tr>
                                 </tfoot>
                             </table>

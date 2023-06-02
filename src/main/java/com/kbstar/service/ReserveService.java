@@ -33,7 +33,8 @@ public class ReserveService implements KBService<Integer, Reserve> {
 
     @Override
     public void modify(Reserve reserve) throws Exception {
-        mapper.update(reserve);
+      mapper.update(reserve);
+
     }
 
     @Override

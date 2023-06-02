@@ -2,6 +2,7 @@ package com.kbstar.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.kbstar.dto.Reserve;
 import com.kbstar.dto.Room;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.RoomMapper;

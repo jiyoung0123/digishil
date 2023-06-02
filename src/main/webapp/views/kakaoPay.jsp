@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
@@ -47,7 +48,7 @@
       <div class="col-lg-7">
         <p class="subtitle text-primary">Book your holiday home</p>
 <%--        <p class="subtitle text-primary">${guest.guestName}</p>--%>
-        <h1 class="h2 mb-5">확인 및 결제<span class="text-muted float-end">${reserve.reserveId}</span>      </h1>
+        <h1 class="h2 mb-5">확인 및 결제<span class="text-muted float-end"></span>      </h1>
         <div class="text-block">
           <div class="alert alert-warning text-sm mb-3">
             <div class="d-flex align-items-center">
@@ -155,7 +156,7 @@
             <div class="text-block py-3">
               <ul class="list-unstyled mb-0">
                 <li class="mb-3"><i class="fas fa-users fa-fw text-muted me-2"></i>${room.roomName}</li>
-                <li class="mb-0"><i class="far fa-calendar fa-fw text-muted me-2"></i>${reserve.reserveCheckIn} <i class="fas fa-arrow-right fa-fw text-muted mx-3"></i>${reserve.reserveCheckOut}</li>
+                <li class="mb-0"><i class="far fa-calendar fa-fw text-muted me-2"></i><fmt:formatDate value="${reserve.reserveCheckIn}" pattern="MMM dd,yyyy"/><i class="fas fa-arrow-right fa-fw text-muted mx-3"></i><fmt:formatDate value="${reserve.reserveCheckOut}" pattern="MMM dd,yyyy"/></li>
               </ul>
             </div>
             <div class="text-block pt-3 pb-0">
