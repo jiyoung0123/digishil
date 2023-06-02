@@ -4,8 +4,10 @@ import com.kbstar.dto.KakaoCancelResponse;
 import com.kbstar.dto.KakaoReadyResponse;
 import com.kbstar.dto.Reserve;
 import com.kbstar.service.KakaoPayService;
+import com.kbstar.service.ReserveService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -18,12 +20,23 @@ public class KakaoPayRestController {
 
     private final KakaoPayService kakaoPayService;
 
+    @Autowired
+    ReserveService reserveService;
+
     /**
      * 결제요청
      */
     @RequestMapping("/ready")
-    public KakaoReadyResponse readyToKakaoPay() {
-        return kakaoPayService.kakaoPayReady();
+    public KakaoReadyResponse readyToKakaoPay(@RequestParam("reserveId") int reserveId) {
+        log.info("aaaaaaaaaaaaaaaaaaa  : readyToKakaoPay 도착");
+        Reserve reserve = null;
+        try {
+            reserve = reserveService.get(reserveId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        log.info("aaaaaaaaaaaaaaaaaaa  : readyToKakaoPay 끝");
+        return kakaoPayService.kakaoPayReady(reserve);
     }
 
     /**

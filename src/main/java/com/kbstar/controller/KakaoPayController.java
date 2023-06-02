@@ -1,13 +1,11 @@
 package com.kbstar.controller;
 
-import com.kbstar.dto.Guest;
-import com.kbstar.dto.KakaoApproveResponse;
-import com.kbstar.dto.Reserve;
-import com.kbstar.dto.Room;
+import com.kbstar.dto.*;
 import com.kbstar.service.GuestService;
 import com.kbstar.service.KakaoPayService;
 import com.kbstar.service.ReserveService;
 import com.kbstar.service.RoomService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 import static java.lang.Integer.parseInt;
 
-
+@Slf4j
 @Controller
 public class KakaoPayController {
 
@@ -40,11 +38,36 @@ public class KakaoPayController {
         this.kakaoPayService = kakaoPayService;
     }
 
-    @GetMapping("/payment/success")
-    public String afterPayRequest(@RequestParam("pg_token") String pgToken, Model model) {
+    //  public String afterPayRequest(@RequestParam("pg_token") String pgToken, Model model,@RequestParam("reserveId") Integer reserveId) {
+    @RequestMapping ("/payment/success")
+    public String afterPayRequest(@RequestParam("pg_token") String pgToken, Model model, KakaoReadyResponse kakaoReady) throws Exception {
+        log.info("cccccccccccccccccccccccccccccccccccc  : afterPayRequest 도착");
         KakaoApproveResponse kakaoApprove = kakaoPayService.ApproveResponse(pgToken);
+        log.info("KakaoApprove 확인해보기!!!!!!!!!!!!!!!!!!!!!!!!"+kakaoApprove.toString());
+        log.info("----------------------------------------kakaoReady :"+kakaoReady);
+
+        int reserveId = Integer.parseInt(kakaoApprove.getPartner_order_id());
+        Reserve reserve = null;
+        try {
+            reserve = reserveService.get(reserveId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        String reservePayType = kakaoApprove.getPayment_method_type();
+        reserve.setReservePayType(reservePayType);
+
+        try {
+            kakaoPayService.reserveComplete(reserve);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        model.addAttribute("reserve", reserve);
         model.addAttribute("payResult", kakaoApprove);
+        log.info(String.valueOf(reserve));
         model.addAttribute("center", "paySuccess");
+        log.info("cccccccccccccccccccccccccccccccccccc  : afterPayRequest 끝");
         return "index";
     }
 
@@ -72,32 +95,20 @@ public class KakaoPayController {
         }
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date reserveCheckIn=reserve.getReserveCheckIn();
-        Date reserveChectOut=reserve.getReserveCheckOut();
-
-        Date checkInDate = dateFormat.parse(String.valueOf(reserveCheckIn));
-        Date checkOutDate = dateFormat.parse(String.valueOf(reserveChectOut));
-
+        Date reserveCheckIn = reserve.getReserveCheckIn();
+        Date reserveCheckOut = reserve.getReserveCheckOut();
+        String checkInDateStr = dateFormat.format(reserveCheckIn);
+        String checkOutDateStr = dateFormat.format(reserveCheckOut);
+        Date checkInDate = dateFormat.parse(checkInDateStr);
+        Date checkOutDate = dateFormat.parse(checkOutDateStr);
         long duration = checkOutDate.getTime() - checkInDate.getTime();
         long daysBetween = TimeUnit.MILLISECONDS.toDays(duration);
-//        int reservePrice = (int) daysBetween * parseInt(roomPrice);
 
-//
-//        long duration = checkOutDate.getTime() - checkInDate.getTime();
-//        long daysBetween = TimeUnit.MILLISECONDS.toDays(duration);
-//        int reservePrice = (int) daysBetween * parseInt(String.valueOf(room.getRoomPrice()));
+        log.info(String.valueOf(checkInDateStr));
+        log.info(String.valueOf(checkOutDateStr));
+        log.info(String.valueOf(daysBetween));
 
         model.addAttribute("days",daysBetween);
-
-
-
-
-
-
-
-
-
-//        --------------------------------------------------
         model.addAttribute("guest", guest);
         model.addAttribute("room", room);
         model.addAttribute("reserve", reserve);

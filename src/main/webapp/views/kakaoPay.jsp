@@ -6,11 +6,21 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
 
 <script>
+
   $(function(){
+      console.log("aaaaaaaa1 : "+$('#reserveId').val());
+
+      // var reserveId = Number($('#reserveId').val());
+      var reserveId = $('#reserveId').val();
+
+      console.log("aaaaaaaa2 : "+reserveId);
     $('#payBtn').click(function(){
       $.ajax({
-        url:'payment/ready',
-        dataType:'json',
+          url:'payment/ready',
+          // method:'POST',
+          method:'GET',
+          data: {'reserveId' : reserveId},
+          dataType:'json',
         success: function(data){
           // alert(data.tid);
           var box = data.next_redirect_pc_url;
@@ -27,6 +37,7 @@
 
 
 <body style="padding-top: 72px;">
+<input type="hidden" name="reserveId" id="reserveId" value="${reserve.reserveId}">
 <div class="progress rounded-0 sticky-top" style="height: 8px; top: 72px;">
   <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
@@ -35,7 +46,7 @@
     <div class="row">
       <div class="col-lg-7">
         <p class="subtitle text-primary">Book your holiday home</p>
-        <p class="subtitle text-primary">${guest.guestName}</p>
+<%--        <p class="subtitle text-primary">${guest.guestName}</p>--%>
         <h1 class="h2 mb-5">확인 및 결제<span class="text-muted float-end">${reserve.reserveId}</span>      </h1>
         <div class="text-block">
           <div class="alert alert-warning text-sm mb-3">
@@ -100,7 +111,7 @@
             <div>
               <h5>질문이 있으신가요? 호스트에게 메시지를 보내 문의하세요.</h5>
               <p class="text-sm text-muted">이 숙소의 체크인 시간은 오후 3:00부터 오후 11:00까지입니다이며, 체크아웃은 오전 12:00입니다.</p>
-            </div><img class="avatar avatar-md p-1 flex-shrink-0 ms-4" src="img/avatar/avatar-10.jpg" alt="Jack London">
+            </div><img class="avatar avatar-md p-1 flex-shrink-0 ms-4" src="/img/avatar/avatar-10.jpg" alt="Jack London">
           </div>
           <textarea class="form-control" name="hello" rows="4"></textarea>
         </div>
@@ -113,11 +124,19 @@
 <%--              <img class="img-fluid" src="img/kakaoPay_medium.jpg" alt="Kakao Pay">--%>
 <%--            </button>--%>
 <%--          </div>--%>
-          <div class="col text-center text-sm-end">
-            <img class="img-fluid" src="img/kakaoPay_small.jpg" alt="Kakao Pay">
-            <button id="payBtn" class="btn btn-primary px-3" type="button">카카오페이로 결제하기<i class="fa-chevron-right fa ms-2"></i></button>
-          </div>
+<%--          <form action="/payment/success" method="GET">--%>
+            <div class="col text-center text-sm-end">
+              <img class="img-fluid" src="img/kakaoPay_small.jpg" alt="Kakao Pay">
+              <button id="payBtn" class="btn btn-primary px-3" type="button">카카오페이로 결제하기<i class="fa-chevron-right fa ms-2"></i></button>
+            </div>
+<%--          </form>--%>
         </div>
+
+
+<%--        <form action="/payment/success" method="GET">--%>
+<%--          <input name="reserveId" value="${reserveId}">--%>
+<%--          <div class="col text-center text-sm-end"><button type="submit" class="btn btn-primary px-3" href="/kakaopay">결제하러 가기<i class="fa-chevron-right fa ms-2"></i></button></div>--%>
+<%--        </form>--%>
 
       </div>
       <div class="col-lg-5 ps-xl-5">
@@ -127,10 +146,10 @@
               <div class="d-flex align-items-center">
                 <div>
                   <h6> <a class="text-reset" href="detail-rooms.html">${room.roomName}</a></h6>
-                  <p class="text-muted text-sm mb-0">Entire home in New York</p>
+                  <p class="text-muted text-sm mb-0">#${room.roomLoc}&nbsp #${room.roomType}&nbsp #좋아요${room.roomLikes}</p>
                   <div class="mt-n1"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
                   </div>
-                </div><a class="flex-shrink-0" href="detail-rooms.html"><img class="ms-3 rounded" src="img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></a>
+                </div><a class="flex-shrink-0" href="detail-rooms.html"><img class="ms-3 rounded" src="/img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></a>
               </div>
             </div>
             <div class="text-block py-3">
@@ -144,18 +163,18 @@
                 <tbody>
                 <tr>
                   <h4>요금 세부 정보</h4>
-                  <th class="fw-normal py-2">${room.roomPrice}X</th>
-                  <td class="text-end py-2">${reserve.reservePayAmount}</td>
+                  <th class="fw-normal py-2">${room.roomPrice}X${days}박</th>
+                  <td class="text-end py-2">${reserve.reservePrice}원</td>
                 </tr>
                 <tr>
                   <th class="fw-normal pt-2 pb-3">적립금</th>
-                  <td class="text-end pt-2 pb-3">${guest.guestCoupon}</td>
+                  <td class="text-end pt-2 pb-3">${guest.guestCoupon}원</td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr class="border-top">
                   <th class="pt-3">총 합계</th>
-                  <td class="fw-bold text-end pt-3">${reserve.reservePayAmount}</td>
+                  <td class="fw-bold text-end pt-3">${reserve.reservePrice}원</td>
                 </tr>
                 </tfoot>
               </table>

@@ -35,7 +35,7 @@
                 <p class="subtitle text-primary">Book your holiday home</p>
                 <h1 class="h2 mb-5">예약 완료<span class="text-muted float-end">Step 4</span>      </h1>
                 <div class="text-block">
-                    <p class="text-muted">예약해 주셔서 감사합니다.</p>
+                    <p class="text-muted">예약해 주셔서 감사합니다.${reserve.reserveId}</p>
                     <p class="text-muted mb-5">${payResult.item_name}을 ${payResult.quantity}박 예약 하셨습니다.</p>
                     <p class="text-muted mb-5">총 결제금액 : ${payResult.amount.total} 원 <br>
                         결제 승인 시간 : ${payResult.approved_at}
