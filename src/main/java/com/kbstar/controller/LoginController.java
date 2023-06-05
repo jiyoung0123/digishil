@@ -21,6 +21,7 @@ public class LoginController {
     private BCryptPasswordEncoder encoder;
     @RequestMapping("/loginImpl")
     public String loginImpl(Model model, String guestId, String guestPwd, HttpSession session) {
+        log.info("---------------------------------"+guestId, guestPwd);
         Guest guest = null;
         try {
             guest = guestService.get(guestId);
@@ -28,14 +29,15 @@ public class LoginController {
                 session.setMaxInactiveInterval(1000000);
                 session.setAttribute("loginGuest",guest);
                 model.addAttribute("center","center");
-            }if(guest == null || !encoder.matches(guestPwd,guest.getGuestPwd())){
+                return "redirect:/";
+            }if(guest == null || !encoder.matches(guestPwd,guest.getGuestPwd()) || guest.getGuestId() == ""){
                 model.addAttribute("msg","아이디 혹은 비밀번호를 확인하세요.");
                 model.addAttribute("center","login");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/";
+                return "index";
     }
 
 
