@@ -46,5 +46,6 @@
         JOIN room ON room.roomId = reserve.roomId
         JOIN host ON room.hostId = host.hostId
         WHERE reserve.guestId = #{guestId}
+        ORDER BY reserve.reserveCheckIn ASC
     </select>
 </mapper>

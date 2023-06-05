@@ -13,7 +13,7 @@
     </div>
     <div class="d-flex justify-content-between align-items-center flex-column flex-lg-row mb-5">
       <div class="me-3">
-        <p class="mb-3 mb-lg-0"><strong>'DIGI실'에 ${getMyReserve.size()}개의 예약이</strong> 있습니다.</p>
+        <p class="mb-3 mb-lg-0"><strong>${getMyReserve.size()}개의 예약이</strong> 있습니다.</p>
       </div>
     </div>
 
@@ -44,30 +44,72 @@
                 <h2 class="h5 mb-0">${obj.hostName}</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="/img/avatar/avatar-0.jpg" alt="Jack London">
               </div>
               <p class="text-sm text-muted">${obj.roomName}</p>
+              <c:choose>
+              <c:when test="${obj.reserveStatus == null}">
               <span class="badge badge-pill p-2 badge-secondary-light"><fmt:formatDate value="${obj.reserveCheckIn}" pattern="yyyy, MMM dd"/> - <fmt:formatDate value="${obj.reserveCheckOut}" pattern="yyyy, MMM dd"/></span>
-
+              </c:when>
+              <c:otherwise>
+              <span class="badge badge-pill p-2 badge-primary-light"><fmt:formatDate value="${obj.reserveCheckIn}" pattern="yyyy, MMM dd"/> - <fmt:formatDate value="${obj.reserveCheckOut}" pattern="yyyy, MMM dd"/></span>
+              </c:otherwise>
+              </c:choose>
             </div>
             <div class="col-lg-8">
               <div class="row">
                 <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">
                   <h6 class="label-heading">객실형태</h6>
                   <p class="text-sm fw-bold">${obj.roomType}</p>
+                  <h6 class="label-heading">지역</h6>
+                  <p class="text-sm fw-bold mb-0">${obj.roomLoc}</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 py-3">
+                  <h6 class="label-heading">1박당 금액</h6>
+                  <p class="text-sm fw-bold">${obj.roomWPrice}</p>
+                  <h6 class="label-heading">결제금액</h6>
+                  <p class="text-sm fw-bold mb-0"><fmt:formatNumber type="number" pattern="###,###원" value="${obj.reservePayAmount}"/></p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 py-3">
+                  <c:choose>
+                    <c:when test="${obj.reservePayDate == null}">
+                      <h6 class="label-heading">예약날짜(결제일자)</h6>
+                      <p class="text-sm fw-bold">결제 후 예약확정</p>
+                    </c:when>
+                    <c:otherwise>
+                      <h6 class="label-heading">예약날짜(결제일자)</h6>
+                      <p class="text-sm fw-bold"><fmt:formatDate value="${obj.reservePayDate}" pattern="yyyy, MMM dd"/></p>
+                    </c:otherwise>
+                  </c:choose>
                   <h6 class="label-heading">객실주소</h6>
                   <p class="text-sm fw-bold mb-0">${obj.roomAddress}</p>
                 </div>
-                <div class="col-6 col-md-4 col-lg-3 py-3">
-                  <h6 class="label-heading">Occupancy</h6>
-                  <p class="text-sm fw-bold">1 pax</p>
-                  <h6 class="label-heading">Charge</h6>
-                  <p class="text-sm fw-bold mb-0">$244.42</p>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3 py-3">
-                  <h6 class="label-heading">Booked Date</h6>
-                  <p class="text-sm fw-bold">February 16, 2019</p>
-                  <h6 class="label-heading">Arrival Time</h6>
-                  <p class="text-sm fw-bold mb-0">Around 4 PM</p>
-                </div>
-                <div class="col-12 col-lg-3 align-self-center"><span class="text-primary text-sm text-uppercase me-4 me-lg-0"><i class="fa fa-check fa-fw me-2"> </i>${obj.reserveStatus}</span><br class="d-none d-lg-block"><span class="text-primary text-sm text-uppercase"><i class="fa fa-check fa-fw me-2"> </i>Confirmed</span>
+                <div class="col-12 col-lg-3 align-self-center">
+
+                    <c:choose>
+                      <c:when test="${obj.reserveStatus == null}">
+                        <span class="text-muted text-sm text-uppercase">
+                          <i class="fa fa-times fa-fw me-2"> </i>예약미확정
+
+                        </span><br class="d-none d-lg-block">
+<%--                        <span class="text-primary text-sm text-uppercase">--%>
+<%--                          <i class="fa fa-check fa-fw me-2"> </i>Confirmed--%>
+<%--                        </span>--%>
+                      </c:when>
+                      <c:otherwise>
+                      <span class="text-primary text-sm text-uppercase me-4 me-lg-0">
+                          <i class="fa fa-check fa-fw me-2"> </i>${obj.reserveStatus}
+                      </span><br class="d-none d-lg-block">
+                        <span class="text-primary text-sm text-uppercase">
+                          <i class="fa fa-check fa-fw me-2"> </i>Confirmed
+                        </span>
+                      </c:otherwise>
+                    </c:choose>
+                   <br class="d-none d-lg-block">
+
+<%--                  <span class="text-primary text-sm text-uppercase me-4 me-lg-0">--%>
+<%--                    <i class="fa fa-check fa-fw me-2"> </i> ${obj.reserveStatus}--%>
+<%--                   </span><br class="d-none d-lg-block">--%>
+<%--                  <span class="text-primary text-sm text-uppercase">--%>
+<%--                    <i class="fa fa-check fa-fw me-2"> </i>Confirmed--%>
+<%--                  </span>--%>
                 </div>
               </div>
             </div>
@@ -78,141 +120,7 @@
 
 
 
-<%--      ===========================================================================================--%>
-<%--      <a class="list-group-item list-group-item-action p-4" href="user-booking-detail.html">--%>
-<%--      <div class="row">--%>
-<%--        <div class="col-lg-4 align-self-center mb-4 mb-lg-0">--%>
-<%--          <div class="d-flex align-items-center mb-3">--%>
-<%--            <h2 class="h5 mb-0">Weeks Garrett</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="img/avatar/avatar-1.jpg" alt="Jack London">--%>
-<%--          </div>--%>
-<%--          <p class="text-sm text-muted">Double Room</p><span class="badge badge-pill p-2 badge-primary-light">March 14, 2019 - March 17, 2019</span>--%>
-<%--        </div>--%>
-<%--        <div class="col-lg-8">--%>
-<%--          <div class="row">--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">--%>
-<%--              <h6 class="label-heading">Rate type</h6>--%>
-<%--              <p class="text-sm fw-bold">Bed & Breakfast</p>--%>
-<%--              <h6 class="label-heading">Nights </h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">3</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3">--%>
-<%--              <h6 class="label-heading">Occupancy</h6>--%>
-<%--              <p class="text-sm fw-bold">3 pax</p>--%>
-<%--              <h6 class="label-heading">Charge</h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">$495.73</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3">--%>
-<%--              <h6 class="label-heading">Booked Date</h6>--%>
-<%--              <p class="text-sm fw-bold">March 14, 2019                                        </p>--%>
-<%--              <h6 class="label-heading">Arrival Time</h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">Around 4 PM</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-12 col-lg-3 align-self-center"><span class="text-primary text-sm text-uppercase me-4 me-lg-0"><i class="fa fa-check fa-fw me-2"> </i>Booking paid</span><br class="d-none d-lg-block"><span class="text-muted text-sm text-uppercase"><i class="fa fa-times fa-fw me-2"> </i>Confirmed</span>--%>
-<%--            </div>--%>
-<%--          </div>--%>
-<%--        </div>--%>
-<%--      </div>--%>
-<%--      </a>--%>
-<%--      <a class="list-group-item list-group-item-action p-4" href="user-booking-detail.html">--%>
-<%--      <div class="row">--%>
-<%--        <div class="col-lg-4 align-self-center mb-4 mb-lg-0">--%>
-<%--          <div class="d-flex align-items-center mb-3">--%>
-<%--            <h2 class="h5 mb-0">Fisher Bauer</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="img/avatar/avatar-2.jpg" alt="Jack London">--%>
-<%--          </div>--%>
-<%--          <p class="text-sm text-muted">Double Room</p><span class="badge badge-pill p-2 badge-danger-light">March 10, 2019 - March 13, 2019</span>--%>
-<%--        </div>--%>
-<%--        <div class="col-lg-8">--%>
-<%--          <div class="row">--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">--%>
-<%--              <h6 class="label-heading">Rate type</h6>--%>
-<%--              <p class="text-sm fw-bold">Bed & Breakfast</p>--%>
-<%--              <h6 class="label-heading">Nights </h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">3</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3">--%>
-<%--              <h6 class="label-heading">Occupancy</h6>--%>
-<%--              <p class="text-sm fw-bold">2 pax</p>--%>
-<%--              <h6 class="label-heading">Charge</h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">$938.48</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3">--%>
-<%--              <h6 class="label-heading">Booked Date</h6>--%>
-<%--              <p class="text-sm fw-bold">March 10, 2019                                        </p>--%>
-<%--              <h6 class="label-heading">Arrival Time</h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">Around 4 PM</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-12 col-lg-3 align-self-center"><span class="text-primary text-sm text-uppercase me-4 me-lg-0"><i class="fa fa-check fa-fw me-2"> </i>Booking paid</span><br class="d-none d-lg-block"><span class="text-primary text-sm text-uppercase"><i class="fa fa-check fa-fw me-2"> </i>Confirmed</span>--%>
-<%--            </div>--%>
-<%--          </div>--%>
-<%--        </div>--%>
-<%--      </div></a>--%>
-<%--      <a class="list-group-item list-group-item-action p-4" href="user-booking-detail.html">--%>
-<%--      <div class="row">--%>
-<%--        <div class="col-lg-4 align-self-center mb-4 mb-lg-0">--%>
-<%--          <div class="d-flex align-items-center mb-3">--%>
-<%--            <h2 class="h5 mb-0">Aguilar Webb</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="img/avatar/avatar-3.jpg" alt="Jack London">--%>
-<%--          </div>--%>
-<%--          <p class="text-sm text-muted">Double Room</p><span class="badge badge-pill p-2 badge-success-light">April 09, 2019 - April 13, 2019</span>--%>
-<%--        </div>--%>
-<%--        <div class="col-lg-8">--%>
-<%--          <div class="row">--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">--%>
-<%--              <h6 class="label-heading">Rate type</h6>--%>
-<%--              <p class="text-sm fw-bold">Bed & Breakfast</p>--%>
-<%--              <h6 class="label-heading">Nights </h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">4</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3">--%>
-<%--              <h6 class="label-heading">Occupancy</h6>--%>
-<%--              <p class="text-sm fw-bold">3 pax</p>--%>
-<%--              <h6 class="label-heading">Charge</h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">$955.07</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3">--%>
-<%--              <h6 class="label-heading">Booked Date</h6>--%>
-<%--              <p class="text-sm fw-bold">April 09, 2019                                        </p>--%>
-<%--              <h6 class="label-heading">Arrival Time</h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">Around 4 PM</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-12 col-lg-3 align-self-center"><span class="text-primary text-sm text-uppercase me-4 me-lg-0"><i class="fa fa-check fa-fw me-2"> </i>Booking paid</span><br class="d-none d-lg-block"><span class="text-muted text-sm text-uppercase"><i class="fa fa-times fa-fw me-2"> </i>Confirmed</span>--%>
-<%--            </div>--%>
-<%--          </div>--%>
-<%--        </div>--%>
-<%--      </div></a>--%>
-<%--      <a class="list-group-item list-group-item-action p-4" href="user-booking-detail.html">--%>
-<%--      <div class="row">--%>
-<%--        <div class="col-lg-4 align-self-center mb-4 mb-lg-0">--%>
-<%--          <div class="d-flex align-items-center mb-3">--%>
-<%--            <h2 class="h5 mb-0">Melton Simon</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="/img/avatar/avatar-4.jpg" alt="Jack London">--%>
-<%--          </div>--%>
-<%--          <p class="text-sm text-muted">Double Room</p><span class="badge badge-pill p-2 badge-secondary-light">March 24, 2019 - March 28, 2019</span>--%>
-<%--        </div>--%>
-<%--        <div class="col-lg-8">--%>
-<%--          <div class="row">--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">--%>
-<%--              <h6 class="label-heading">Rate type</h6>--%>
-<%--              <p class="text-sm fw-bold">Bed & Breakfast</p>--%>
-<%--              <h6 class="label-heading">Nights </h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">4</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3">--%>
-<%--              <h6 class="label-heading">Occupancy</h6>--%>
-<%--              <p class="text-sm fw-bold">3 pax</p>--%>
-<%--              <h6 class="label-heading">Charge</h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">$882.25</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-6 col-md-4 col-lg-3 py-3">--%>
-<%--              <h6 class="label-heading">Booked Date</h6>--%>
-<%--              <p class="text-sm fw-bold">March 24, 2019                                        </p>--%>
-<%--              <h6 class="label-heading">Arrival Time</h6>--%>
-<%--              <p class="text-sm fw-bold mb-0">Around 4 PM</p>--%>
-<%--            </div>--%>
-<%--            <div class="col-12 col-lg-3 align-self-center"><span class="text-primary text-sm text-uppercase me-4 me-lg-0"><i class="fa fa-check fa-fw me-2"> </i>Booking paid</span><br class="d-none d-lg-block"><span class="text-primary text-sm text-uppercase"><i class="fa fa-check fa-fw me-2"> </i>Confirmed</span>--%>
-<%--            </div>--%>
-<%--          </div>--%>
-<%--        </div>--%>
-<%--      </div></a>--%>
-<%--      =================================================================================================--%>
+
 
     <!-- Pagination -->
     <nav aria-label="Page navigation example">
