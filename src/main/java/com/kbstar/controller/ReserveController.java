@@ -1,6 +1,8 @@
 package com.kbstar.controller;
 
+import com.kbstar.dto.Guest;
 import com.kbstar.dto.Reserve;
+import com.kbstar.service.GuestService;
 import com.kbstar.service.ReserveService;
 import com.kbstar.service.RoomService;
 import lombok.AllArgsConstructor;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Integer.parseInt;
@@ -23,6 +26,8 @@ public class ReserveController {
     ReserveService reserveService;
     @Autowired
     RoomService roomService;
+    @Autowired
+    GuestService guestService;
 
     String dir = "reserve/";
     @RequestMapping("/reserve")
@@ -60,7 +65,24 @@ public class ReserveController {
     }
     @RequestMapping("/reservelist")
     public String reserveList(Model model, String guestId){
+        List <Reserve> list = null;
+        try {
+            list = reserveService.getMyReserve(guestId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        Guest guest = null;
+        try {
+            guest = guestService.get(guestId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        model.addAttribute("getMyReserve", list);
+        model.addAttribute("guest", guest);
         model.addAttribute("center","reserve/reserveList");
+        log.info(list.toString());
         return "index";
     }
 

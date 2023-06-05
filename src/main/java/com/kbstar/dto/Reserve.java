@@ -32,6 +32,14 @@ public class Reserve {
     private int reserveApi;
     private int reserveRefund;
 
+
+    // reserveList를 불러오기 위한 항목 추가
+    private String hostName;
+    private String roomType;
+    private String roomName;
+
+
+
     public Reserve(String guestId, int roomId, Date reserveCheckIn, Date reserveCheckOut, int reservePrice, int reserveCap) {
         this.guestId = guestId;
         this.roomId = roomId;

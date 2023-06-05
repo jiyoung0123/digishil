@@ -78,7 +78,7 @@
                             <table class="w-100">
                                 <tbody>
                                 <tr>
-                                    <th class="fw-normal py-2">$432.02 x 1 night</th>
+                                    <th class="fw-normal py-2">합계</th>
                                     <td class="text-end py-2">${reserve.reservePrice}원</td>
                                 </tr>
                                 <tr>

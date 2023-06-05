@@ -13,4 +13,5 @@ public interface ReserveMapper extends KBMapper<Integer, Reserve> {
     public Reserve searchId(Reserve reserve);
     public Object getReserve(Integer i);
     public List<Reserve> reserveDate(Integer i);
+    public List<Reserve> getMyReserve(String guestId);
 }

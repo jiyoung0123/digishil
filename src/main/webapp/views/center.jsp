@@ -157,7 +157,7 @@
                     <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/kang1.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">경주</h6>
-                            <p class="card-text text-sm">NewYork</p>
+                            <p class="card-text text-sm">GyeongJu</p>
                         </div>
                     </div>
                 </div>

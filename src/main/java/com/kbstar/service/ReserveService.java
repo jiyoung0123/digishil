@@ -58,4 +58,8 @@ public class ReserveService implements KBService<Integer, Reserve> {
     public List<Reserve> reserveDate(Integer i) throws Exception {
         return mapper.reserveDate(i);
     }
+
+    public List<Reserve> getMyReserve(String guestId)throws Exception{
+        return mapper.getMyReserve(guestId);
+    }
 }
