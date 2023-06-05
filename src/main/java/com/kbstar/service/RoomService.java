@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.kbstar.dto.Reserve;
 import com.kbstar.dto.Room;
+import com.kbstar.dto.RoomSearch;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.RoomMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -45,5 +46,9 @@ public class RoomService implements KBService<Integer, Room> {
     public Page<Room> getPage(int pageNo) throws Exception {
         PageHelper.startPage(pageNo, 6); // 3: 한화면에 출력되는 개수
         return mapper.getpage();
+    }
+
+    public List<RoomSearch> roomSearch(RoomSearch rs) throws Exception {
+        return mapper.roomSearch(rs);
     }
 }
