@@ -3,6 +3,7 @@ package com.kbstar.controller;
 import com.github.pagehelper.PageInfo;
 import com.kbstar.dto.Reserve;
 import com.kbstar.dto.Room;
+import com.kbstar.dto.RoomSearch;
 import com.kbstar.service.ReserveService;
 import com.kbstar.service.RoomService;
 import lombok.extern.slf4j.Slf4j;
@@ -44,6 +45,18 @@ public class RoomController {
 
         model.addAttribute("roomDetail",room);
         model.addAttribute("center",dir+"detail");
+        return "index";
+    }
+
+    @RequestMapping("/roomSearch")
+    public String roomSearch(Model model, RoomSearch rs) throws Exception {
+        log.info("----------------------------"+rs.toString());
+        List<Room> list = null;
+        list = roomService.roomSearch(rs);
+
+        model.addAttribute("rs",rs);
+        model.addAttribute("roomList",list);
+        model.addAttribute("center",dir+"list");
         return "index";
     }
 

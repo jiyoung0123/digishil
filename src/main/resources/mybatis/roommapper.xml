@@ -31,18 +31,17 @@
     <select id="roomSearch" parameterType="roomSearch" resultType="room">
         SELECT * FROM room
         <where>
-            <if test="startdate != null and !startdate.equals('') ">
-                rdate &gt;= TO_DATE(#{startdate},'YYYY-MM-DD')
+            <if test="roomName != null and !roomName.equals('') ">
+                roomName LIKE '%'||#{roomName}||'%'
             </if>
-            <if test="endd
-             ate != null and !enddate.equals('')">
-                AND   rdate &lt;= TO_DATE(#{enddate},'YYYY-MM-DD')+0.9999
+             <if test="roomLoc !=null and !roomLoc.equals('')">
+                 AND roomLoc LIKE '%'||#{roomLoc}||'%'
+             </if>
+            <if test="roomType !=null and !roomType.equals('')">
+                AND roomType LIKE '%'||#{roomType}||'%'
             </if>
-            <if test="name != null and !name.equals('') ">
-                AND name LIKE '%'||#{name}||'%'
-            </if>
-            <if test="price != null and !price.equals('') ">
-                AND price &gt;= #{price}
+            <if test="roomPrice != null and !roomPrice.equals('') ">
+                AND roomPrice &gt;= #{roomPrice}
             </if>
         </where>
     </select>

@@ -348,6 +348,7 @@
             <div class="row">
                 <!-- place item-->
                 <c:forEach var="roomList" items="${roomList.getList()}">
+<%--                <c:forEach var="roomList" items="${roomList}">--%>
                     <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
                         <div class="card h-100 border-0 shadow">
                             <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="/room/detail?id=${roomList.roomId}"></a>

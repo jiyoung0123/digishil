@@ -48,7 +48,7 @@ public class RoomService implements KBService<Integer, Room> {
         return mapper.getpage();
     }
 
-    public List<RoomSearch> roomSearch(RoomSearch rs) throws Exception {
+    public List<Room> roomSearch(RoomSearch rs) throws Exception {
         return mapper.roomSearch(rs);
     }
 }
