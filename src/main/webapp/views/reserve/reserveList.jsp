@@ -43,17 +43,17 @@
               <div class="d-flex align-items-center mb-3">
                 <h2 class="h5 mb-0">${obj.hostName}</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="/img/avatar/avatar-0.jpg" alt="Jack London">
               </div>
-              <p class="text-sm text-muted">${obj.roomType}</p>
+              <p class="text-sm text-muted">${obj.roomName}</p>
               <span class="badge badge-pill p-2 badge-secondary-light"><fmt:formatDate value="${obj.reserveCheckIn}" pattern="yyyy, MMM dd"/> - <fmt:formatDate value="${obj.reserveCheckOut}" pattern="yyyy, MMM dd"/></span>
 
             </div>
             <div class="col-lg-8">
               <div class="row">
                 <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">
-                  <h6 class="label-heading">Rate type</h6>
-                  <p class="text-sm fw-bold">Bed & Breakfast</p>
-                  <h6 class="label-heading">Nights </h6>
-                  <p class="text-sm fw-bold mb-0">3</p>
+                  <h6 class="label-heading">객실형태</h6>
+                  <p class="text-sm fw-bold">${obj.roomType}</p>
+                  <h6 class="label-heading">객실주소</h6>
+                  <p class="text-sm fw-bold mb-0">${obj.roomAddress}</p>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 py-3">
                   <h6 class="label-heading">Occupancy</h6>
