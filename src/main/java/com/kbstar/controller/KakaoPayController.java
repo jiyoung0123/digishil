@@ -156,7 +156,7 @@ public class KakaoPayController {
      * 환불
      */
     @RequestMapping("/payment/refund")
-    public String refund(@RequestParam("reserveId") int reserveId ) {
+    public String refund(@RequestParam("reserveId") int reserveId, Model model ) {
         log.info("================================aaaaaaaaaaaaaaaaaaa  : refund 도착");
         Reserve reserve = null;
         try {
@@ -174,6 +174,7 @@ public class KakaoPayController {
 //        return "index";
 
 //        return new ResponseEntity<>(kakaoCancelResponse, HttpStatus.OK);
+        model.addAttribute("center","refundSuccess");
         return "redirect:/reservelist?guestId="+reserve.getGuestId();
     }
 }
