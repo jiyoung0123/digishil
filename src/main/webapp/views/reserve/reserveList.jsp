@@ -103,9 +103,8 @@
                         <span class="text-primary text-sm text-uppercase">
                           <form action="/payment/refund" method="GET">
                              <input type="hidden" id="reserveId" name="reserveId" value="${obj.reserveId}">
-                             <a href="payment/refund?reserveId=${obj.reserveId}"><i class="fa fa-check fa-fw me-2"></i>환불하기</a>
+                            <a href="payment/refund?reserveId=${obj.reserveId}"><i class="fa fa-check fa-fw me-2"></i>환불하기</a>
                           </form>
-<%--                           <p class="text-center"><small class="text-muted text-center"><a href="/register">회원 가입 하러 가기</a></small></p>--%>
                         </span>
                       </c:otherwise>
                     </c:choose>

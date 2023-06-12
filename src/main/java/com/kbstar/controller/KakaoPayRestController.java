@@ -74,29 +74,5 @@ public class KakaoPayRestController {
         }
     }
 
-    /**
-     * 환불
-     */
-    @RequestMapping("/refund")
-    public String refund(@RequestParam("reserveId") int reserveId, Model model) {
-//        public ResponseEntity refund(@RequestParam("reserveId") int reserveId) {
-        log.info("================================aaaaaaaaaaaaaaaaaaa  : refund 도착");
-        Reserve reserve = null;
-        try {
-            reserve = reserveService.get(reserveId);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        log.info("refund 도착---------------------" + String.valueOf(reserve));
-        KakaoCancelResponse kakaoCancelResponse = kakaoPayService.kakaoCancel(reserve);
-        log.info("=============================aaaaaaaaaaaaaaaaaaa  : readyToKakaoPay 끝");
-        try {
-            kakaoPayService.refundComplete(reserve);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        model.addAttribute("center", "paySuccess");
-        return "index";
-//        return new ResponseEntity<>(kakaoCancelResponse, HttpStatus.OK);
-    }
+
 }

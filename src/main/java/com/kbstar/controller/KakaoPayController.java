@@ -150,4 +150,30 @@ public class KakaoPayController {
         model.addAttribute("center", "kakaoPay");
         return "index";
     }
+
+
+    /**
+     * 환불
+     */
+    @RequestMapping("/payment/refund")
+    public String refund(@RequestParam("reserveId") int reserveId ) {
+        log.info("================================aaaaaaaaaaaaaaaaaaa  : refund 도착");
+        Reserve reserve = null;
+        try {
+            reserve = reserveService.get(reserveId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        log.info("refund 도착---------------------" + String.valueOf(reserve));
+        KakaoCancelResponse kakaoCancelResponse = kakaoPayService.kakaoCancel(reserve);
+        try {
+            kakaoPayService.refundComplete(reserve);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+//        return "index";
+
+//        return new ResponseEntity<>(kakaoCancelResponse, HttpStatus.OK);
+        return "redirect:/reservelist?guestId="+reserve.getGuestId();
+    }
 }
