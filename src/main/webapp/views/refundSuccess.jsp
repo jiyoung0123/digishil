@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-lg-7">
                 <p class="subtitle text-primary">Book your holiday home</p>
-                <h1 class="h2 mb-5">예약 완료<span class="text-muted float-end">Step 4</span>      </h1>
+                <h1 class="h2 mb-5">환불 완료<span class="text-muted float-end">Step 4</span>      </h1>
                 <div class="text-block">
                     <p class="text-muted">${guest.guestName}님, 예약해 주셔서 감사합니다.</p>
                     <p class="text-muted mb-5">${room.roomName}을 ${days}박 예약 하셨습니다.</p>

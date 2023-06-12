@@ -98,7 +98,6 @@ public class KakaoPayController {
         model.addAttribute("days",daysBetween);
         model.addAttribute("guest", guest);
         model.addAttribute("room", room);
-//        ======================================================
 
         model.addAttribute("payResult", kakaoApprove);
         model.addAttribute("center", "paySuccess");
@@ -168,13 +167,26 @@ public class KakaoPayController {
         KakaoCancelResponse kakaoCancelResponse = kakaoPayService.kakaoCancel(reserve);
         try {
             kakaoPayService.refundComplete(reserve);
-        } catch (Exception e) {
+            int reserveId2 = reserve.getReserveId();
+
+            // 변경된 reserve 정보를 데이터베이스에서 다시 조회
+            Reserve refundReserve = reserveService.get(reserveId2);
+            model.addAttribute("reserve", refundReserve);
+            log.info("===============================확인요망!!"+String.valueOf(refundReserve));
+            String guestId = refundReserve.getGuestId();
+            Guest guest= null;
+            try {
+                guest=guestService.get(guestId);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            model.addAttribute("guest", guest);
+             } catch (Exception e) {
             throw new RuntimeException(e);
         }
-//        return "index";
-
 //        return new ResponseEntity<>(kakaoCancelResponse, HttpStatus.OK);
         model.addAttribute("center","refundSuccess");
-        return "redirect:/reservelist?guestId="+reserve.getGuestId();
+
+        return  "index";
     }
 }
