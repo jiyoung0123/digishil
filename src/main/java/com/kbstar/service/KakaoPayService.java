@@ -95,19 +95,22 @@ public class KakaoPayService {
                 "https://kapi.kakao.com/v1/payment/approve",
                 requestEntity,
                 KakaoApproveResponse.class);
-
         log.info("dddddddddddddddddddddddddddddddddddddddddddddddddddd  : ApproveResponse 끝");
         return approveResponse;
     }
 
-    public KakaoCancelResponse kakaoCancel() {
+    public KakaoCancelResponse kakaoCancel(Reserve reserve) {
+        log.info("====================================================================kakaoCancel도착");
+        log.info(String.valueOf(reserve));
         // 카카오페이 요청
         MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
         parameters.add("cid", cid);
-        parameters.add("tid", "tid 넣어주기");
-        parameters.add("cancel_amount", "300000");
+        parameters.add("tid", reserve.getReserveApi());
+        parameters.add("cancel_amount", String.valueOf(reserve.getReservePayAmount()));
         parameters.add("cancel_tax_free_amount", "0");
         parameters.add("cancel_vat_amount", "0");
+
+        log.info(parameters.toString());
 
         // 파라미터, 헤더
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(parameters, this.getHeaders());

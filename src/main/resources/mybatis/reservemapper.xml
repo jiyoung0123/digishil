@@ -35,7 +35,7 @@
     </select>
 
     <update id="update" parameterType="reserve">
-        UPDATE reserve SET reserveConfirm=1, reserveStatus='결제완료', reservePayAmount=#{reservePrice}, reservePayDate=SYSDATE, reservePayType=#{reservePayType} WHERE reserveId=#{reserveId}
+        UPDATE reserve SET reserveConfirm=1, reserveStatus='결제완료', reservePayAmount=#{reservePrice}, reservePayDate=SYSDATE, reservePayType=#{reservePayType}, reserveApi=#{reserveApi} WHERE reserveId=#{reserveId}
     </update>
 
 

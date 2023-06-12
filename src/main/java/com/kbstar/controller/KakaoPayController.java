@@ -34,7 +34,6 @@ public class KakaoPayController {
     private KakaoPayService kakaoPayService;
 
     public KakaoPayController(KakaoPayService kakaoPayService) {
-
         this.kakaoPayService = kakaoPayService;
     }
 
@@ -45,8 +44,8 @@ public class KakaoPayController {
         KakaoApproveResponse kakaoApprove = kakaoPayService.ApproveResponse(pgToken);
         log.info("KakaoApprove 확인해보기!!!!!!!!!!!!!!!!!!!!!!!!"+kakaoApprove.toString());
         log.info("----------------------------------------kakaoReady :"+kakaoReady);
-
         int reserveId = Integer.parseInt(kakaoApprove.getPartner_order_id());
+
         Reserve reserve = null;
         try {
             reserve = reserveService.get(reserveId);
@@ -55,8 +54,10 @@ public class KakaoPayController {
         }
 
         String reservePayType = kakaoApprove.getPayment_method_type();
+        String reserveApi=kakaoApprove.getTid();
         reserve.setReservePayType(reservePayType);
-
+        reserve.setReserveApi(reserveApi);
+        log.info("=================reserveApi매칭========================="+reserve.getReserveApi());
         try {
             kakaoPayService.reserveComplete(reserve);
             int reserveId2 = reserve.getReserveId();

@@ -78,8 +78,17 @@ public class KakaoPayRestController {
      * 환불
      */
     @RequestMapping("/refund")
-    public ResponseEntity refund() {
-        KakaoCancelResponse kakaoCancelResponse = kakaoPayService.kakaoCancel();
+    public ResponseEntity refund(@RequestParam("reserveId") int reserveId) {
+        log.info("================================aaaaaaaaaaaaaaaaaaa  : refund 도착");
+        Reserve reserve = null;
+        try {
+            reserve = reserveService.get(reserveId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        log.info("refund 도착---------------------" + String.valueOf(reserve));
+        KakaoCancelResponse kakaoCancelResponse = kakaoPayService.kakaoCancel(reserve);
+        log.info("=============================aaaaaaaaaaaaaaaaaaa  : readyToKakaoPay 끝");
         return new ResponseEntity<>(kakaoCancelResponse, HttpStatus.OK);
     }
 }

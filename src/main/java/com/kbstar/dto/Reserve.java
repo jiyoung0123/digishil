@@ -29,7 +29,7 @@ public class Reserve {
     private String reserveBank;
     private String reserveAccHolder;
     private int reserveAccount;
-    private int reserveApi;
+    private String reserveApi;
     private int reserveRefund;
 
 

@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
+
 <body style="padding-top: 72px;">
 
 <section class="py-5">
@@ -37,22 +38,24 @@
 
    <c:forEach var="obj" items="${getMyReserve}">
         <div class="list-group shadow mb-5">
-          <a class="list-group-item list-group-item-action p-4" href="/room/detail?id=${obj.roomId}">
           <div class="row">
-            <div class="col-lg-4 align-self-center mb-4 mb-lg-0">
-              <div class="d-flex align-items-center mb-3">
-                <h2 class="h5 mb-0">${obj.hostName}</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="/img/avatar/avatar-0.jpg" alt="Jack London">
+              <div class="col-lg-4 align-self-center mb-4 mb-lg-0">
+                <a class="list-group-item list-group-item-action p-4" href="/room/detail?id=${obj.roomId}">
+                  <div class="d-flex align-items-center mb-3">
+                    <h2 class="h5 mb-0">${obj.hostName}</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="/img/avatar/avatar-0.jpg" alt="Jack London">
+                  </div>
+                  <p class="text-sm text-muted">${obj.roomName}</p>
+                  <c:choose>
+                  <c:when test="${obj.reserveStatus == null}">
+                  <span class="badge badge-pill p-2 badge-secondary-light"><fmt:formatDate value="${obj.reserveCheckIn}" pattern="yyyy, MMM dd"/> - <fmt:formatDate value="${obj.reserveCheckOut}" pattern="yyyy, MMM dd"/></span>
+                  </c:when>
+                  <c:otherwise>
+                  <span class="badge badge-pill p-2 badge-primary-light"><fmt:formatDate value="${obj.reserveCheckIn}" pattern="yyyy, MMM dd"/> - <fmt:formatDate value="${obj.reserveCheckOut}" pattern="yyyy, MMM dd"/></span>
+                  </c:otherwise>
+                  </c:choose>
+                </a>
               </div>
-              <p class="text-sm text-muted">${obj.roomName}</p>
-              <c:choose>
-              <c:when test="${obj.reserveStatus == null}">
-              <span class="badge badge-pill p-2 badge-secondary-light"><fmt:formatDate value="${obj.reserveCheckIn}" pattern="yyyy, MMM dd"/> - <fmt:formatDate value="${obj.reserveCheckOut}" pattern="yyyy, MMM dd"/></span>
-              </c:when>
-              <c:otherwise>
-              <span class="badge badge-pill p-2 badge-primary-light"><fmt:formatDate value="${obj.reserveCheckIn}" pattern="yyyy, MMM dd"/> - <fmt:formatDate value="${obj.reserveCheckOut}" pattern="yyyy, MMM dd"/></span>
-              </c:otherwise>
-              </c:choose>
-            </div>
+
             <div class="col-lg-8">
               <div class="row">
                 <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">
@@ -98,7 +101,11 @@
                           <i class="fa fa-check fa-fw me-2"> </i>${obj.reserveStatus}
                       </span><br class="d-none d-lg-block">
                         <span class="text-primary text-sm text-uppercase">
-                          <i class="fa fa-check fa-fw me-2"> </i>Confirmed
+                          <form action="/payment/refund" method="GET">
+                             <input type="hidden" id="reserveId" name="reserveId" value="${obj.reserveId}">
+                             <a href="payment/refund?reserveId=${obj.reserveId}"><i class="fa fa-check fa-fw me-2"></i>환불하기</a>
+                          </form>
+<%--                           <p class="text-center"><small class="text-muted text-center"><a href="/register">회원 가입 하러 가기</a></small></p>--%>
                         </span>
                       </c:otherwise>
                     </c:choose>
@@ -114,7 +121,7 @@
               </div>
             </div>
           </div>
-        </a>
+<%--        </a>--%>
         </div>
       </c:forEach>
 
