@@ -34,6 +34,10 @@
         WHERE roomId= #{roomId}
     </select>
 
+    <select id="refund" parameterType="reserve">
+        UPDATE reserve SET reserveConfirm=2, reserveStatus='결제취소', reservePayAmount=0, reserveRefund=#{reservePrice} WHERE reserveId=#{reserveId}
+    </select>
+
     <update id="update" parameterType="reserve">
         UPDATE reserve SET reserveConfirm=1, reserveStatus='결제완료', reservePayAmount=#{reservePrice}, reservePayDate=SYSDATE, reservePayType=#{reservePayType}, reserveApi=#{reserveApi} WHERE reserveId=#{reserveId}
     </update>

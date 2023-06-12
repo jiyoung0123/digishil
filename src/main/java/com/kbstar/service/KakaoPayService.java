@@ -143,4 +143,8 @@ public class KakaoPayService {
     public void reserveComplete(Reserve reserve) throws Exception {
         reserveMapper.update(reserve);
     }
+
+    public void refundComplete(Reserve reserve) throws Exception {
+        reserveMapper.refund(reserve);
+    }
 }

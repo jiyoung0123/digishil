@@ -30,7 +30,7 @@ public class KakaoApproveResponse {
     @Getter
     @Setter
     @ToString
-    public class Amount {
+    public static class Amount {
 
         private int total; // 총 결제 금액
         private int tax_free; // 비과세 금액
