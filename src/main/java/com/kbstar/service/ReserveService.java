@@ -1,5 +1,6 @@
 package com.kbstar.service;
 
+import com.kbstar.dto.HostRoomReserveReview;
 import com.kbstar.dto.Reserve;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.ReserveMapper;
@@ -61,5 +62,8 @@ public class ReserveService implements KBService<Integer, Reserve> {
 
     public List<Reserve> getMyReserve(String guestId)throws Exception{
         return mapper.getMyReserve(guestId);
+    }
+    public List<HostRoomReserveReview> getHostGuestReserve(String hostId, String guestId) throws Exception{
+        return mapper.selectHostGuestReserve(hostId, guestId);
     }
 }

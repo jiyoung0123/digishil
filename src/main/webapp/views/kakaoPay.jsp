@@ -33,6 +33,43 @@
       })
     })
   });
+
+    ////////////////준혁/////////
+//document -ready
+  $(()=>{
+
+      $('#buttonSendMessage').click(() => {
+          console.log('clicked');
+          sendData();
+      });
+  })
+
+
+
+//chat data send
+  /// chatRoom이 열리면서 send data
+  function sendData() {
+      $.ajax({
+          url: 'chat/OpenRoomRequest',
+          data: {
+              'chatContents': $('#chatContents').val(),
+              'chatSender': $('#chatSender').val()
+          }
+      })
+          .done((data) => {
+              console.log("success");
+              // chatDetails.display(data);
+
+          })
+          .fail(() => {
+              console.log("failed to load data");
+          });
+  }
+
+
+
+
+
 </script>
 
 
@@ -114,7 +151,14 @@
               <p class="text-sm text-muted">이 숙소의 체크인 시간은 오후 3:00부터 오후 11:00까지입니다이며, 체크아웃은 오전 12:00입니다.</p>
             </div><img class="avatar avatar-md p-1 flex-shrink-0 ms-4" src="/img/avatar/avatar-10.jpg" alt="Jack London">
           </div>
-          <textarea class="form-control" name="hello" rows="4"></textarea>
+            <form class="bg-light rounded shadow-sm" action="#">
+                <div class="input-group">
+                    <input type="hidden" id="chatSender" value="${guestId}"/>
+                    <textarea class="form-control border-0 p-4 bg-light text-sm" id="chatContents" placeholder="Type a message" aria-describedby="button-sendMessage"></textarea>
+                    <button class="btn btn-link" id="buttonSendMessage" type="button"><i class="fa fa-paper-plane"></i></button>
+                </div>
+            </form>
+            <!-- http://127.0.0.1/kakaopay?reserveId=13 -->
         </div>
         <%--        message box to host for reserve end--%>
         <div class="row form-block flex-column flex-sm-row">

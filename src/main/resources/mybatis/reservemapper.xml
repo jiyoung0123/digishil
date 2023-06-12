@@ -52,4 +52,15 @@
         WHERE reserve.guestId = #{guestId}
         ORDER BY reserve.reserveCheckIn ASC
     </select>
+    <select id="selectHostGuestReserve" resultType="HostRoomReserveReview">
+        SELECT H.hostId, H.hostName, H.hostPwd, H.hostImage, H.hostIntro, H.hostSuper, H.hostLang, H.hostRate, H.hostYear, H.hostJob, H.hostVerified, H.hostRegDate, H.hostDelDate,
+               O.roomId, O.roomPrice, O.roomName, O.roomAddress, O.roomLoc, O.roomInfo, O.roomIntro, O.roomClean, O.roomPet, O.roomWPrice, O.roomCap, O.roomType, O.roomLat, O.roomLng, O.roomImage1, O.roomImage2, O.roomImage3, O.roomImage4, O.roomImage5, O.roomImage6, O.roomLikes,
+               E.reserveId, E.guestId, E.reserveCheckIn, E.reserveCheckOut, E.reservePrice, E.reserveConfirm, E.reserveCal, E.reserveCap, E.reserveStatus, E.reservePayRate, E.reservePayAmount, E.reservePayDate, E.reservePayType, E.reserveDiscount, E.reservePoint, E.reserveBank, E.reserveAccHolder, E.reserveAccount, E.reserverApi, E.reserveRefund,
+               G.guestName
+        FROM host H
+                 INNER JOIN room O ON H.hostId = O.hostId
+                 INNER JOIN reserve E ON O.roomId = E.roomId
+                 INNER JOIN guest G ON E.guestId = G.guestId
+        WHERE H.hostId=#{hostId} AND E.guestId=#{guestId}
+    </select>
 </mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbstar.mapper.ChatRoomMapper">
+
+    <select id="selectall"  resultType="Chatroom">
+        SELECT * FROM chatRoom
+    </select>
+    <insert id="insert" parameterType="Chatroom">
+        INSERT INTO chatRoom VALUES (chatRoomSeq.NEXTVAL,#{hostId},#{guestId})
+    </insert>
+    <select id="findChatRoomNumber" parameterType="String" resultType="Integer">
+        SELECT cR.chatRoomId as chatRoomId
+        FROM chatRoom cR
+        WHERE hostId=#{hostId} AND guestID=#{guestId}
+    </select>
+
+</mapper>

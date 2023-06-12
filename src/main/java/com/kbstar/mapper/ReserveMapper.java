@@ -1,5 +1,6 @@
 package com.kbstar.mapper;
 
+import com.kbstar.dto.HostRoomReserveReview;
 import com.kbstar.dto.Reserve;
 import com.kbstar.frame.KBMapper;
 import org.apache.ibatis.annotations.Mapper;
@@ -16,4 +17,6 @@ public interface ReserveMapper extends KBMapper<Integer, Reserve> {
     public List<Reserve> getMyReserve(String guestId);
 
     public Reserve refund(Reserve reserve);
+    public List<HostRoomReserveReview> selectHostGuestReserve(String hostId, String guestId);
+
 }
