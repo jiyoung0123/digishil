@@ -66,4 +66,9 @@ public class ReserveService implements KBService<Integer, Reserve> {
     public List<HostRoomReserveReview> getHostGuestReserve(String hostId, String guestId) throws Exception{
         return mapper.selectHostGuestReserve(hostId, guestId);
     }
+
+    public HostRoomReserveReview findByReserveId(int reserveId) throws Exception{
+        return mapper.findByReserveId(reserveId);
+    }
+
 }

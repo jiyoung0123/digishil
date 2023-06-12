@@ -37,12 +37,31 @@
     ////////////////준혁/////////
 //document -ready
   $(()=>{
+      let reserveId = ${reserve.reserveId};
+
+      //findHostId(reserveId);
 
       $('#buttonSendMessage').click(() => {
           console.log('clicked');
           sendData();
       });
+
   })
+
+
+  // function findHostId(reserveId){
+  //     $.ajax({
+  //         url:'/findHostIdOfRoom',
+  //         data: {
+  //             'reserveId': reserveId
+  //         }
+  //     }).done((data)=>{
+  //         console.log('find my host Id');
+  //         console.log(data);
+  //     }).fail(()=>{
+  //         console.log('host Id failed');
+  //     })
+  // }
 
 
 
@@ -52,21 +71,27 @@
       $.ajax({
           url: 'chat/OpenRoomRequest',
           data: {
+              'hostId':'${hostId}',
               'chatContents': $('#chatContents').val(),
-              'chatSender': $('#chatSender').val()
+              'chatSender': '${chatSender}'
           }
       })
-          .done((data) => {
-              console.log("success");
+          .done(() => {
+              console.log("DB 전송 success");
               // chatDetails.display(data);
-
+              $('#chatRoomBox').hide();
+              let html =
+                  `
+                <div id="chatSent">
+                    <h6> 정상적으로 채팅방이 열렸습니다. </h6>
+                </div>
+                  `
+              $('#chatRoom').append(html);
           })
           .fail(() => {
-              console.log("failed to load data");
+              console.log("DB 전송 실패 failed to load data");
           });
   }
-
-
 
 
 
@@ -152,7 +177,7 @@
             </div><img class="avatar avatar-md p-1 flex-shrink-0 ms-4" src="/img/avatar/avatar-10.jpg" alt="Jack London">
           </div>
             <form class="bg-light rounded shadow-sm" action="#">
-                <div class="input-group">
+                <div class="input-group" id="chatRoomBox">
                     <input type="hidden" id="chatSender" value="${guestId}"/>
                     <textarea class="form-control border-0 p-4 bg-light text-sm" id="chatContents" placeholder="Type a message" aria-describedby="button-sendMessage"></textarea>
                     <button class="btn btn-link" id="buttonSendMessage" type="button"><i class="fa fa-paper-plane"></i></button>

@@ -1,6 +1,7 @@
 package com.kbstar.controller;
 
 import com.kbstar.dto.Guest;
+import com.kbstar.dto.HostRoomReserveReview;
 import com.kbstar.dto.Reserve;
 import com.kbstar.service.GuestService;
 import com.kbstar.service.ReserveService;
@@ -84,6 +85,13 @@ public class AjaxImplController {
             result="false";
         }
         return result;
+    }
+
+    @RequestMapping("/findHostIdOfRoom")
+    public String checkReserveId(int reserveId) throws Exception {
+        HostRoomReserveReview hostRoomInfo = (HostRoomReserveReview) reserveService.findByReserveId(reserveId);
+        String findedHostId = hostRoomInfo.getHostId();
+        return findedHostId;
     }
 
 }

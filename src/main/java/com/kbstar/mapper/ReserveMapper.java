@@ -18,5 +18,7 @@ public interface ReserveMapper extends KBMapper<Integer, Reserve> {
 
     public Reserve refund(Reserve reserve);
     public List<HostRoomReserveReview> selectHostGuestReserve(String hostId, String guestId);
+    public HostRoomReserveReview findByReserveId(Integer reserveId);
+
 
 }
