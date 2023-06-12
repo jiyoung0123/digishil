@@ -1,8 +1,6 @@
 package com.kbstar.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
@@ -30,6 +28,8 @@ public class KakaoApproveResponse {
     @Getter
     @Setter
     @ToString
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Amount {
 
         private int total; // 총 결제 금액
