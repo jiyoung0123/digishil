@@ -4,6 +4,7 @@ import com.kbstar.dto.Guest;
 import com.kbstar.service.GuestService;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
@@ -14,6 +15,8 @@ public class MailUtil {
 
     @Autowired
     GuestService guestService;
+    @Value("${guestmail.password}")
+    private String mailpassword;
 
 
     public void sendEmail(Guest guest) throws Exception{
@@ -22,7 +25,7 @@ public class MailUtil {
         String charSet="utf-8";
         String hostSMTP="smtp.mail.nate.com";
         String hostSMTPid="digishil"; //관리자 이메일 아이디
-        String hostSMTPpw="qw12er34!!"; //관리자 이메일 비밀번호
+        String hostSMTPpw=mailpassword; //관리자 이메일 비밀번호
 
         //보내는 사람
         String fromEmail="digishil@nate.com"; //보내는 사람 이메일
