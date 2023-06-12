@@ -50,8 +50,9 @@ public class RoomController {
 
     @RequestMapping("/roomSearch")
     public String roomSearch(Model model, RoomSearch rs, @RequestParam(required = false, defaultValue = "1") int pageNo) throws Exception {
-        log.info("----------------------------"+rs.toString());
         PageInfo<Room> p = new PageInfo<>(roomService.roomSearch(pageNo, rs), 5);
+        log.info("----------------------------"+p);
+        log.info("----------------------------"+rs);
         model.addAttribute("target","room");
         model.addAttribute("roomSearchList",p);
         model.addAttribute("rs",rs);

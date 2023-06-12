@@ -7,13 +7,13 @@
   <ul class="pagination ">
     <c:choose>
       <c:when test="${roomSearchList.getPrePage() != 0}">
-        <li>
-          <a href="/${target}/roomSearch?pageNo=${roomSearchList.getPrePage()}&roomName=${rs.roomName}&&roomLoc=${rs.roomLoc}&&roomType=${rs.roomType}">Previous</a>
+        <li class="page-item">
+          <a class="page-link" href="/${target}/roomSearch?pageNo=${roomSearchList.getPrePage()}&roomName=${rs.roomName}&&roomLoc=${rs.roomLoc}&&roomType=${rs.roomType}">Previous</a>
         </li>
       </c:when>
       <c:otherwise>
         <li class="disabled">
-          <a href="#">Previous</a>
+          <a class="page-link" href="#"><i class="fa fa-angle-left"></i></a>
         </li>
       </c:otherwise>
     </c:choose>
@@ -22,12 +22,12 @@
       <c:choose>
         <c:when test="${roomSearchList.getPageNum() == page}">
           <li class="active">
-            <a  href="/${target}/roomSearch?pageNo=${page}&roomName=${rs.roomName}&&roomLoc=${rs.roomLoc}&&roomType=${rs.roomType}">${page }</a>
+            <a class="page-link" href="/${target}/roomSearch?pageNo=${page}&roomName=${rs.roomName}&&roomLoc=${rs.roomLoc}&&roomType=${rs.roomType}">${page }</a>
           </li>
         </c:when>
         <c:otherwise>
-          <li>
-            <a href="/${target}/roomSearch?pageNo=${page}&roomName=${rs.roomName}&&roomLoc=${rs.roomLoc}&&roomType=${rs.roomType}">${page }</a>
+          <li class="page-item">
+            <a class="page-link" href="/${target}/roomSearch?pageNo=${page}&roomName=${rs.roomName}&&roomLoc=${rs.roomLoc}&&roomType=${rs.roomType}">${page }</a>
           </li>
         </c:otherwise>
       </c:choose>
@@ -35,13 +35,13 @@
     </c:forEach>
     <c:choose>
       <c:when test="${roomSearchList.getNextPage() != 0}">
-        <li>
-          <a href="/${target}/roomSearch?pageNo=${roomSearchList.getNextPage()}&roomName=${rs.roomName}&&roomLoc=${rs.roomLoc}&&roomType=${rs.roomType}">Next</a>
+        <li class="page-item">
+          <a class="page-link" href="/${target}/roomSearch?pageNo=${roomSearchList.getNextPage()}&roomName=${rs.roomName}&&roomLoc=${rs.roomLoc}&&roomType=${rs.roomType}">Next</a>
         </li>
       </c:when>
       <c:otherwise>
         <li class="disabled">
-          <a href="#">Next</a>
+          <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
         </li>
       </c:otherwise>
     </c:choose>
