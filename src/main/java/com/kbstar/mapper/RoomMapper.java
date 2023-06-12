@@ -14,6 +14,6 @@ import java.util.List;
 public interface RoomMapper extends KBMapper<Integer, Room> {
     Page<Room> getpage() throws Exception;
 
-    List<Room> roomSearch(RoomSearch rs) throws Exception;
+    Page<Room> roomSearch(RoomSearch rs) throws Exception;
 
 }

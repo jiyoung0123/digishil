@@ -347,38 +347,77 @@
             </div>
             <div class="row">
                 <!-- place item-->
-                <c:forEach var="roomList" items="${roomList.getList()}">
-<%--                <c:forEach var="roomList" items="${roomList}">--%>
-                    <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
-                        <div class="card h-100 border-0 shadow">
-                            <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="/room/detail?id=${roomList.roomId}"></a>
-                                <div class="card-img-overlay-bottom z-index-20">
-                                    <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="/img/avatar/avatar-0.jpg" alt="Pamela"/>
-                                        <div>${roomList.hostName}</div>
+                <c:choose>
+                    <c:when test="${roomList !=null}">
+                        <c:forEach var="roomList" items="${roomList.getList()}">
+                            <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
+                                <div class="card h-100 border-0 shadow">
+                                    <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="/room/detail?id=${roomList.roomId}"></a>
+                                        <div class="card-img-overlay-bottom z-index-20">
+                                            <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="/img/avatar/avatar-0.jpg" alt="Pamela"/>
+                                                <div>${roomList.hostName}</div>
+                                            </div>
+                                        </div>
+                                        <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();">
+                                            <svg class="svg-icon text-white">
+                                                <use xlink:href="#heart-1"> </use>
+                                            </svg></a></div>
+                                    </div>
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="w-100">
+                                            <h6 class="card-title"><a class="text-decoration-none text-dark" href="/room/detail?id=${roomList.roomId}">${roomList.roomName}</a></h6>
+                                            <div class="d-flex card-subtitle mb-3">
+                                                <p class="flex-grow-1 mb-0 text-muted text-sm">${roomList.roomType}</p>
+                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
+                                                </p>
+                                            </div>
+                                            <p class="card-text text-muted"><span class="h4 text-primary"><fmt:formatNumber type="number" pattern="₩###,###" value="${roomList.roomPrice}"/></span> per night</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();">
-                                    <svg class="svg-icon text-white">
-                                        <use xlink:href="#heart-1"> </use>
-                                    </svg></a></div>
                             </div>
-                            <div class="card-body d-flex align-items-center">
-                                <div class="w-100">
-                                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="/room/detail?id=${roomList.roomId}">${roomList.roomName}</a></h6>
-                                    <div class="d-flex card-subtitle mb-3">
-                                        <p class="flex-grow-1 mb-0 text-muted text-sm">${roomList.roomType}</p>
-                                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                                        </p>
+                        </c:forEach>
+                        <%-- pagination start --%>
+                        <jsp:include page="../page.jsp"/>
+                        <%-- pagination end--%>
+                    </c:when>
+
+                    <c:otherwise>
+                        <c:forEach var="roomList" items="${roomSearchList.getList()}">
+                            <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
+                                <div class="card h-100 border-0 shadow">
+                                    <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="/room/detail?id=${roomSearchList.roomId}"></a>
+                                        <div class="card-img-overlay-bottom z-index-20">
+                                            <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="/img/avatar/avatar-0.jpg" alt="Pamela"/>
+                                                <div>${roomSearchList.hostName}</div>
+                                            </div>
+                                        </div>
+                                        <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();">
+                                            <svg class="svg-icon text-white">
+                                                <use xlink:href="#heart-1"> </use>
+                                            </svg></a></div>
                                     </div>
-                                    <p class="card-text text-muted"><span class="h4 text-primary"><fmt:formatNumber type="number" pattern="₩###,###" value="${roomList.roomPrice}"/></span> per night</p>
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="w-100">
+                                            <h6 class="card-title"><a class="text-decoration-none text-dark" href="/room/detail?id=${roomSearchList.roomId}">${roomSearchList.roomName}</a></h6>
+                                            <div class="d-flex card-subtitle mb-3">
+                                                <p class="flex-grow-1 mb-0 text-muted text-sm">${roomSearchList.roomType}</p>
+                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
+                                                </p>
+                                            </div>
+                                            <p class="card-text text-muted"><span class="h4 text-primary"><fmt:formatNumber type="number" pattern="₩###,###" value="${roomSearchList.roomPrice}"/></span> per night</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            <%-- pagination start --%>
-            <jsp:include page="../page.jsp"/>
-            <%-- pagination end--%>
+                        </c:forEach>
+                        <%-- pagination start --%>
+                        <jsp:include page="../pageSearch.jsp"/>
+                        <%-- pagination end--%>
+                    </c:otherwise>
+                </c:choose>
+
+
         </div>
         <div class="col-lg-6 map-side-lg pe-lg-0">
             <div class="map-full shadow-left" id="categorySideMap"></div>

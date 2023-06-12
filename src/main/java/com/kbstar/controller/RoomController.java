@@ -49,13 +49,12 @@ public class RoomController {
     }
 
     @RequestMapping("/roomSearch")
-    public String roomSearch(Model model, RoomSearch rs) throws Exception {
+    public String roomSearch(Model model, RoomSearch rs, @RequestParam(required = false, defaultValue = "1") int pageNo) throws Exception {
         log.info("----------------------------"+rs.toString());
-        List<Room> list = null;
-        list = roomService.roomSearch(rs);
-
+        PageInfo<Room> p = new PageInfo<>(roomService.roomSearch(pageNo, rs), 5);
+        model.addAttribute("target","room");
+        model.addAttribute("roomSearchList",p);
         model.addAttribute("rs",rs);
-        model.addAttribute("roomList",list);
         model.addAttribute("center",dir+"list");
         return "index";
     }
