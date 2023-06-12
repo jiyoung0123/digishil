@@ -184,8 +184,17 @@ public class KakaoPayController {
              } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        int roomId = reserve.getRoomId();
+        Room room = null;
+        try {
+            room=roomService.get(roomId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 //        return new ResponseEntity<>(kakaoCancelResponse, HttpStatus.OK);
+        model.addAttribute("room", room);
         model.addAttribute("center","refundSuccess");
+        model.addAttribute("kakaoCancelResponse",kakaoCancelResponse);
 
         return  "index";
     }

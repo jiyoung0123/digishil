@@ -13,19 +13,17 @@
         <div class="row">
             <div class="col-lg-7">
                 <p class="subtitle text-primary">Book your holiday home</p>
-                <h1 class="h2 mb-5">환불 완료<span class="text-muted float-end">Step 4</span>      </h1>
+                <h1 class="h2 mb-5">환불 완료</h1>
                 <div class="text-block">
-                    <p class="text-muted">${guest.guestName}님, 예약해 주셔서 감사합니다.</p>
-                    <p class="text-muted mb-5">${room.roomName}을 ${days}박 예약 하셨습니다.</p>
-                    <p class="text-muted mb-5">총 결제금액 : <fmt:formatNumber type="number" pattern="###,###원" value="${payResult.amount.total}"/> <br>
-                        결제 승인 시간 : ${payResult.approved_at}
+                    <p class="text-muted">${guest.guestName}님, 환불이 정상적으로 완료 되었습니다.</p>
+                    <p class="text-muted mb-5">총 결제 취소금액 : <fmt:formatNumber type="number" pattern="###,###원" value="${reserve.reserveRefund}"/> <br>
+                        결제 취소 시간 : ${kakaoCancelResponse.canceled_at}
                     </p>
 
 <%--                    ======================================================예약 정보 확인하기===================================================--%>
-<%--                    <form action="/reservelist" method="get" id="reserveList">--%>
-                        <p class="text-center mb-5"><a class="btn btn-primary mx-2 mb-2" type="submit" href="/reservelist?guestId=${loginGuest.guestId}"> <i class="far fa-file me-2"></i>내 예약 확인하기</a><a class="btn btn-outline-muted mb-2" href="/room/list">다른 숙소 둘러보기</a></p>
-                        <p class="mb-5 text-center"><img class="img-fluid" src="/img/illustration/undraw_celebration_0jvk.svg" alt="" style="width: 400px;"></p>
-<%--                    </form>--%>
+                    <p class="text-center mb-5"><a class="btn btn-primary mx-2 mb-2" type="submit" href="/room/list"> <i class="far fa-file me-2"></i>다른 숙소 둘러보기</a><a class="btn btn-outline-muted mb-2" href="/reservelist?guestId=${guest.guestId}">내 예약 확인하기</a></p>
+
+                    <p class="mb-5 text-center"><img class="img-fluid" src="/img/illustration/undraw_celebration_0jvk.svg" alt="" style="width: 400px;"></p>
 <%--             ======================================================예약 정보 확인하기===================================================--%>
                 </div>
             </div>

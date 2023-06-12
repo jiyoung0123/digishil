@@ -19,116 +19,85 @@
       </div>
     </div>
 
-<%--    =====================================================================================================--%>
-
-<%--    --%>
-<%--      <tr>--%>
-<%--          &lt;%&ndash;                        application property에서 uimg 등록했으니, uimg만 써도 그 폴더 찾음&ndash;%&gt;--%>
-<%--        <td ><img class="small_img" src="/uimg/${obj.item_imgname}"></td>--%>
-<%--        <td>${obj.item_id}</td>--%>
-<%--        <td>${obj.item_name}</td>--%>
-<%--        <td><fmt:formatNumber value="${obj.item_price}" pattern="###,###원" /></td>--%>
-<%--        <td>${obj.cnt}</td>--%>
-<%--        <td><fmt:formatNumber value="${obj.cnt * obj.item_price}" pattern="###,###원" /></td>--%>
-<%--        <td><fmt:formatDate  value="${obj.rdate}" pattern="yyyy-MM-dd" /></td>--%>
-<%--        <td><a href="/item/delcart?id=${obj.id}" class="btn btn-info" role="button">DELETE</a></td>--%>
-<%--      </tr>--%>
-<%--      <c:set var="total" value="${total + (obj.cnt * obj.item_price)}"/>--%>
-<%--    --%>
-<%--    =====================================================================================================--%>
-
    <c:forEach var="obj" items="${getMyReserve}">
-        <div class="list-group shadow mb-5">
-          <div class="row">
-              <div class="col-lg-4 align-self-center mb-4 mb-lg-0">
-                <a class="list-group-item list-group-item-action p-4" href="/room/detail?id=${obj.roomId}">
-                  <div class="d-flex align-items-center mb-3">
-                    <h2 class="h5 mb-0">${obj.hostName}</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="/img/avatar/avatar-0.jpg" alt="Jack London">
-                  </div>
-                  <p class="text-sm text-muted">${obj.roomName}</p>
-                  <c:choose>
-                  <c:when test="${obj.reserveStatus == null}">
-                  <span class="badge badge-pill p-2 badge-secondary-light"><fmt:formatDate value="${obj.reserveCheckIn}" pattern="yyyy, MMM dd"/> - <fmt:formatDate value="${obj.reserveCheckOut}" pattern="yyyy, MMM dd"/></span>
-                  </c:when>
-                  <c:otherwise>
-                  <span class="badge badge-pill p-2 badge-primary-light"><fmt:formatDate value="${obj.reserveCheckIn}" pattern="yyyy, MMM dd"/> - <fmt:formatDate value="${obj.reserveCheckOut}" pattern="yyyy, MMM dd"/></span>
-                  </c:otherwise>
-                  </c:choose>
-                </a>
-              </div>
-
-            <div class="col-lg-8">
-              <div class="row">
-                <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">
-                  <h6 class="label-heading">객실형태</h6>
-                  <p class="text-sm fw-bold">${obj.roomType}</p>
-                  <h6 class="label-heading">지역</h6>
-                  <p class="text-sm fw-bold mb-0">${obj.roomLoc}</p>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3 py-3">
-                  <h6 class="label-heading">1박당 금액</h6>
-                  <p class="text-sm fw-bold">${obj.roomWPrice}</p>
-                  <h6 class="label-heading">결제금액</h6>
-                  <p class="text-sm fw-bold mb-0"><fmt:formatNumber type="number" pattern="###,###원" value="${obj.reservePayAmount}"/></p>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3 py-3">
-                  <c:choose>
-                    <c:when test="${obj.reservePayDate == null}">
-                      <h6 class="label-heading">예약날짜(결제일자)</h6>
-                      <p class="text-sm fw-bold">결제 후 예약확정</p>
+     <c:choose>
+       <c:when test="${obj.reserveStatus != '결제취소'}">
+          <div class="list-group shadow mb-5">
+            <div class="row">
+                <div class="col-lg-4 align-self-center mb-4 mb-lg-0">
+                  <a class="list-group-item list-group-item-action p-4" href="/room/detail?id=${obj.roomId}">
+                    <div class="d-flex align-items-center mb-3">
+                      <h2 class="h5 mb-0">${obj.hostName}</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="/img/avatar/avatar-0.jpg" alt="Jack London">
+                    </div>
+                    <p class="text-sm text-muted">${obj.roomName}</p>
+                    <c:choose>
+                    <c:when test="${obj.reserveStatus == null}">
+                    <span class="badge badge-pill p-2 badge-secondary-light"><fmt:formatDate value="${obj.reserveCheckIn}" pattern="yyyy, MMM dd"/> - <fmt:formatDate value="${obj.reserveCheckOut}" pattern="yyyy, MMM dd"/></span>
                     </c:when>
                     <c:otherwise>
-                      <h6 class="label-heading">예약날짜(결제일자)</h6>
-                      <p class="text-sm fw-bold"><fmt:formatDate value="${obj.reservePayDate}" pattern="yyyy, MMM dd"/></p>
+                    <span class="badge badge-pill p-2 badge-primary-light"><fmt:formatDate value="${obj.reserveCheckIn}" pattern="yyyy, MMM dd"/> - <fmt:formatDate value="${obj.reserveCheckOut}" pattern="yyyy, MMM dd"/></span>
                     </c:otherwise>
-                  </c:choose>
-                  <h6 class="label-heading">객실주소</h6>
-                  <p class="text-sm fw-bold mb-0">${obj.roomAddress}</p>
+                    </c:choose>
+                  </a>
                 </div>
-                <div class="col-12 col-lg-3 align-self-center">
-
+              <div class="col-lg-8">
+                <div class="row">
+                  <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">
+                    <h6 class="label-heading">객실형태</h6>
+                    <p class="text-sm fw-bold">${obj.roomType}</p>
+                    <h6 class="label-heading">지역</h6>
+                    <p class="text-sm fw-bold mb-0">${obj.roomLoc}</p>
+                  </div>
+                  <div class="col-6 col-md-4 col-lg-3 py-3">
+                    <h6 class="label-heading">1박당 금액</h6>
+                    <p class="text-sm fw-bold">${obj.roomWPrice}</p>
+                    <h6 class="label-heading">결제금액</h6>
+                    <p class="text-sm fw-bold mb-0"><fmt:formatNumber type="number" pattern="###,###원" value="${obj.reservePayAmount}"/></p>
+                  </div>
+                  <div class="col-6 col-md-4 col-lg-3 py-3">
                     <c:choose>
-                      <c:when test="${obj.reserveStatus == null}">
-                        <span class="text-muted text-sm text-uppercase">
-                          <i class="fa fa-times fa-fw me-2"> </i>예약미확정
-
-                        </span><br class="d-none d-lg-block">
-<%--                        <span class="text-primary text-sm text-uppercase">--%>
-<%--                          <i class="fa fa-check fa-fw me-2"> </i>Confirmed--%>
-<%--                        </span>--%>
+                      <c:when test="${obj.reservePayDate == null}">
+                        <h6 class="label-heading">예약날짜(결제일자)</h6>
+                        <p class="text-sm fw-bold">결제 후 예약확정</p>
                       </c:when>
                       <c:otherwise>
-                      <span class="text-primary text-sm text-uppercase me-4 me-lg-0">
-                          <i class="fa fa-check fa-fw me-2"> </i>${obj.reserveStatus}
-                      </span><br class="d-none d-lg-block">
-                        <span class="text-primary text-sm text-uppercase">
-                          <form action="/payment/refund" method="GET">
-                             <input type="hidden" id="reserveId" name="reserveId" value="${obj.reserveId}">
-                             <a id="refund" href="payment/refund?reserveId=${obj.reserveId}"
-                                onclick='return confirm("결제취소를 진행하시겠습니까? 한번 더 확인해 주세요");'>
-                               <i class="fa fa-check fa-fw me-2"></i>환불하기</a>
-                          </form>
-                          <%--                            <a id="refund" href="payment/refund?reserveId=${obj.reserveId}"><i class="fa fa-check fa-fw me-2"></i>환불하기</a>--%>
-                        </span>
+                        <h6 class="label-heading">예약날짜(결제일자)</h6>
+                        <p class="text-sm fw-bold"><fmt:formatDate value="${obj.reservePayDate}" pattern="yyyy, MMM dd"/></p>
                       </c:otherwise>
                     </c:choose>
-                   <br class="d-none d-lg-block">
-
-<%--                  <span class="text-primary text-sm text-uppercase me-4 me-lg-0">--%>
-<%--                    <i class="fa fa-check fa-fw me-2"> </i> ${obj.reserveStatus}--%>
-<%--                   </span><br class="d-none d-lg-block">--%>
-<%--                  <span class="text-primary text-sm text-uppercase">--%>
-<%--                    <i class="fa fa-check fa-fw me-2"> </i>Confirmed--%>
-<%--                  </span>--%>
+                    <h6 class="label-heading">객실주소</h6>
+                    <p class="text-sm fw-bold mb-0">${obj.roomAddress}</p>
+                  </div>
+                  <div class="col-12 col-lg-3 align-self-center">
+                      <c:choose>
+                        <c:when test="${obj.reserveStatus == null}">
+                          <span class="text-muted text-sm text-uppercase">
+                            <i class="fa fa-times fa-fw me-2"> </i>예약미확정
+                          </span><br class="d-none d-lg-block">
+                        </c:when>
+                        <c:otherwise>
+                        <span class="text-primary text-sm text-uppercase me-4 me-lg-0">
+                            <i class="fa fa-check fa-fw me-2"> </i>${obj.reserveStatus}
+                        </span><br class="d-none d-lg-block">
+                          <span class="text-primary text-sm text-uppercase">
+                            <form action="/payment/refund" method="GET">
+                               <input type="hidden" id="reserveId" name="reserveId" value="${obj.reserveId}">
+                               <a id="refund" href="payment/refund?reserveId=${obj.reserveId}"
+                                  onclick='return confirm("결제취소를 진행하시겠습니까? 한번 더 확인해 주세요");'>
+                                 <i class="fa fa-check fa-fw me-2"></i>환불하기</a>
+                            </form>
+                          </span>
+                        </c:otherwise>
+                      </c:choose>
+                     <br class="d-none d-lg-block">
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-<%--        </a>--%>
-        </div>
+           </div>
+          </c:when>
+      </c:choose>
       </c:forEach>
-
-
 
 
 
@@ -146,31 +115,7 @@
 </section>
 
 <!-- JavaScript files-->
-<%--<script>--%>
-<%--  // ------------------------------------------------------- //--%>
-<%--  //   Inject SVG Sprite ---%>
-<%--  //   see more here--%>
-<%--  //   https://css-tricks.com/ajaxing-svg-sprite/--%>
-<%--  // ------------------------------------------------------ //--%>
-<%--  function injectSvgSprite(path) {--%>
 
-<%--    var ajax = new XMLHttpRequest();--%>
-<%--    ajax.open("GET", path, true);--%>
-<%--    ajax.send();--%>
-<%--    ajax.onload = function(e) {--%>
-<%--      var div = document.createElement("div");--%>
-<%--      div.className = 'd-none';--%>
-<%--      div.innerHTML = ajax.responseText;--%>
-<%--      document.body.insertBefore(div, document.body.childNodes[0]);--%>
-<%--    }--%>
-<%--  }--%>
-<%--  // to avoid CORS issues when viewing using file:// protocol, using the demo URL for the SVG sprite--%>
-<%--  // use your own URL in production, please :)--%>
-<%--  // https://demo.bootstrapious.com/directory/1-0/icons/orion-svg-sprite.svg--%>
-<%--  //- injectSvgSprite('${path}icons/orion-svg-sprite.svg');--%>
-<%--  injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');--%>
-
-<%--</script>--%>
 <!-- jQuery-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
