@@ -43,8 +43,8 @@ public class ChatAjaxController {
                        String chatSender,
                        Integer chatRoomId,
                        Model model) throws Exception {
-        Chatcontents chatcontent = new Chatcontents(0, chatRoomId, chatSender, chatContents, null);
-        chatContentsService.register(chatcontent);
+        Chatcontents chatContent = new Chatcontents(0, chatRoomId, chatSender, chatContents, null);
+        chatContentsService.register(chatContent);
         return "index";
     }
     @RequestMapping("/display")

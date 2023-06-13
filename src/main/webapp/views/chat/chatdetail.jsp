@@ -154,9 +154,9 @@
     $.ajax({
       url: 'chat/request',
       data: {
-        'chatContents': $('#chatContents').val(),
         'chatRoomId': $('#chatRoomId').val(),
-        'chatSender': $('#chatSender').val()
+        'chatSender': $('#chatSender').val(),
+          'chatContents': $('#chatContentsBox').val()
       }
     })
             .done((data) => {
@@ -236,8 +236,8 @@
       <div class="container">
         <!-- Breadcrumbs -->
         <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mb-4">
-          <h1 class="mb-3 mb-md-0 hero-heading mb-0">Your messages with Anna</h1>
-          <div><a class="btn btn-link ps-0" href="user-messages.html"><i class="fa fa-arrow-left me-2"></i> Back to all messages</a></div>
+          <h1 class="mb-3 mb-md-0 hero-heading mb-0">${hostId}님과의 대화 </h1>
+          <div><a class="btn btn-link ps-0" href="/chat?guestId=${guestId}"><i class="fa fa-arrow-left me-2"></i> 채팅방으로 돌아가기</a></div>
         </div>
           <div id="reserveCardBody">
               <c:choose>
@@ -247,7 +247,7 @@
                               <div class="text-block pb-3">
                                   <div class="d-flex align-items-center justify-content-between">
                                       <div>
-                                          <h6> <a class="text-reset" href="detail-rooms.html"></a></h6>
+                                          <h6> <a class="text-reset" href="detail-rooms.html">${reserveInfo[0].roomName}</a></h6>
                                           <p class="text-muted text-sm mb-0">${reserveInfo[0].roomAddress}</p>
                                           <div class="mt-n1"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
                                           </div>
@@ -280,8 +280,8 @@
         <form class="bg-light rounded shadow-sm" action="#">
           <div class="input-group">
             <input type="hidden" id="chatRoomId" value="${chatRoomId}"/>
-            <input type="hidden" id="chatSender" value="${hostId}"/>
-            <textarea class="form-control border-0 p-4 bg-light text-sm" id="chatContents" placeholder="Type a message" aria-describedby="button-sendMessage"></textarea>
+            <input type="hidden" id="chatSender" value="${guestId}"/>
+            <textarea class="form-control border-0 p-4 bg-light text-sm" id="chatContentsBox" placeholder="Type a message" aria-describedby="button-sendMessage"></textarea>
             <button class="btn btn-link" id="buttonSendMessage" type="button"><i class="fa fa-paper-plane"></i></button>
           </div>
         </form>
