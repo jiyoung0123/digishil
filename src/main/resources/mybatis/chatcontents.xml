@@ -5,9 +5,9 @@
 <mapper namespace="com.kbstar.mapper.ChatContentsMapper">
 
     <select id="findRecentData" parameterType="Integer" resultType="ChatRecentData">
-        SELECT recentDate, recentContents
+        SELECT recentSender, recentDate, recentContents
         FROM (
-                 SELECT chatDate AS recentDate, chatContents AS recentContents,
+                 SELECT chatSender AS recentSender, chatDate AS recentDate, chatContents AS recentContents,
                         ROW_NUMBER() OVER (PARTITION BY cR.chatRoomId ORDER BY chatDate DESC) AS rn
                  FROM chatRoom cR
                           INNER JOIN chatContents cC ON cR.chatRoomId = cC.chatRoomId

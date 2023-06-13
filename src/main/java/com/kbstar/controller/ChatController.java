@@ -65,6 +65,8 @@ public class ChatController {
         log.info(jsonArray.toJSONString());
         log.info("===============");
 
+        model.addAttribute("guestId", guestId);
+
         model.addAttribute("center", dir+"chatroomAll");
         model.addAttribute("mList", jsonArray);
         return "index";

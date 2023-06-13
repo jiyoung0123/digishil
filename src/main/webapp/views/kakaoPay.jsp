@@ -82,11 +82,12 @@
               $('#chatRoomBox').hide();
               let html =
                   `
-                <div id="chatSent">
-                    <h6> 정상적으로 채팅방이 열렸습니다. </h6>
-                </div>
+            <div id="chatSent">
+                <h4> <a href="/chat?guestId=\${guestId}"><i class='fas fa-comment-alt' style='font-25px;color:cornflowerblue'></i>   메세지 확인하기</a>
+                </h4>
+            </div>
                   `
-              $('#chatRoom').append(html);
+              $('#chatRoomOuterBox').append(html);
           })
           .fail(() => {
               console.log("DB 전송 실패 failed to load data");
@@ -169,20 +170,22 @@
         </div>
 
         <%--        message box to host for reserve start--%>
-        <div class="text-block">
+        <div class="text-block" id="chatRoomOuterBox">
           <div class="d-flex">
             <div>
               <h5>질문이 있으신가요? 호스트에게 메시지를 보내 문의하세요.</h5>
               <p class="text-sm text-muted">이 숙소의 체크인 시간은 오후 3:00부터 오후 11:00까지입니다이며, 체크아웃은 오전 12:00입니다.</p>
             </div><img class="avatar avatar-md p-1 flex-shrink-0 ms-4" src="/img/avatar/avatar-10.jpg" alt="Jack London">
           </div>
-            <form class="bg-light rounded shadow-sm" action="#">
-                <div class="input-group" id="chatRoomBox">
-                    <input type="hidden" id="chatSender" value="${guestId}"/>
-                    <textarea class="form-control border-0 p-4 bg-light text-sm" id="chatContents" placeholder="Type a message" aria-describedby="button-sendMessage"></textarea>
-                    <button class="btn btn-link" id="buttonSendMessage" type="button"><i class="fa fa-paper-plane"></i></button>
+
+            <form class="bg-light rounded shadow-sm" action="#" >
+               <div class="input-group" id="chatRoomBox">
+                 <input type="hidden" id="chatSender" value="${guestId}"/>
+                   <textarea class="form-control border-0 p-4 bg-light text-sm" id="chatContents" placeholder="Type a message" aria-describedby="button-sendMessage"></textarea>
+                   <button class="btn btn-link" id="buttonSendMessage" type="button"><i class="fa fa-paper-plane"></i></button>
                 </div>
             </form>
+
             <!-- http://127.0.0.1/kakaopay?reserveId=13 -->
         </div>
         <%--        message box to host for reserve end--%>
