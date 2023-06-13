@@ -35,7 +35,7 @@
     </select>
 
     <select id="refund" parameterType="reserve">
-        UPDATE reserve SET reserveConfirm=2, reserveStatus='결제취소', reservePayAmount=0, reserveRefund=#{reservePrice} WHERE reserveId=#{reserveId}
+        UPDATE reserve SET reserveConfirm=2, reserveStatus='결제취소', reservePayAmount=0, reserveRefund=#{reservePrice}, reserveRefundDate=SYSDATE WHERE reserveId=#{reserveId}
     </select>
 
     <update id="update" parameterType="reserve">
