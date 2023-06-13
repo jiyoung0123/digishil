@@ -161,7 +161,7 @@
                   <div class="col-12 col-lg-3 align-self-center">
 
                           <span class="text-muted text-sm text-uppercase">
-                            <i class="fa fa-times fa-fw me-2"> </i>환불완료
+                            <i class="fa fa-check fa-fw me-2"></i>환불완료
                           </span><br class="d-none d-lg-block">
 
 <%--                      <c:otherwise>--%>

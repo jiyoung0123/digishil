@@ -3,8 +3,10 @@ package com.kbstar.controller;
 import com.kbstar.dto.Guest;
 import com.kbstar.dto.HostRoomReserveReview;
 import com.kbstar.dto.Reserve;
+import com.kbstar.dto.Review;
 import com.kbstar.service.GuestService;
 import com.kbstar.service.ReserveService;
+import com.kbstar.service.ReviewService;
 import com.kbstar.util.MailUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,8 @@ public class AjaxImplController {
     GuestService guestService;
     @Autowired
     ReserveService reserveService;
+    @Autowired
+    ReviewService reviewService;
 
     @Autowired
     BCryptPasswordEncoder encoder= new BCryptPasswordEncoder();
@@ -107,6 +111,13 @@ public class AjaxImplController {
             result = "true";
         }
         return result;
+    }
+
+    @RequestMapping("/review")
+    public Object review(Review review) throws Exception {
+        reviewService.register(review);
+        log.info("-----------------------------------"+String.valueOf(review));
+        return "";
     }
 
 }

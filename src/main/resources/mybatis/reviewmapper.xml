@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbstar.mapper.ReviewMapper">
+    <insert id="insert" parameterType="Review">
+        INSERT INTO review(reviewId, roomId, reserveId, guestId, reviewRate, reviewContents1,guestId2) VALUES (reviewSeq.NEXTVAL,#{roomId},#{reserveId},#{guestId}, #{reviewRate}, #{reviewContents1},#{guestId2})
+    </insert>
+</mapper>

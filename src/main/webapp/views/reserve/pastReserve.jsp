@@ -4,7 +4,31 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
+<script>
+  let wirteReview={
+    init:function(){
+        $('#reviewBtn').click(function (){
+          let guestId = $("#guestId").val();
+          let reviewRate = $("#rating").val();
+          let reviewContents1 = $('#reviewContents1').val();
+          let guestId2 = $('#name').val();
+          let reserveId = $('#reserveId').val();
+          let roomId = $('#roomId').val();
+          $.ajax({
+            url: '/review',
+            data: { guestId: guestId, reviewRate: reviewRate, reviewContents1: reviewContents1, guestId2:guestId2, reserveId:reserveId, roomId:roomId}
+            success: function () {
+              alert("후기를 남겨주셔서 감사합니다♡");
+            }
+          });
+        })
+     }
+  };
+  $(function(){
+    wirteReview.init();
+  });
 
+</script>
 <body style="padding-top: 72px;">
 
 <section class="py-5">
@@ -71,12 +95,15 @@
               <div class="row" >
                 <div class="collapse mt-4" id="leaveReview${obj.reserveId}" style="padding-left: 30px; padding-right: 30px;">
                   <h5 class="mb-4">후기</h5>
-                  <form class="form" id="contact-form" method="get" action="#">
+                  <form class="form" id="reviewForm">
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="mb-4">
                           <label class="form-label" for="name">이름</label>
-                          <input class="form-control" type="text" name="name" id="name" placeholder="${guest.guestName}" required="required">
+                          <input class="form-control" type="text" name="name" id="name" value="${guest.guestName}" required="required">
+                          <input class="form-control" type="hidden" name="guestId" id="guestId" value="${guest.guestId}" required="required">
+                          <input class="form-control" type="hidden" name="reserveId" id="reserveId" value="${obj.reserveId}" required="required">
+                          <input class="form-control" type="hidden" name="roomId" id="roomId" value="${obj.roomId}" required="required">
                         </div>
                       </div>
                       <div class="col-sm-6">
@@ -93,11 +120,11 @@
                       </div>
                     </div>
                     <div class="mb-4">
-                      <label class="form-label" for="review">후기를 작성해 주세요</label>
-                      <textarea class="form-control" rows="4" name="review" id="review" required="required"></textarea>
+                      <label class="form-label" for="reviewContents1">후기를 작성해 주세요</label>
+                      <textarea class="form-control" rows="4" name="reviewContents1" id="reviewContents1" required="required"></textarea>
                     </div>
                     <div class="col-sm-12 text-end" style="padding-bottom: 10px;">
-                      <a href="#"><i class="fa fa-check fa-fw me-2"></i>작성완료</a>
+                      <a id="reviewBtn" type="button"><i class="far fa-edit"></i>저장하기</a>
                     </div>
                   </form>
                 </div>
@@ -149,6 +176,26 @@
 
 </section>
 
+
+<!-- Modal -->
+<%--<div id="myModal" class="modal fade" role="dialog">--%>
+<%--  <div class="modal-dialog">--%>
+<%--    <!-- Modal content-->--%>
+<%--    <div class="modal-content">--%>
+<%--      <div class="modal-header">--%>
+<%--        <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
+<%--        <h4 class="modal-title">Modal Header</h4>--%>
+<%--      </div>--%>
+<%--      <div class="modal-body">--%>
+<%--        <a href="/" class="btn btn-info" role="button">장바구니로이동</a>--%>
+<%--        <a href="/" class="btn btn-info" role="button">계속 쇼핑</a>--%>
+<%--      </div>--%>
+<%--      <div class="modal-footer">--%>
+<%--        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
+<%--      </div>--%>
+<%--    </div>--%>
+<%--  </div>--%>
+<%--</div>--%>
 
 <!-- JavaScript files-->
 
