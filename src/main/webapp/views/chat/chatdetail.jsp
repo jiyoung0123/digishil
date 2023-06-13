@@ -34,49 +34,7 @@
   });
 
 
-  // let reserveHostGuest = {
-  //     init : (()=>{
-  //           $.ajax({
-  //               url : '/reserveHostGuestLoad',
-  //               data : {
-  //                   'hostId':'host7',
-  //                   'guestId':'guest1'
-  //               }
-  //           }).done((data)=>{
-  //               console.log('reserve load data succeed');
-  //               console.log(data[0]);
-  //               reserveHostGuest.display(data[0]);
-  //           }).fail(()=>{
-  //               console.log('reserve load data failed');
-  //           })
-  //     }),
-  //     display : ((parsedData)=>{
-  //         let html =
-  //             `
-  //       <div class="card border-0 shadow mb-4">
-  //         <div class="card-body p-4">
-  //           <div class="text-block pb-3">
-  //             <div class="d-flex align-items-center justify-content-between">
-  //               <div>
-  //                 <h6> <a class="text-reset" href="detail-rooms.html">\${parsedData.roomName}</a></h6>
-  //                 <p class="text-muted text-sm mb-0">\${parsedData.roomAddress}</p>
-  //                 <div class="mt-n1"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
-  //                 </div>
-  //               </div><a href="detail-rooms.html"><img class="ms-3 rounded flex-shrink-0" src="img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></a>
-  //             </div>
-  //           </div>
-  //           <div class="text-block pt-3 pb-0">
-  //             <ul class="list-unstyled text-sm mb-0">
-  //               <li class="mb-3"><i class="fas fa-users fa-fw text-muted me-2"></i>\${parsedData.reserveCap} guests</li>
-  //               <li class="mb-0"><i class="far fa-calendar fa-fw text-muted me-2"></i>\${parsedData.reserveCheckIn} <i class="fas fa-arrow-right fa-fw text-muted mx-3"></i>\${parsedData.reserveCheckOut}</li>
-  //             </ul>
-  //           </div>
-  //         </div>
-  //       </div>
-  //             `;
-  //         $('#reserveCardBody').append(html);
-  //     })
-  // }
+
 
 
   let chatDetails = {
@@ -243,10 +201,20 @@
           <div class="col-lg-3 me-lg-auto">
               <div class="card border-0 shadow mb-6 mb-lg-0">
                   <div class="card-header bg-gray-100 py-4 border-0 text-center"><a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="/img/avatar/avatar-10.jpg" alt=""></a>
-                      <h5>${hostId}</h5>
-                      <p class="text-muted text-sm mb-0">Los Angeles, CA  </p>
+                      <h5>${hostInfo.hostName}</h5>
+                      <p class="text-muted text-sm mb-0">${hostInfo.hostIntro} </p>
                   </div>
                   <div class="card-body p-4">
+                      <div class="d-flex align-items-center mb-3">
+                          <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2">
+                              <svg class="svg-icon text-primary svg-icon-md">
+                                  <use xlink:href="#diploma-1"> </use>
+                              </svg>
+                          </div>
+                          <div>
+                              <p class="mb-0">평점 : ${hostInfo.hostRate}  /  5</p>
+                          </div>
+                      </div>
                       <div class="d-flex align-items-center mb-3">
 
                           <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2">
@@ -254,54 +222,30 @@
                                   <use xlink:href="#diploma-1"> </use>
                               </svg>
                           </div>
-                          <a href="./profile/myinfo" >
-                              <div>
-                                  <p class="mb-0">정보 변경</p>
-                              </div>
-                          </a>
+                          <div>
+                              <p class="mb-0">${hostInfo.hostLang}가<br> 유창한 호스트</p>
+                          </div>
                       </div>
                       <div class="d-flex align-items-center mb-3">
+
                           <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2">
                               <svg class="svg-icon text-primary svg-icon-md">
                                   <use xlink:href="#diploma-1"> </use>
                               </svg>
                           </div>
-                          <a href="./profile/reviews">
-                              <div>
-                                  <p class="mb-0">2877 reviews</p>
-                              </div>
-                          </a>
+                          <div>
+                              <p class="mb-0">${hostInfo.hostYear}년 동안 호스트</p>
+                          </div>
                       </div>
                       <div class="d-flex align-items-center mb-3">
+
                           <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2">
                               <svg class="svg-icon text-primary svg-icon-md">
-                                  <use xlink:href="#checkmark-1"> </use>
+                                  <use xlink:href="#diploma-1"> </use>
                               </svg>
                           </div>
                           <div>
-                              <p class="mb-0">Verified</p>
-                          </div>
-                      </div>
-                      <div class="d-flex align-items-center mb-3">
-                          <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2">
-                              <svg class="svg-icon text-primary svg-icon-md">
-                                  <use xlink:href="#checkmark-1"> </use>
-                              </svg>
-                          </div>
-                          <a  href="./profile/reservation">
-                              <div>
-                                  <p class="mb-0">예약 및 정산관리</p>
-                              </div>
-                          </a>
-                      </div>
-                      <div class="d-flex align-items-center mb-3">
-                          <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2">
-                              <svg class="svg-icon" viewBox="0 0 20 20">
-                                  <path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path>
-                              </svg>
-                          </div>
-                          <div>
-                              <p class="mb-0"><a href="/chatroomalltest">Messenger</a></p>
+                              <p class="mb-0">${hostInfo.hostJob}을<br> 주로 하고 있어요</p>
                           </div>
                       </div>
                       <hr>
@@ -317,8 +261,8 @@
 
           <!-- Breadcrumbs -->
       <div class="col-lg-9 ps-lg-5">
-        <div class="d-flex flex-column flex-md-row justify-contenttems-md-center mb-4">
-          <h1 class="mb-3 mb-md-0 hero-heading mb-0">${hostId}님과의 대화 </h1>
+          <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mb-4">
+          <h1 class="mb-3 mb-md-0 hero-heading mb-0">${hostInfo.hostName}님과의 대화 </h1>
           <div><a class="btn btn-link ps-0" href="/chat?guestId=${guestId}"><i class="fa fa-arrow-left me-2"></i> 채팅방으로 돌아가기</a></div>
         </div>
           <div id="reserveCardBody">
