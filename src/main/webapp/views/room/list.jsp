@@ -2,7 +2,36 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    $(document).on('click', '#likeFormBtn', function(e) {
+        e.preventDefault();  // 기본 동작(폼 제출)을 막음
 
+        $.ajax({
+            url: '/likeAdd',
+            type: 'post',
+            data: $('#likeForm').serialize(),
+            success: function (response) {
+                if (response == true) {
+                    alert('성공');
+                }
+            }
+        });
+    });
+    // $('#likeFormBtn').click(function(e) {
+    //     e.preventDefault();  // 기본 동작(폼 제출)을 막음
+    //
+    //     $.ajax({
+    //         url: '/likeAdd',
+    //         type: 'post',
+    //         data: $('#likeForm').serialize(),
+    //         success: function (response) {
+    //             if (response == true) {
+    //                 alert('성공');
+    //             }
+    //         }
+    //     })
+    // });
+</script>
 
 <div class="container-fluid">
     <div class="row">
@@ -64,268 +93,10 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-12 pb-4">
-                        <div class="collapse" id="moreFilters">
-                            <div class="filter-block">
-                                <h6 class="mb-3">Location</h6>
-                                <div class="row">
-                                    <div class="col-xl-4 col-md-6 mb-4 mb-xl-0">
-                                        <label class="form-label" for="form_neighbourhood">Neighbourhood</label>
-                                        <select class="selectpicker form-control" name="neighbourhood" id="form_neighbourhood" multiple data-style="btn-selectpicker" data-live-search="true" data-selected-text-format="count &gt; 1" data-none-selected-text="">
-                                            <option value="neighbourhood_0">Battery Park City    </option>
-                                            <option value="neighbourhood_1">Bowery    </option>
-                                            <option value="neighbourhood_2">Carnegie Hill    </option>
-                                            <option value="neighbourhood_3">Central Park    </option>
-                                            <option value="neighbourhood_4">Chelsea    </option>
-                                            <option value="neighbourhood_5">Chinatown    </option>
-                                            <option value="neighbourhood_6">Civic Center    </option>
-                                            <option value="neighbourhood_7">East Harlem    </option>
-                                            <option value="neighbourhood_8">Financial District    </option>
-                                            <option value="neighbourhood_9">Flatiron    </option>
-                                            <option value="neighbourhood_10">Garment District    </option>
-                                            <option value="neighbourhood_11">Gramercy Park    </option>
-                                            <option value="neighbourhood_12">Greenwich Village    </option>
-                                            <option value="neighbourhood_13">East Village    </option>
-                                            <option value="neighbourhood_14">West Village    </option>
-                                            <option value="neighbourhood_15">Hamilton Heights    </option>
-                                            <option value="neighbourhood_16">Harlem    </option>
-                                            <option value="neighbourhood_17">Hell's Kitchen / Clinton    </option>
-                                            <option value="neighbourhood_18">Inwood    </option>
-                                            <option value="neighbourhood_19">Kips Bay    </option>
-                                            <option value="neighbourhood_20">Lenox Hill    </option>
-                                            <option value="neighbourhood_21">Little Italy    </option>
-                                            <option value="neighbourhood_22">Lower Eastside    </option>
-                                            <option value="neighbourhood_23">Madison Square    </option>
-                                            <option value="neighbourhood_24">Manhattan Valley    </option>
-                                            <option value="neighbourhood_25">Meatpacking District    </option>
-                                            <option value="neighbourhood_26">Midtown    </option>
-                                            <option value="neighbourhood_27">Morningside Heights    </option>
-                                            <option value="neighbourhood_28">Murray Hill    </option>
-                                            <option value="neighbourhood_29">NoHo    </option>
-                                            <option value="neighbourhood_30">NoLita    </option>
-                                            <option value="neighbourhood_31">Roosevelt Island    </option>
-                                            <option value="neighbourhood_32">SoHo    </option>
-                                            <option value="neighbourhood_33">Stuyvesant Town (Stuyvesant Square)    </option>
-                                            <option value="neighbourhood_34">Sutton Place    </option>
-                                            <option value="neighbourhood_35">Times Square    </option>
-                                            <option value="neighbourhood_36">Tribeca    </option>
-                                            <option value="neighbourhood_37">Turtle Bay    </option>
-                                            <option value="neighbourhood_38">Upper Eastside    </option>
-                                            <option value="neighbourhood_39">Upper Westside    </option>
-                                            <option value="neighbourhood_40">Washington Heights    </option>
-                                            <option value="neighbourhood_41">Yorkville    </option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xl-8">
-                                        <label class="form-label">Neighbourhood Tag</label>
-                                        <ul class="list-inline mt-xl-1 mb-0">
-                                            <li class="list-inline-item">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="type_0" name="type[]">
-                                                    <label class="form-check-label" for="type_0">Hipster                                            </label>
-                                                </div>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="type_1" name="type[]">
-                                                    <label class="form-check-label" for="type_1">Business                                            </label>
-                                                </div>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="type_2" name="type[]">
-                                                    <label class="form-check-label" for="type_2">Family                                            </label>
-                                                </div>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="type_3" name="type[]">
-                                                    <label class="form-check-label" for="type_3">Green                                            </label>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter-block">
-                                <h6 class="mb-3">Rooms and beds</h6>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <label class="form-label">Beds</label>
-                                        <div class="d-flex align-items-center">
-                                            <div class="btn btn-items btn-items-decrease">-</div>
-                                            <input class="form-control input-items input-items-greaterthan" type="text" value="1+" disabled>
-                                            <div class="btn btn-items btn-items-increase">+</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label class="form-label">Bedrooms</label>
-                                        <div class="d-flex align-items-center">
-                                            <div class="btn btn-items btn-items-decrease">-</div>
-                                            <input class="form-control input-items input-items-greaterthan" type="text" value="1+" disabled>
-                                            <div class="btn btn-items btn-items-increase">+</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label class="form-label">Bathrooms</label>
-                                        <div class="d-flex align-items-center">
-                                            <div class="btn btn-items btn-items-decrease">-</div>
-                                            <input class="form-control input-items input-items-greaterthan" type="text" value="1+" disabled>
-                                            <div class="btn btn-items btn-items-increase">+</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter-block">
-                                <h6 class="mb-3">Trip type</h6>
-                                <div class="row pt-1">
-                                    <div class="col-sm-6">
-                                        <div class="form-check form-switch mb-3">
-                                            <input class="form-check-input" id="forfamilies" type="checkbox" name="forfamilies" aria-describedby="forfamiliesHelp">
-                                            <label class="form-check-label" for="forfamilies"> <span class="text-sm">For Families</span></label>
-                                        </div><small class="text-muted form-text" id="forfamiliesHelp">Explore entire homes with 5-star reviews from families and essentials like a kitchen and TV</small>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-check form-switch mb-3">
-                                            <input class="form-check-input" id="forwork" type="checkbox" name="forwork" aria-describedby="forworkHelp">
-                                            <label class="form-check-label" for="forwork"> <span class="text-sm">For work</span></label>
-                                        </div><small class="text-muted form-text" id="forworkHelp">Explore top-rated homes with essentials like a workspace, wifi, and self check-in</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter-block">
-                                <h6 class="mb-3">Amenities</h6>
-                                <ul class="list-inline mb-0">
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_0" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_0">Kitchen                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_1" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_1">Shampoo                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_2" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_2">Heating                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_3" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_3">Air conditioning                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_4" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_4">Washer                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_5" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_5">Dryer                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_6" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_6">Wifi                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_7" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_7">Breakfast                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_8" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_8">Indoor fireplace                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_9" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_9">Buzzer/wireless intercom                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_10" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_10">Doorman                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_11" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_11">Hangers                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_12" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_12">Iron                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_13" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_13">Hair dryer                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_14">Laptop friendly workspace                               </label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="filter-block">
-                                <h6 class="mb-3">Facilities</h6>
-                                <ul class="list-inline mb-0">
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="facilities_0" name="facilities[]">
-                                            <label class="form-check-label" for="facilities_0">Free parking on premises                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="facilities_1" name="facilities[]">
-                                            <label class="form-check-label" for="facilities_1">Gym                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="facilities_2" name="facilities[]">
-                                            <label class="form-check-label" for="facilities_2">Hot tub                               </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="facilities_3" name="facilities[]">
-                                            <label class="form-check-label" for="facilities_3">Pool                               </label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 mb-4 order-2 order-sm-1">
                         <button class="btn btn-primary" type="submit"> <i class="fas fa-search me-1"></i>Search                </button>
-                    </div>
-                    <div class="col-sm-6 mb-4 text-sm-end order-1 order-sm-2">
-                        <button class="btn btn-link btn-collapse ps-0 text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#moreFilters" aria-expanded="false" aria-controls="moreFilters" data-expanded-text="Less filters" data-collapsed-text="More filters">More filters</button>
                     </div>
                 </div>
             </form>
@@ -358,10 +129,17 @@
                                                 <div>${roomList.hostName}</div>
                                             </div>
                                         </div>
-                                        <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();">
-                                            <svg class="svg-icon text-white">
-                                                <use xlink:href="#heart-1"> </use>
-                                            </svg></a></div>
+                                        <form id="likeForm" >  <%--action="/likeAdd" method="post"--%>
+                                            <input type="hidden" name="guestId" value="${loginGuest.guestId}">
+                                            <input type="hidden" name="roomId" value="${roomList.roomId}">
+                                            <div class="card-img-overlay-top text-end">
+                                                <button id="likeFormBtn" class="card-fav-icon position-relative z-index-40" type="button">
+                                                    <svg class="svg-icon text-white">
+                                                        <use xlink:href="#heart-1"> </use>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                     <div class="card-body d-flex align-items-center">
                                         <div class="w-100">
@@ -392,10 +170,17 @@
                                                 <div>${roomSearchList.hostName}</div>
                                             </div>
                                         </div>
-                                        <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();">
-                                            <svg class="svg-icon text-white">
-                                                <use xlink:href="#heart-1"> </use>
-                                            </svg></a></div>
+                                        <form id="likeForm" >  <%--action="/likeAdd" method="post"--%>
+                                            <input type="hidden" name="guestId" value="${loginGuest.guestId}">
+                                            <input type="hidden" name="roomId" value="${roomSearchList.roomId}">
+                                            <div class="card-img-overlay-top text-end">
+                                                <button id="likeFormBtn" class="card-fav-icon position-relative z-index-40" type="button">
+                                                    <svg class="svg-icon text-white">
+                                                        <use xlink:href="#heart-1"> </use>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                     <div class="card-body d-flex align-items-center">
                                         <div class="w-100">

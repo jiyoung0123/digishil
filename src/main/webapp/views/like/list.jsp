@@ -38,9 +38,8 @@
                                 </div>
                             </div>
                             <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();">
-                                <svg class="svg-icon text-white">
-                                    <use xlink:href="#heart-1"> </use>
-                                </svg></a></div>
+                                    <img class="svg-icon" src="/img/whiteheart.png">
+                            </a></div>
                         </div>
                         <div class="card-body d-flex align-items-center">
                             <div class="w-100">
@@ -65,9 +64,8 @@
                                 </div>
                             </div>
                             <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();">
-                                <svg class="svg-icon text-white">
-                                    <use xlink:href="#heart-1"> </use>
-                                </svg></a></div>
+                                <img class="svg-icon" src="/img/whiteheart.png">
+                            </a></div>
                         </div>
                         <div class="card-body d-flex align-items-center">
                             <div class="w-100">
@@ -92,9 +90,8 @@
                                 </div>
                             </div>
                             <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();">
-                                <svg class="svg-icon text-white">
-                                    <use xlink:href="#heart-1"> </use>
-                                </svg></a></div>
+                                <img class="svg-icon" src="/img/whiteheart.png">
+                            </a></div>
                         </div>
                         <div class="card-body d-flex align-items-center">
                             <div class="w-100">
