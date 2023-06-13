@@ -33,15 +33,18 @@ public class ReserveController {
     @RequestMapping("/reserve")
     public String reserveImpl(Model model, String reserveCap, String roomId, String guestId,
                               String roomPrice, String reserveDate, String reserveCheckIn, String reserveCheckOut) throws Exception {
+        // 로그인 안 되어있을 시 로그인 하기
         if(guestId.equals("")){
             model.addAttribute("center","login");
             return "index";
         }
         else{
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        // 프론트에서 넘어온 날짜를 date 형태로 받기
         Date checkInDate = dateFormat.parse(reserveCheckIn);
         Date checkOutDate = dateFormat.parse(reserveCheckOut);
 
+        // 숙'박' 일 수 계산
         long duration = checkOutDate.getTime() - checkInDate.getTime();
         long daysBetween = TimeUnit.MILLISECONDS.toDays(duration);
         int reservePrice = (int) daysBetween * parseInt(roomPrice);
