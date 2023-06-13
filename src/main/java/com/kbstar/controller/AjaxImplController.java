@@ -93,5 +93,20 @@ public class AjaxImplController {
         String findedHostId = hostRoomInfo.getHostId();
         return findedHostId;
     }
+    @RequestMapping("/guestPwdImpl")
+    public String guestPwdImpl(String id, String guestPwd, String guestPwdNew) throws Exception {
+        String result = null;
+        Guest guest = null;
+        guest = guestService.get(id);
+
+        if(!encoder.matches(guestPwd,guest.getGuestPwd())){
+            result = "false";
+        }else{
+            guest.setGuestPwd(encoder.encode(guestPwdNew));
+            guestService.updatePwd(guest);
+            result = "true";
+        }
+        return result;
+    }
 
 }
