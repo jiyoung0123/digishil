@@ -3,8 +3,10 @@ package com.kbstar.controller;
 
 import com.kbstar.dto.ChatDetails;
 import com.kbstar.dto.Chatroom;
+import com.kbstar.dto.HostRoomReserveReview;
 import com.kbstar.service.ChatContentsService;
 import com.kbstar.service.ChatRoomService;
+import com.kbstar.service.ReserveService;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -24,6 +27,8 @@ public class ChatController {
     ChatRoomService chatRoomService;
     @Autowired
     ChatContentsService chatContentsService;
+    @Autowired
+    ReserveService reserveService;
 
     String dir = "chat/";
     String dirProfile = "profile/";
@@ -62,20 +67,23 @@ public class ChatController {
     }
 
     //admin 단에서 hostId를 parameter 값으로 받는 경우
-//    @RequestMapping("/chatdetail")
-//    public String chatDetailHost(@RequestParam("chatRoomId")Integer chatRoomId,
-//                                 @RequestParam("hostId")String hostId,
-//                                       Model model) throws Exception{
-//        //인덱스 -
-//        model.addAttribute("center", "userProfile");
-//        model.addAttribute("centerUserProfile", dir+"chatdetail");
-//        //DB 정보
-//        model.addAttribute("chatRoomId", chatRoomId);
-//        model.addAttribute("hostId", hostId);
-//        List<ChatDetails> chatDetailsList = chatContentsService.findChatDetailsHost(chatRoomId, hostId);
-//        model.addAttribute("chatDetailsList", chatDetailsList);
-//        return "index";
-//    }
+    @RequestMapping("/chatdetail")
+    public String chatDetailHost(@RequestParam("chatRoomId")Integer chatRoomId,
+                                 @RequestParam("hostId")String hostId,
+                                       @RequestParam("guestId")String guestId,
+                                       Model model) throws Exception{
+        List<HostRoomReserveReview> reserveInfo = new ArrayList<>();
+        reserveInfo = reserveService.getHostGuestReserve(hostId, guestId);
+        //인덱스 -
+        model.addAttribute("center", dir+"chatdetail");
+        model.addAttribute("reserveInfo",reserveInfo);
+        //DB 정보
+        model.addAttribute("chatRoomId", chatRoomId);
+        model.addAttribute("hostId", hostId);
+        List<ChatDetails> chatDetailsList = chatContentsService.findChatDetailsHost(chatRoomId, hostId);
+        model.addAttribute("chatDetailsList", chatDetailsList);
+        return "index";
+    }
 
 }
 
