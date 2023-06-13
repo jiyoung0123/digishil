@@ -89,4 +89,10 @@ public class ReserveController {
         return "index";
     }
 
+    @RequestMapping("/reserve/pastReserve")
+    public String pastReserve(Model model){
+        model.addAttribute("center","reserve/pastReserve");
+        return "index";
+    }
+
 }
