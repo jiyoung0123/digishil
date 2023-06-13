@@ -146,7 +146,7 @@ public class KakaoPayController {
         log.info(String.valueOf(daysBetween));
 
         HostRoomReserveReview hostInfo = new HostRoomReserveReview();
-        hostInfo = reserveService.findByReserveId(15);
+        hostInfo = reserveService.findByReserveId(reserveId);
         String hostId = hostInfo.getHostId();
         String chatSender = hostInfo.getGuestId();
 

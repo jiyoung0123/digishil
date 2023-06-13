@@ -34,49 +34,49 @@
   });
 
 
-  let reserveHostGuest = {
-      init : (()=>{
-            $.ajax({
-                url : '/reserveHostGuestLoad',
-                data : {
-                    'hostId':'host7',
-                    'guestId':'guest1'
-                }
-            }).done((data)=>{
-                console.log('reserve load data succeed');
-                console.log(data[0]);
-                reserveHostGuest.display(data[0]);
-            }).fail(()=>{
-                console.log('reserve load data failed');
-            })
-      }),
-      display : ((parsedData)=>{
-          let html =
-              `
-        <div class="card border-0 shadow mb-4">
-          <div class="card-body p-4">
-            <div class="text-block pb-3">
-              <div class="d-flex align-items-center justify-content-between">
-                <div>
-                  <h6> <a class="text-reset" href="detail-rooms.html">\${parsedData.roomName}</a></h6>
-                  <p class="text-muted text-sm mb-0">\${parsedData.roomAddress}</p>
-                  <div class="mt-n1"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
-                  </div>
-                </div><a href="detail-rooms.html"><img class="ms-3 rounded flex-shrink-0" src="img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></a>
-              </div>
-            </div>
-            <div class="text-block pt-3 pb-0">
-              <ul class="list-unstyled text-sm mb-0">
-                <li class="mb-3"><i class="fas fa-users fa-fw text-muted me-2"></i>\${parsedData.reserveCap} guests</li>
-                <li class="mb-0"><i class="far fa-calendar fa-fw text-muted me-2"></i>\${parsedData.reserveCheckIn} <i class="fas fa-arrow-right fa-fw text-muted mx-3"></i>\${parsedData.reserveCheckOut}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-              `;
-          $('#reserveCardBody').append(html);
-      })
-  }
+  // let reserveHostGuest = {
+  //     init : (()=>{
+  //           $.ajax({
+  //               url : '/reserveHostGuestLoad',
+  //               data : {
+  //                   'hostId':'host7',
+  //                   'guestId':'guest1'
+  //               }
+  //           }).done((data)=>{
+  //               console.log('reserve load data succeed');
+  //               console.log(data[0]);
+  //               reserveHostGuest.display(data[0]);
+  //           }).fail(()=>{
+  //               console.log('reserve load data failed');
+  //           })
+  //     }),
+  //     display : ((parsedData)=>{
+  //         let html =
+  //             `
+  //       <div class="card border-0 shadow mb-4">
+  //         <div class="card-body p-4">
+  //           <div class="text-block pb-3">
+  //             <div class="d-flex align-items-center justify-content-between">
+  //               <div>
+  //                 <h6> <a class="text-reset" href="detail-rooms.html">\${parsedData.roomName}</a></h6>
+  //                 <p class="text-muted text-sm mb-0">\${parsedData.roomAddress}</p>
+  //                 <div class="mt-n1"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
+  //                 </div>
+  //               </div><a href="detail-rooms.html"><img class="ms-3 rounded flex-shrink-0" src="img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></a>
+  //             </div>
+  //           </div>
+  //           <div class="text-block pt-3 pb-0">
+  //             <ul class="list-unstyled text-sm mb-0">
+  //               <li class="mb-3"><i class="fas fa-users fa-fw text-muted me-2"></i>\${parsedData.reserveCap} guests</li>
+  //               <li class="mb-0"><i class="far fa-calendar fa-fw text-muted me-2"></i>\${parsedData.reserveCheckIn} <i class="fas fa-arrow-right fa-fw text-muted mx-3"></i>\${parsedData.reserveCheckOut}</li>
+  //             </ul>
+  //           </div>
+  //         </div>
+  //       </div>
+  //             `;
+  //         $('#reserveCardBody').append(html);
+  //     })
+  // }
 
 
   let chatDetails = {
@@ -240,7 +240,33 @@
           <div><a class="btn btn-link ps-0" href="user-messages.html"><i class="fa fa-arrow-left me-2"></i> Back to all messages</a></div>
         </div>
           <div id="reserveCardBody">
+              <c:choose>
+                  <c:when test="${reserveInfo != null}">
+                      <div class="card border-0 shadow mb-4">
+                          <div class="card-body p-4">
+                              <div class="text-block pb-3">
+                                  <div class="d-flex align-items-center justify-content-between">
+                                      <div>
+                                          <h6> <a class="text-reset" href="detail-rooms.html"></a></h6>
+                                          <p class="text-muted text-sm mb-0">${reserveInfo[0].roomAddress}</p>
+                                          <div class="mt-n1"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
+                                          </div>
+                                      </div><a href="detail-rooms.html"><img class="ms-3 rounded flex-shrink-0" src="img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></a>
+                                  </div>
+                              </div>
+                              <div class="text-block pt-3 pb-0">
+                                  <ul class="list-unstyled text-sm mb-0">
+                                      <li class="mb-3"><i class="fas fa-users fa-fw text-muted me-2"></i>${reserveInfo[0].reserveCap} guests</li>
+                                      <li class="mb-0"><i class="far fa-calendar fa-fw text-muted me-2"></i>${reserveInfo[0].reserveCheckIn} <i class="fas fa-arrow-right fa-fw text-muted mx-3"></i>${reserveInfo[0].reserveCheckOut}</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </c:when>
+                  <c:otherwise>
 
+                  </c:otherwise>
+              </c:choose>
           </div>
         <!-- (1) JSP로 뿌리는 방식 -->
 

@@ -74,6 +74,7 @@ public class ChatController {
                                        Model model) throws Exception{
         List<HostRoomReserveReview> reserveInfo = new ArrayList<>();
         reserveInfo = reserveService.getHostGuestReserve(hostId, guestId);
+
         //인덱스 -
         model.addAttribute("center", dir+"chatdetail");
         model.addAttribute("reserveInfo",reserveInfo);
