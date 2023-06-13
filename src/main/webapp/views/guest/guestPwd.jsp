@@ -4,24 +4,43 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <script>
-  let guestPwd = {
-    init:function(){
-      $('#guestPwdBtn').click(function(){
-        guestPwd.send();
-      });
-    },
-    send:function(){
-      $('#guestPwdForm').attr({
-        method:'post',
-        action:'/guestPwdImpl',
-        enctype: 'multipart/form-data'
-      });
-      $('#guestPwdForm').submit();
-    }
-  };
   $(function(){
-    guestPwd.init();
-  });
+    $('#guestPwdBtn').on("click", function(){
+      event.preventDefault(); // 기본 동작 중지를 해야 text가 출력되고 화면이 새로고침되지 않음
+
+
+      let guestPwd = $('#guestPwd').val();
+      let guestPwdNew = $('#guestPwdNew').val();
+      let guestPwdConfirm = $('#guestPwdConfirm').val();
+
+      let form = $('#guestPwdForm').serialize();
+
+      if(guestPwd == ''){
+        $('#pwdCheck').text('현재 비밀번호를 입력하세요.');
+        return;
+      }if(guestPwdNew == ''){
+        $('#pwdCheck').text('변경할 비밀번호를 입력하세요.');
+        return;
+      }if(guestPwdNew != guestPwdConfirm){
+        $('#pwdCheck').text('변경할 비밀번호가 일치하지 않습니다.');
+        return;
+      }else{
+        $.ajax({
+          url:'/guestPwdImpl',
+          type:'post',
+          data:form,
+          success:function(data){
+            if(data == 'false'){
+              alert("현재 비밀번호가 일치하지 않습니다.");
+            }else{
+              alert("비밀번호가 변경되었습니다.");
+            }
+          }
+        })
+      }
+    });
+  })
+
 </script>
 
 <section class="py-5">
@@ -36,6 +55,7 @@
     <p class="text-muted mb-5">Manage your Login & security and settings here.</p>
     <div class="row">
       <form class="form-validate" id="guestPwdForm">
+        <input type="hidden" name="id" value="${guest.guestId}">
         <div class="col-lg-7 mb-5 mb-lg-0">
           <div class="text-block">
             <h3 class="mb-4">Login</h3>
@@ -57,6 +77,9 @@
                 <div class="mb-4 col-md-6">
                   <label class="form-label" for="guestPwdConfirm">변경할 비밀번호 확인</label>
                   <input class="form-control" type="password" name="guestPwdConfirm" id="guestPwdConfirm">
+                </div>
+                <div class="mb-4 col-md-6">
+                  <span id="pwdCheck" style="color:rgb(77,102,247)"></span>
                 </div>
               </div>
               <button id="guestPwdBtn" class="btn btn-outline-primary">Update Password</button>

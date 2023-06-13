@@ -60,12 +60,4 @@ public class guestController {
         return "index";
     }
 
-    public String guestPwdImpl(Model model, String id, String guestPwd, String guestPwdNew) throws Exception {
-        Guest guest = null;
-        guest = guestService.get(id);
-
-        encoder.matches(guestPwd,guest.getGuestPwd());
-
-        return "index";
-    }
 }
