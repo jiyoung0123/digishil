@@ -144,15 +144,7 @@
                         <p class="text-muted text-sm">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections     </p>
                     </div>
                 </div>
-                <div class="d-flex d-block d-sm-flex review">
-                    <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="/img/avatar/avatar-2.jpg" alt="Luke Skywalker"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
-                    <div>
-                        <h6 class="mt-2 mb-1">Luke Skywalker</h6>
-                        <div class="mb-2"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
-                        </div>
-                        <p class="text-muted text-sm">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot; he thought. It wasn't a dream.     </p>
-                    </div>
-                </div>
+
 
 
                 <div class="py-5">
@@ -163,13 +155,13 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="mb-4">
-                                        <label class="form-label" for="name">Your name *</label>
+                                        <label class="form-label" for="name">닉네임</label>
                                         <input class="form-control" type="text" name="name" id="name" placeholder="Enter your name" required="required">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-4">
-                                        <label class="form-label" for="rating">Your rating *</label>
+                                        <label class="form-label" for="rating">별점</label>
                                         <select class="form-select focus-shadow-0" name="rating" id="rating">
                                             <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
                                             <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
@@ -179,10 +171,6 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label" for="email">Your email *</label>
-                                <input class="form-control" type="email" name="email" id="email" placeholder="Enter your  email" required="required">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="review">Review text *</label>

@@ -93,7 +93,8 @@
     </div>
     <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
       <!-- Image-->
-      <div class="bg-cover h-100 me-n3" style="background-image: url(img/photo/photo-1497436072909-60f360e1d4b1.jpg);"></div>
+      <div class="bg-cover h-100 me-n3" style="background-image: url(img/photo/london.jpg);"></div>
+<%--        <div class="bg-cover h-100 me-n3" style="background-image: url(img/photo/london.jpg);"></div>--%>
     </div>
   </div>
 </div>

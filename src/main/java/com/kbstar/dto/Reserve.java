@@ -31,6 +31,7 @@ public class Reserve {
     private int reserveAccount;
     private String reserveApi;
     private int reserveRefund;
+    private Date reserveRefundDate;
 
 
     // reserveList를 불러오기 위한 항목 추가
