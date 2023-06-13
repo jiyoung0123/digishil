@@ -31,7 +31,7 @@
     <select id="reserveDate" parameterType="Integer" resultType="reserve">
         SELECT reserveCheckIn, reserveCheckOut
         FROM reserve
-        WHERE roomId= #{roomId} AND reserveStatus = '결제완료'
+        WHERE roomId= #{roomId}
     </select>
 
     <select id="refund" parameterType="reserve">
