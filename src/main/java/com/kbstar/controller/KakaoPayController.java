@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Integer.parseInt;
@@ -55,6 +57,7 @@ public class KakaoPayController {
 
         String reservePayType = kakaoApprove.getPayment_method_type();
         String reserveApi=kakaoApprove.getTid();
+        log.info(reserveApi);
         reserve.setReservePayType(reservePayType);
         reserve.setReserveApi(reserveApi);
         log.info("=================reserveApi매칭========================="+reserve.getReserveApi());
@@ -106,7 +109,7 @@ public class KakaoPayController {
     }
 
     @RequestMapping("/kakaopay")
-    public String kakaopay(Model model, int reserveId) throws ParseException {
+    public String kakaopay(Model model, int reserveId) throws Exception {
         Reserve reserve = null;
         try {
             reserve = reserveService.get(reserveId);
@@ -142,6 +145,16 @@ public class KakaoPayController {
         log.info(String.valueOf(checkOutDateStr));
         log.info(String.valueOf(daysBetween));
 
+        HostRoomReserveReview hostInfo = new HostRoomReserveReview();
+        hostInfo = reserveService.findByReserveId(15);
+        String hostId = hostInfo.getHostId();
+        String chatSender = hostInfo.getGuestId();
+
+//        List<HostRoomReserveReview> hostInfo = new ArrayList<>();
+//        hostInfo = reserveService.findByReserveId(reserveId);
+
+        model.addAttribute("hostId", hostId);
+        model.addAttribute("chatSender",chatSender);
         model.addAttribute("days",daysBetween);
         model.addAttribute("guest", guest);
         model.addAttribute("room", room);

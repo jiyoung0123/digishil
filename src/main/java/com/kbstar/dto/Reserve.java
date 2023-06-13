@@ -42,7 +42,7 @@ public class Reserve {
     private String hostImage;
     private int roomWPrice;
 
-
+//
     private Integer reserveReply;// 최준혁 추가
     private Date refundDate; // 서지영
 
@@ -61,4 +61,7 @@ public class Reserve {
         this.reserveCheckIn = reserveCheckIn;
         this.reserveCheckOut = reserveCheckOut;
     }
+
+
+
 }

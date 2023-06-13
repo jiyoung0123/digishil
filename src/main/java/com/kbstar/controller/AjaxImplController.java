@@ -1,6 +1,7 @@
 package com.kbstar.controller;
 
 import com.kbstar.dto.Guest;
+import com.kbstar.dto.HostRoomReserveReview;
 import com.kbstar.dto.Reserve;
 import com.kbstar.service.GuestService;
 import com.kbstar.service.ReserveService;
@@ -9,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -87,21 +87,11 @@ public class AjaxImplController {
         return result;
     }
 
-    @RequestMapping("/guestPwdImpl")
-    public String guestPwdImpl(Model model, String id, String guestPwd, String guestPwdNew) throws Exception {
-        String result = null;
-        Guest guest = null;
-        guest = guestService.get(id);
-
-        if(!encoder.matches(guestPwd,guest.getGuestPwd())){
-            result = "false";
-        }else{
-            guest.setGuestPwd(encoder.encode(guestPwdNew));
-            guestService.updatePwd(guest);
-            result = "true";
-        }
-        log.info("--------------------------------"+result);
-        return result;
+    @RequestMapping("/findHostIdOfRoom")
+    public String checkReserveId(int reserveId) throws Exception {
+        HostRoomReserveReview hostRoomInfo = (HostRoomReserveReview) reserveService.findByReserveId(reserveId);
+        String findedHostId = hostRoomInfo.getHostId();
+        return findedHostId;
     }
 
 }

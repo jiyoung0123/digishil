@@ -140,6 +140,8 @@ public class KakaoPayService {
 
     @Autowired
     ReserveMapper reserveMapper;
+    @Autowired
+    ReserveService reserveService;
     public void reserveComplete(Reserve reserve) throws Exception {
         reserveMapper.update(reserve);
     }
