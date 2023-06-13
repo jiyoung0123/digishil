@@ -90,7 +90,14 @@ public class ReserveController {
     }
 
     @RequestMapping("/reserve/pastReserve")
-    public String pastReserve(Model model){
+    public String pastReserve(Model model, String guestId){
+        Guest guest = null;
+        try {
+            guest = guestService.get(guestId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        model.addAttribute("guest", guest);
         model.addAttribute("center","reserve/pastReserve");
         return "index";
     }

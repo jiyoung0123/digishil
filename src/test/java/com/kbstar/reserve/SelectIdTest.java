@@ -16,7 +16,7 @@ class SelectIdTest {
     @Test
     void contextLoads() {
         try {
-            reserveService.getMyReserve("taebin100@hanmail.net");
+            reserveService.getMyPastReserve("taebin100@hanmail.net");
         } catch (Exception e) {
             log.info("★★★★★★★★★★★★★★★ERROR★★★★★★★★★★★★★★★");
             e.printStackTrace();

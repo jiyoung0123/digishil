@@ -11,7 +11,7 @@
   <div class="container">
     <!-- Breadcrumbs -->
     <div class="d-flex justify-content-between align-items-end mb-5">
-      <h1 class="hero-heading mb-0">${guest.guestName}님의 예정된 예약</h1><a class="btn btn-link text-muted" href="/reserve/pastReserve">Past bookings</a>
+      <h1 class="hero-heading mb-0">${guest.guestName}님의 예정된 예약</h1><a class="btn btn-link text-muted" href="/reserve/pastReserve?guestId=${guest.guestId}">Past bookings</a>
     </div>
     <div class="d-flex justify-content-between align-items-center flex-column flex-lg-row mb-5">
       <div class="me-3">

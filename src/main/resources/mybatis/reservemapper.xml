@@ -52,6 +52,17 @@
         WHERE reserve.guestId = #{guestId}
         ORDER BY reserve.reserveCheckIn ASC
     </select>
+
+    <select id="getMyPastReserve" parameterType="String" resultType="reserve">
+        SELECT *
+        FROM reserve
+                 JOIN guest ON reserve.guestId=guest.guestId
+                 JOIN room ON room.roomId = reserve.roomId
+                 JOIN host ON room.hostId = host.hostId
+        WHERE reserve.guestId = #{guestId} AND SYSDATE > reserve.reserveCheckOut
+        ORDER BY reserve.reserveCheckIn ASC
+    </select>
+
     <select id="selectHostGuestReserve" resultType="HostRoomReserveReview">
         SELECT H.hostId, H.hostName, H.hostPwd, H.hostImage, H.hostIntro, H.hostSuper, H.hostLang, H.hostRate, H.hostYear, H.hostJob, H.hostVerified, H.hostRegDate, H.hostDelDate,
                O.roomId, O.roomPrice, O.roomName, O.roomAddress, O.roomLoc, O.roomInfo, O.roomIntro, O.roomClean, O.roomPet, O.roomWPrice, O.roomCap, O.roomType, O.roomLat, O.roomLng, O.roomImage1, O.roomImage2, O.roomImage3, O.roomImage4, O.roomImage5, O.roomImage6, O.roomLikes,
