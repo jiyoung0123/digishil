@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbstar.mapper.HostMapper">
+
+    <select id="selectall" resultType="host">
+        SELECT * FROM host
+    </select>
+    <select id="select" parameterType="String" resultType="Host">
+        SELECT * FROM Host WHERE hostId=#{hostId}
+    </select>
+    <insert id="insert" parameterType="Host">
+        INSERT INTO host(hostId,hostName,hostPwd,hostRegDate) VALUES (#{hostId},#{hostName},#{hostPwd}, SYSDATE)
+    </insert>
+    <select id="selectMyRoomReviews" parameterType="Integer" resultType="HostRoomReserveReview">
+        SELECT H.hostId, H.hostName, H.hostPwd, H.hostImage, H.hostIntro, H.hostSuper, H.hostLang, H.hostRate, H.hostYear, H.hostJob, H.hostVerified, H.hostRegDate, H.hostDelDate,
+               O.roomId, O.roomPrice, O.roomName, O.roomAddress, O.roomLoc, O.roomInfo, O.roomIntro, O.roomClean, O.roomPet, O.roomWPrice, O.roomCap, O.roomType, O.roomLat, O.roomLng, O.roomImage1, O.roomImage2, O.roomImage3, O.roomImage4, O.roomImage5, O.roomImage6, O.roomLikes,
+               E.reserveId, E.guestId, E.reserveCheckIn, E.reserveCheckOut, E.reservePrice, E.reserveConfirm, E.reserveCal, E.reserveCap, E.reserveStatus, E.reservePayRate, E.reservePayAmount, E.reservePayDate, E.reservePayType, E.reserveDiscount, E.reservePoint, E.reserveBank, E.reserveAccHolder, E.reserveAccount, E.reserverApi, E.reserveRefund
+        FROM host H
+                 INNER JOIN room O ON H.hostId = O.hostId
+        INNER JOIN reserve E ON O.roomId = E.roomId
+        WHERE O.roomId = #{roomId}
+    </select>
+    <select id="selectMyAllRoom" parameterType="String" resultType="HostRoomReserveReview">
+        SELECT H.hostId, H.hostName, H.hostPwd, H.hostImage, H.hostIntro, H.hostSuper, H.hostLang, H.hostRate, H.hostYear, H.hostJob, H.hostVerified, H.hostRegDate, H.hostDelDate,
+               O.roomId, O.roomPrice, O.roomName, O.roomAddress, O.roomLoc, O.roomInfo, O.roomIntro, O.roomClean, O.roomPet, O.roomWPrice, O.roomCap, O.roomType, O.roomLat, O.roomLng, O.roomImage1, O.roomImage2, O.roomImage3, O.roomImage4, O.roomImage5, O.roomImage6, O.roomLikes
+        FROM host H
+                 INNER JOIN room O ON H.hostId = O.hostId
+        WHERE O.hostId = #{hostId}
+    </select>
+
+</mapper>

@@ -235,12 +235,89 @@
 
 </script>
 
-<div class="col-lg-9 ps-lg-5">
+
 <body style="padding-top: 72px;">
     <section class="py-5">
       <div class="container">
-        <!-- Breadcrumbs -->
-        <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mb-4">
+          <div class="row">
+          <div class="col-lg-3 me-lg-auto">
+              <div class="card border-0 shadow mb-6 mb-lg-0">
+                  <div class="card-header bg-gray-100 py-4 border-0 text-center"><a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="/img/avatar/avatar-10.jpg" alt=""></a>
+                      <h5>${hostId}</h5>
+                      <p class="text-muted text-sm mb-0">Los Angeles, CA  </p>
+                  </div>
+                  <div class="card-body p-4">
+                      <div class="d-flex align-items-center mb-3">
+
+                          <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2">
+                              <svg class="svg-icon text-primary svg-icon-md">
+                                  <use xlink:href="#diploma-1"> </use>
+                              </svg>
+                          </div>
+                          <a href="./profile/myinfo" >
+                              <div>
+                                  <p class="mb-0">정보 변경</p>
+                              </div>
+                          </a>
+                      </div>
+                      <div class="d-flex align-items-center mb-3">
+                          <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2">
+                              <svg class="svg-icon text-primary svg-icon-md">
+                                  <use xlink:href="#diploma-1"> </use>
+                              </svg>
+                          </div>
+                          <a href="./profile/reviews">
+                              <div>
+                                  <p class="mb-0">2877 reviews</p>
+                              </div>
+                          </a>
+                      </div>
+                      <div class="d-flex align-items-center mb-3">
+                          <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2">
+                              <svg class="svg-icon text-primary svg-icon-md">
+                                  <use xlink:href="#checkmark-1"> </use>
+                              </svg>
+                          </div>
+                          <div>
+                              <p class="mb-0">Verified</p>
+                          </div>
+                      </div>
+                      <div class="d-flex align-items-center mb-3">
+                          <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2">
+                              <svg class="svg-icon text-primary svg-icon-md">
+                                  <use xlink:href="#checkmark-1"> </use>
+                              </svg>
+                          </div>
+                          <a  href="./profile/reservation">
+                              <div>
+                                  <p class="mb-0">예약 및 정산관리</p>
+                              </div>
+                          </a>
+                      </div>
+                      <div class="d-flex align-items-center mb-3">
+                          <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2">
+                              <svg class="svg-icon" viewBox="0 0 20 20">
+                                  <path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path>
+                              </svg>
+                          </div>
+                          <div>
+                              <p class="mb-0"><a href="/chatroomalltest">Messenger</a></p>
+                          </div>
+                      </div>
+                      <hr>
+                      <h6>Jack provided</h6>
+                      <ul class="card-text text-muted">
+                          <li>Government ID</li>
+                          <li>Email address</li>
+                          <li>Phone number</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Breadcrumbs -->
+      <div class="col-lg-9 ps-lg-5">
+        <div class="d-flex flex-column flex-md-row justify-contenttems-md-center mb-4">
           <h1 class="mb-3 mb-md-0 hero-heading mb-0">${hostId}님과의 대화 </h1>
           <div><a class="btn btn-link ps-0" href="/chat?guestId=${guestId}"><i class="fa fa-arrow-left me-2"></i> 채팅방으로 돌아가기</a></div>
         </div>
@@ -291,6 +368,8 @@
           </div>
         </form>
       </div>
+          </div>
+      </div>
     </section>
     <!-- Footer-->
     <!-- JavaScript files-->
@@ -337,4 +416,3 @@
     <!-- Main Theme JS file    -->
     <script src="js/theme.js"></script>
   </body>
-</div>
