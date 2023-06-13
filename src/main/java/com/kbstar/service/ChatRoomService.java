@@ -43,6 +43,12 @@ public class ChatRoomService implements KBService<Integer, Chatroom> {
     public Integer findChatRoomNumber(String hostId, String guestId) throws Exception {
         return mapper.findChatRoomNumber(hostId, guestId);
     }
+    public List<Chatroom> findGuestChatRoom(String guestId) throws Exception {
+        return mapper.findGuestChatRoomId(guestId);
+    }
+    public List<Chatroom> findHostChatRoom(String hostId) throws Exception {
+        return mapper.findHostChatRoomId(hostId);
+    }
 
 
 }

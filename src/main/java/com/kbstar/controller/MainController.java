@@ -29,6 +29,7 @@ public class MainController {
     Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
 
+
     @RequestMapping("/")
     public String main(Model model) throws Exception {
         return "index";
@@ -60,6 +61,8 @@ public class MainController {
         }
         return "redirect:/";
     }
+
+
 
 
 

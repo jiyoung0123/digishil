@@ -15,5 +15,15 @@
         FROM chatRoom cR
         WHERE hostId=#{hostId} AND guestID=#{guestId}
     </select>
+    <select id="findGuestChatRoomId" parameterType="String" resultType="chatRoom">
+        SELECT *
+        FROM chatRoom cR
+        WHERE guestID=#{guestId}
+    </select>
+    <select id="findHostChatRoomId" parameterType="String" resultType="chatRoom">
+        SELECT *
+        FROM chatRoom cR
+        WHERE hostID=#{guestId}
+    </select>
 
 </mapper>

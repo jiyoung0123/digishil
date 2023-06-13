@@ -202,7 +202,14 @@
                         </div>
                     </li>
                     <!-- /Megamenu end-->
-                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a>
+                    <c:choose>
+                        <c:when test="${loginGuest != null}">
+                            <li class="nav-item"><a class="nav-link" href="/chat?guestId=${loginGuest.getGuestId()}"> 메신저 </a>
+                        </c:when>
+                        <c:otherwise>
+
+                        </c:otherwise>
+                    </c:choose>
                     </li>
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="/index" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Docs</a>
