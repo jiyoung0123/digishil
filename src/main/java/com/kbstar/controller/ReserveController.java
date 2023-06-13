@@ -91,12 +91,20 @@ public class ReserveController {
 
     @RequestMapping("/reserve/pastReserve")
     public String pastReserve(Model model, String guestId){
+        List <Reserve> list = null;
+        try {
+            list = reserveService.getMyPastReserve(guestId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
         Guest guest = null;
         try {
             guest = guestService.get(guestId);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        model.addAttribute("getMyPastReserve", list);
         model.addAttribute("guest", guest);
         model.addAttribute("center","reserve/pastReserve");
         return "index";

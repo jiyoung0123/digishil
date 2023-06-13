@@ -11,18 +11,17 @@
   <div class="container">
     <!-- Breadcrumbs -->
     <div class="d-flex justify-content-between align-items-end mb-5">
-      <h1 class="hero-heading mb-0">${guest.guestName}님의 이전 여행지</h1><a class="btn btn-link text-muted" href="/reserve/pastReserve">Past bookings</a>
+      <h1 class="hero-heading mb-0">${guest.guestName}님의 이전 여행지</h1><a class="btn btn-link text-muted" href="/reservelist?guestId=${guest.guestId}">nearest bookings</a>
     </div>
     <div class="d-flex justify-content-between align-items-center flex-column flex-lg-row mb-5">
       <div class="me-3">
-        <p class="mb-3 mb-lg-0"><strong>${getMyReserve.size()}개의 예약이</strong> 있습니다.</p>
-        <p class="mb-3 mb-lg-0">결제가 완료되기 전에는 예약 확정이 아닙니다.</p>
+        <p class="mb-3 mb-lg-0">당신의 여행은 어땠나요? </p>
       </div>
     </div>
 
-   <c:forEach var="obj" items="${getMyReserve}">
+   <c:forEach var="obj" items="${getMyPastReserve}">
      <c:choose>
-       <c:when test="${obj.reserveStatus != '결제취소'}">
+       <c:when test="${obj.reserveStatus == '결제완료'}">
           <div class="list-group shadow mb-5">
             <div class="row">
                 <div class="col-lg-4 align-self-center mb-4 mb-lg-0">
@@ -56,41 +55,14 @@
                     <p class="text-sm fw-bold mb-0"><fmt:formatNumber type="number" pattern="###,###원" value="${obj.reservePayAmount}"/></p>
                   </div>
                   <div class="col-6 col-md-4 col-lg-3 py-3">
-                    <c:choose>
-                      <c:when test="${obj.reservePayDate == null}">
-                        <h6 class="label-heading">예약날짜(결제일자)</h6>
-                        <p class="text-sm fw-bold">결제 후 예약확정</p>
-                      </c:when>
-                      <c:otherwise>
                         <h6 class="label-heading">예약날짜(결제일자)</h6>
                         <p class="text-sm fw-bold"><fmt:formatDate value="${obj.reservePayDate}" pattern="yyyy, MMM dd"/></p>
-                      </c:otherwise>
-                    </c:choose>
                     <h6 class="label-heading">객실주소</h6>
                     <p class="text-sm fw-bold mb-0">${obj.roomAddress}</p>
                   </div>
                   <div class="col-12 col-lg-3 align-self-center">
-                      <c:choose>
-                        <c:when test="${obj.reserveStatus == null}">
-                          <span class="text-muted text-sm text-uppercase">
-                            <i class="fa fa-times fa-fw me-2"> </i>예약미확정
-                          </span><br class="d-none d-lg-block">
-                        </c:when>
-                        <c:otherwise>
-                        <span class="text-primary text-sm text-uppercase me-4 me-lg-0">
-                            <i class="fa fa-check fa-fw me-2"> </i>${obj.reserveStatus}
-                        </span><br class="d-none d-lg-block">
-                          <span class="text-primary text-sm text-uppercase">
-                            <form action="/payment/refund" method="GET">
-                               <input type="hidden" id="reserveId" name="reserveId" value="${obj.reserveId}">
-                               <a id="refund" href="payment/refund?reserveId=${obj.reserveId}"
-                                  onclick='return confirm("결제취소를 진행하시겠습니까? 한번 더 확인해 주세요");'>
-                                 <i class="fa fa-check fa-fw me-2"></i>환불하기</a>
-                            </form>
-                          </span>
-                        </c:otherwise>
-                      </c:choose>
-                     <br class="d-none d-lg-block">
+                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">
+                      후기 남기기</button>
                   </div>
                 </div>
               </div>
@@ -101,10 +73,45 @@
       </c:forEach>
   </div>
 
-
+  <div class="container">
+       <div class="row">
+<%--               <div class="py-5">--%>
+          <div class="collapse mt-4" id="leaveReview">
+            <h5 class="mb-4">Review</h5>
+            <form class="form" id="contact-form" method="get" action="#">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="mb-4">
+                    <label class="form-label" for="name">닉네임</label>
+                    <input class="form-control" type="text" name="name" id="name" placeholder="Enter your name" required="required">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="mb-4">
+                    <label class="form-label" for="rating">별점</label>
+                    <select class="form-select focus-shadow-0" name="rating" id="rating">
+                      <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
+                      <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
+                      <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>
+                      <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; (2/5)</option>
+                      <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; (1/5)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="form-label" for="review">Review text *</label>
+                <textarea class="form-control" rows="4" name="review" id="review" placeholder="Enter your review" required="required"></textarea>
+              </div>
+              <button class="btn btn-primary" type="button">Post review</button>
+            </form>
+          </div>
+      </div>
+  </div>
 
 
 </section>
+
 
 <!-- JavaScript files-->
 
