@@ -140,12 +140,20 @@
                     <div>
                         <h6 class="mt-2 mb-1">${obj.guestId2}</h6>
                         <div class="mb-2">
-                            ${obj.reviewRate}
-                            <i class="fa fa-xs fa-star text-primary"></i>
-                            <i class="fa fa-xs fa-star text-primary"></i>
-                            <i class="fa fa-xs fa-star text-primary"></i>
-                            <i class="fa fa-xs fa-star text-primary"></i>
-                            <i class="fa fa-xs fa-star text-primary"></i>
+                                ${obj.reviewRate}
+                            <script>
+
+                                var reviewRate = ${obj.reviewRate};
+                                for (var i = 0; i < reviewRate; i++) {
+                                    document.write('<i class="fa fa-xs fa-star text-primary"></i>');
+                                }
+                            </script>
+<%--                            ${obj.reviewRate}--%>
+<%--                            <i class="fa fa-xs fa-star text-primary"></i>--%>
+<%--                            <i class="fa fa-xs fa-star text-primary"></i>--%>
+<%--                            <i class="fa fa-xs fa-star text-primary"></i>--%>
+<%--                            <i class="fa fa-xs fa-star text-primary"></i>--%>
+<%--                            <i class="fa fa-xs fa-star text-primary"></i>--%>
                         </div>
                         <p class="text-muted text-sm">${obj.reviewContents1}</p>
                     </div>

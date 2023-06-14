@@ -56,7 +56,7 @@ let wirteReview = {
                           <p>후기작성완료</p>
                       </div>
                   `
-          $('#reviewBox').append(htmlDiv);
+          $('#reviewBox'+reviewId).append(htmlDiv);
           alert("후기를 남겨주셔서 감사합니다♡");
         }
       });
@@ -104,7 +104,7 @@ let wirteReview = {
                   </a>
                 </div>
               <div class="col-lg-8" style="padding-top: 16px;" >
-                <div class="row" id="reviewBox">
+                <div class="row" id="reviewBox${obj.reserveId}">
                   <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">
                     <h6 class="label-heading">객실형태</h6>
                     <p class="text-sm fw-bold">${obj.roomType}</p>

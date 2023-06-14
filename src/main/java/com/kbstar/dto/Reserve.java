@@ -46,11 +46,7 @@ public class Reserve {
 
 //
     private Integer reserveReply;// 최준혁 추가
-
     private Date refundDate; // 서지영
-
-
-
 
     public Reserve(String guestId, int roomId, Date reserveCheckIn, Date reserveCheckOut, int reservePrice, int reserveCap) {
         this.guestId = guestId;
