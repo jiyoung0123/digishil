@@ -2,9 +2,11 @@ package com.kbstar.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.kbstar.dto.Reserve;
+import com.kbstar.dto.Review;
 import com.kbstar.dto.Room;
 import com.kbstar.dto.RoomSearch;
 import com.kbstar.service.ReserveService;
+import com.kbstar.service.ReviewService;
 import com.kbstar.service.RoomService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ import java.util.List;
 public class RoomController {
     @Autowired
     RoomService roomService;
+    @Autowired
+    ReviewService reviewService;
     String dir ="room/";
 
     @RequestMapping("/list")
@@ -50,6 +54,11 @@ public class RoomController {
         Room room = null;
         room = roomService.get(id);
 
+        List<Review> list = null;
+
+        list = reviewService.getRoomReview(room.getRoomId());
+
+        model.addAttribute("roomReviewList", list);
         model.addAttribute("roomDetail",room);
         model.addAttribute("center",dir+"detail");
         return "index";

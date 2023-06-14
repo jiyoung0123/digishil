@@ -10,4 +10,10 @@
     <select id="select" parameterType="Integer" resultType="Review">
         SELECT * FROM review WHERE reserveId=#{reserveId}
     </select>
+
+    <select id="getRoomReview" parameterType="Integer" resultType="Review">
+        SELECT *
+        FROM review
+        WHERE roomId=#{rooomId}
+    </select>
 </mapper>

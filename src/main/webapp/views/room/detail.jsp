@@ -131,57 +131,29 @@
                     <div class="h-100" id="detailMap"></div>
                 </div>
             </div>
-
+            <c:forEach var="obj" items="${roomReviewList}">
             <div class="text-block">
                 <p class="subtitle text-sm text-primary">REVIEWS</p>
                 <h5 class="mb-4">후기</h5>
                 <div class="d-flex d-block d-sm-flex review">
-                    <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="/img/avatar/avatar-8.jpg" alt="Padmé Amidala"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
+                    <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="/img/avatar/avatar-8.jpg"><span class="text-uppercase text-muted text-sm"></span></div>
                     <div>
-                        <h6 class="mt-2 mb-1">Padmé Amidala</h6>
-                        <div class="mb-2"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i>
+                        <h6 class="mt-2 mb-1">${obj.guestId2}</h6>
+                        <div class="mb-2">
+                            ${obj.reviewRate}
+                            <i class="fa fa-xs fa-star text-primary"></i>
+                            <i class="fa fa-xs fa-star text-primary"></i>
+                            <i class="fa fa-xs fa-star text-primary"></i>
+                            <i class="fa fa-xs fa-star text-primary"></i>
+                            <i class="fa fa-xs fa-star text-primary"></i>
                         </div>
-                        <p class="text-muted text-sm">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections     </p>
+                        <p class="text-muted text-sm">${obj.reviewContents1}</p>
                     </div>
                 </div>
-
-
-
-                <div class="py-5">
-                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">후기 남기기</button>
-                    <div class="collapse mt-4" id="leaveReview">
-                        <h5 class="mb-4">Review</h5>
-                        <form class="form" id="contact-form" method="get" action="#">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="mb-4">
-                                        <label class="form-label" for="name">닉네임</label>
-                                        <input class="form-control" type="text" name="name" id="name" placeholder="Enter your name" required="required">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="mb-4">
-                                        <label class="form-label" for="rating">별점</label>
-                                        <select class="form-select focus-shadow-0" name="rating" id="rating">
-                                            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
-                                            <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
-                                            <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>
-                                            <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; (2/5)</option>
-                                            <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; (1/5)</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label" for="review">Review text *</label>
-                                <textarea class="form-control" rows="4" name="review" id="review" placeholder="Enter your review" required="required"></textarea>
-                            </div>
-                            <button class="btn btn-primary" type="button">Post review</button>
-                        </form>
-                    </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
+
 <%--        reserve Form Start--%>
         <div class="col-lg-4">
             <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 100px;">
