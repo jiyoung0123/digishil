@@ -4,6 +4,7 @@ import com.kbstar.dto.Guest;
 import com.kbstar.dto.Reserve;
 import com.kbstar.service.GuestService;
 import com.kbstar.service.ReserveService;
+import com.kbstar.service.ReviewService;
 import com.kbstar.service.RoomService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,8 @@ public class ReserveController {
     RoomService roomService;
     @Autowired
     GuestService guestService;
+    @Autowired
+    ReviewService reviewService;
 
     String dir = "reserve/";
     @RequestMapping("/reserve")

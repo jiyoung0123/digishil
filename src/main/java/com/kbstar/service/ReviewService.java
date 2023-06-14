@@ -41,7 +41,7 @@ public class ReviewService implements KBService<Integer, Review> {
 
     @Override
     public Review get(Integer integer) throws Exception {
-        return null;
+        return mapper.select(integer);
     }
 
     @Override

@@ -7,7 +7,7 @@
 <script>
   let wirteReview={
     init:function(){
-        $('#reviewBtn').click(function (){
+        $('.reviewBtn').click(function (){
           let guestId = $("#guestId").val();
           let reviewRate = $("#rating").val();
           let reviewContents1 = $('#reviewContents1').val();
@@ -16,8 +16,11 @@
           let roomId = $('#roomId').val();
           $.ajax({
             url: '/review',
-            data: { guestId: guestId, reviewRate: reviewRate, reviewContents1: reviewContents1, guestId2:guestId2, reserveId:reserveId, roomId:roomId}
+            data: { guestId: guestId, reviewRate: reviewRate, reviewContents1: reviewContents1, guestId2:guestId2, reserveId:reserveId, roomId:roomId},
             success: function () {
+              $('#review').hide();
+              $('#reviewBtn2').hide();
+              $('#reviewBtn1').html('후기작성완료');
               alert("후기를 남겨주셔서 감사합니다♡");
             }
           });
@@ -84,14 +87,18 @@
                     <h6 class="label-heading">객실주소</h6>
                     <p class="text-sm fw-bold mb-0">${obj.roomAddress}</p>
                   </div>
-                  <div class="col-12 col-lg-3 align-self-center">
-                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview${obj.reserveId}" aria-expanded="false" aria-controls="leaveReview">
+
+
+<%--==============================================================================================================================--%>
+<%--                  <c:when test="${obj.reserveReply == ''}">--%>
+                  <div class="col-12 col-lg-3 align-self-center" id="reviewBtn1">
+                    <button  id="reviewBtn2" class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview${obj.reserveId}" aria-expanded="false" aria-controls="leaveReview">
                       후기 남기기</button>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="container">
+            <div class="container" id="review">
               <div class="row" >
                 <div class="collapse mt-4" id="leaveReview${obj.reserveId}" style="padding-left: 30px; padding-right: 30px;">
                   <h5 class="mb-4">후기</h5>
@@ -124,12 +131,11 @@
                       <textarea class="form-control" rows="4" name="reviewContents1" id="reviewContents1" required="required"></textarea>
                     </div>
                     <div class="col-sm-12 text-end" style="padding-bottom: 10px;">
-                      <a id="reviewBtn" type="button"><i class="far fa-edit"></i>저장하기</a>
+                      <a class="reviewBtn" id="reviewBtn" type="button"><i class="far fa-edit"></i>저장하기</a>
                     </div>
                   </form>
                 </div>
               </div>
-
             </div>
            </div>
           </c:when>
