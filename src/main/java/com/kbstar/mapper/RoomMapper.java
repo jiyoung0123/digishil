@@ -13,6 +13,7 @@ import java.util.List;
 @Mapper
 public interface RoomMapper extends KBMapper<Integer, Room> {
     Page<Room> getpage() throws Exception;
+    Page<Room> getpage2() throws Exception;
 
     Page<Room> roomSearch(RoomSearch rs) throws Exception;
 

@@ -24,9 +24,16 @@ public class RoomController {
     String dir ="room/";
 
     @RequestMapping("/list")
-    public String list(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model) throws Exception {
+    public String list(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String guestId) throws Exception {
         PageInfo<Room> p = null;
         try {
+            if(guestId == ""){
+                p = new PageInfo<>(roomService.getPage2(pageNo), 5); // 5:하단 네비게이션 개수
+                model.addAttribute("target","room");
+                model.addAttribute("roomList",p);
+                model.addAttribute("center",dir+"list");
+                return "index";
+            }
             p = new PageInfo<>(roomService.getPage(pageNo), 5); // 5:하단 네비게이션 개수
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,10 +56,9 @@ public class RoomController {
     }
 
     @RequestMapping("/roomSearch")
-    public String roomSearch(Model model, RoomSearch rs, @RequestParam(required = false, defaultValue = "1") int pageNo) throws Exception {
-        PageInfo<Room> p = new PageInfo<>(roomService.roomSearch(pageNo, rs), 5);
-        log.info("----------------------------"+p);
-        log.info("----------------------------"+rs);
+    public String roomSearch(Model model, RoomSearch rs, @RequestParam(required = false, defaultValue = "1") int pageNo, String guestId) throws Exception {
+        PageInfo<Room> p = null;
+        p = new PageInfo<>(roomService.roomSearch(pageNo, rs), 5);
         model.addAttribute("target","room");
         model.addAttribute("roomSearchList",p);
         model.addAttribute("rs",rs);

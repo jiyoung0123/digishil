@@ -169,14 +169,12 @@
                                                 <div>${roomSearchList.hostName}</div>
                                             </div>
                                         </div>
-                                        <form id="likeForm">
+                                        <form id="likeForm_${roomSearchList.roomId}">
                                             <input type="hidden" name="guestId" value="${loginGuest.guestId}">
                                             <input type="hidden" name="roomId" value="${roomSearchList.roomId}">
                                             <div class="card-img-overlay-top text-end">
                                                 <button id="likeFormBtn" class="card-fav-icon position-relative z-index-40" type="button">
-                                                    <svg class="svg-icon text-white">
-                                                        <use xlink:href="#heart-1"> </use>
-                                                    </svg>
+                                                    <i id="likeHeart" class="fa-regular fa-heart" style="color: #ffffff;"></i>
                                                 </button>
                                             </div>
                                         </form>

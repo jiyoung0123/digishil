@@ -19,6 +19,15 @@
         FROM room
         JOIN host ON room.hostId = host.hostId
     </select>
+    <select id="getpage2" resultType="Room">
+        SELECT r.roomId, r.hostId, r.roomPrice, r.roomname, r.roomaddress, r.roomloc, r.roominfo,
+               r.roomintro, r.roomclean, r.roompet, r.roomwprice, r.roomcap, r.roomtype, r.roomlat,
+               r.roomlng, r.roomimage1, r.roomimage2, r.roomimage3, r.roomimage4, r.roomimage5,
+               r.roomimage6, r.roomlikes, h.hostImage, h.hostName, l.guestId ,l.likeId
+        FROM room r
+        JOIN host h ON r.hostId = h.hostId
+        LEFT JOIN likeList l ON r.roomId = l.roomId AND l.guestId = #{guestId};
+    </select>
     <select id="select" parameterType="Integer" resultType="Room">
         SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress, room.roomloc, room.roominfo,
                room.roomintro, room.roomclean, room.roompet, room.roomwprice, room.roomcap, room.roomtype, room.roomlat,
