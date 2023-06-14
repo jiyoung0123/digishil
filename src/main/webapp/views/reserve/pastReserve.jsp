@@ -5,28 +5,61 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
 <script>
-  let wirteReview={
-    init:function(){
-        $('.reviewBtn').click(function (){
-          let guestId = $("#guestId").val();
-          let reviewRate = $("#rating").val();
-          let reviewContents1 = $('#reviewContents1').val();
-          let guestId2 = $('#name').val();
-          let reserveId = $('#reserveId').val();
-          let roomId = $('#roomId').val();
-          $.ajax({
-            url: '/review',
-            data: { guestId: guestId, reviewRate: reviewRate, reviewContents1: reviewContents1, guestId2:guestId2, reserveId:reserveId, roomId:roomId},
-            success: function () {
-              $('#review').hide();
-              $('#reviewBtn2').hide();
-              $('#reviewBtn1').html('후기작성완료');
-              alert("후기를 남겨주셔서 감사합니다♡");
-            }
-          });
-        })
-     }
-  };
+
+//  let wirteReview={
+//    init:function(){
+//        $('.reviewBtn').click(function (){
+//          let guestId = $('.guestId').val();
+//          let reviewRate = $('.rating').val();
+//          let reviewContents1 = $('.reviewContents1').val();
+//          let guestId2 = $('.name').val();
+//          let reserveId = $('.reserveId').val();
+//          let roomId = $('.roomId').val();
+//          $.ajax({
+//            url: '/review',
+//            data:  { guestId: guestId, reviewRate: reviewRate, reviewContents1: reviewContents1, guestId2:guestId2, reserveId:reserveId, roomId:roomId},
+//            success: function () {
+//              $('#review').hide();
+//              $('#reviewBtn2').hide();
+//              $('#reviewBtn1').html('후기작성완료');
+//              alert("후기를 남겨주셔서 감사합니다♡");
+//            }
+//          });
+//        })
+//     }
+//  };
+
+let wirteReview = {
+  init: function() {
+    $('.reviewBtn').click(function() {
+      // 폼 데이터를 생성합니다.
+      let likeForm = $(this).closest('#reviewForm');
+      let review = $(this).closest('#review');
+      let reviewBtn2 =$(this).closest('#reviewBtn2');
+      let reviewBtn1 =$(this).closest('#reviewBtn1');
+
+
+      // AJAX 요청을 보냅니다.
+      $.ajax({
+        url: '/review',
+        type: 'POST',
+        data: likeForm.serialize(),
+        success: function() {
+          review.hide();
+          reviewBtn2.hide();
+          let htmlDiv =
+                  `
+                  <div class="col-12 col-lg-3 align-self-center" id="reviewBtn1">
+                          <p>후기작성완료</p>
+                        </div>
+                  `
+          reviewBtn1.html(htmlDiv);
+          alert("후기를 남겨주셔서 감사합니다♡");
+        }
+      });
+    })
+  }
+};
   $(function(){
     wirteReview.init();
   });
@@ -87,18 +120,23 @@
                     <h6 class="label-heading">객실주소</h6>
                     <p class="text-sm fw-bold mb-0">${obj.roomAddress}</p>
                   </div>
-
-
-<%--==============================================================================================================================--%>
-<%--                  <c:when test="${obj.reserveReply == ''}">--%>
-                  <div class="col-12 col-lg-3 align-self-center" id="reviewBtn1">
-                    <button  id="reviewBtn2" class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview${obj.reserveId}" aria-expanded="false" aria-controls="leaveReview">
-                      후기 남기기</button>
-                  </div>
+                  <c:choose>
+                    <c:when test="${obj.reviewId == null}">
+                    <div class="col-12 col-lg-3 align-self-center" id="reviewBtn1" class="reviewBtn1">
+                      <button  id="reviewBtn2" class="btn btn-outline-primary" class="reviewBtn2" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview${obj.reserveId}" aria-expanded="false" aria-controls="leaveReview">
+                        후기 남기기</button>
+                    </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="col-12 col-lg-3 align-self-center" id="reviewBtn1">
+                          <p>후기작성완료</p>
+                        </div>
+                    </c:otherwise>
+                  </c:choose>
                 </div>
               </div>
             </div>
-            <div class="container" id="review">
+            <div class="container" id="review" class="review">
               <div class="row" >
                 <div class="collapse mt-4" id="leaveReview${obj.reserveId}" style="padding-left: 30px; padding-right: 30px;">
                   <h5 class="mb-4">후기</h5>
@@ -107,16 +145,16 @@
                       <div class="col-sm-6">
                         <div class="mb-4">
                           <label class="form-label" for="name">이름</label>
-                          <input class="form-control" type="text" name="name" id="name" value="${guest.guestName}" required="required">
-                          <input class="form-control" type="hidden" name="guestId" id="guestId" value="${guest.guestId}" required="required">
-                          <input class="form-control" type="hidden" name="reserveId" id="reserveId" value="${obj.reserveId}" required="required">
-                          <input class="form-control" type="hidden" name="roomId" id="roomId" value="${obj.roomId}" required="required">
+                          <input class="form-control" type="text" name="guestId2" id="name" class="name" value="${guest.guestName}" required="required">
+                          <input class="form-control" type="hidden" name="guestId" id="guestId" class="guestId" value="${guest.guestId}" required="required">
+                          <input class="form-control" type="hidden" name="reserveId" id="reserveId" class="reserveId" value="${obj.reserveId}" required="required">
+                          <input class="form-control" type="hidden" name="roomId" id="roomId" class="roomId" value="${obj.roomId}" required="required">
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="mb-4">
                           <label class="form-label" for="rating">별점</label>
-                          <select class="form-select focus-shadow-0" name="rating" id="rating">
+                          <select class="form-select focus-shadow-0" name="reviewRate" id="rating"class="rating">
                             <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
                             <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
                             <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>
@@ -128,7 +166,7 @@
                     </div>
                     <div class="mb-4">
                       <label class="form-label" for="reviewContents1">후기를 작성해 주세요</label>
-                      <textarea class="form-control" rows="4" name="reviewContents1" id="reviewContents1" required="required"></textarea>
+                      <textarea class="form-control" rows="4" name="reviewContents1" id="reviewContents1" class="reviewContents1" required="required"></textarea>
                     </div>
                     <div class="col-sm-12 text-end" style="padding-bottom: 10px;">
                       <a class="reviewBtn" id="reviewBtn" type="button"><i class="far fa-edit"></i>저장하기</a>
@@ -139,47 +177,9 @@
             </div>
            </div>
           </c:when>
-      </c:choose>
+       </c:choose>
       </c:forEach>
   </div>
-
-<%--  <div class="container">--%>
-<%--       <div class="row">--%>
-<%--&lt;%&ndash;               <div class="py-5">&ndash;%&gt;--%>
-<%--          <div class="collapse mt-4" id="leaveReview">--%>
-<%--            <h5 class="mb-4">Review</h5>--%>
-<%--            <form class="form" id="contact-form" method="get" action="#">--%>
-<%--              <div class="row">--%>
-<%--                <div class="col-sm-6">--%>
-<%--                  <div class="mb-4">--%>
-<%--                    <label class="form-label" for="name">닉네임</label>--%>
-<%--                    <input class="form-control" type="text" name="name" id="name" placeholder="Enter your name" required="required">--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--                <div class="col-sm-6">--%>
-<%--                  <div class="mb-4">--%>
-<%--                    <label class="form-label" for="rating">별점</label>--%>
-<%--                    <select class="form-select focus-shadow-0" name="rating" id="rating">--%>
-<%--                      <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>--%>
-<%--                      <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>--%>
-<%--                      <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>--%>
-<%--                      <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; (2/5)</option>--%>
-<%--                      <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; (1/5)</option>--%>
-<%--                    </select>--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--              </div>--%>
-<%--              <div class="mb-4">--%>
-<%--                <label class="form-label" for="review">Review text *</label>--%>
-<%--                <textarea class="form-control" rows="4" name="review" id="review" placeholder="Enter your review" required="required"></textarea>--%>
-<%--              </div>--%>
-<%--              <button class="btn btn-primary" type="button">Post review</button>--%>
-<%--            </form>--%>
-<%--          </div>--%>
-<%--      </div>--%>
-<%--  </div>--%>
-
-
 </section>
 
 

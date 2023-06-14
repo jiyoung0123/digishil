@@ -115,8 +115,8 @@ public class AjaxImplController {
 
     @RequestMapping("/review")
     public Object review(Review review) throws Exception {
-        reviewService.register(review);
         log.info("-----------------------------------"+String.valueOf(review));
+        reviewService.register(review);
         return "";
     }
 

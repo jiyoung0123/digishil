@@ -42,6 +42,7 @@ public class Reserve {
     private String roomLoc;
     private String hostImage;
     private int roomWPrice;
+    Integer reviewId;
 
 //
     private Integer reserveReply;// 최준혁 추가
