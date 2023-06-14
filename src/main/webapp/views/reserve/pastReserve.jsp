@@ -37,6 +37,8 @@ let wirteReview = {
       let review = $(this).closest('#review');
       let reviewBtn2 =$(this).closest('#reviewBtn2');
       let reviewBtn1 =$(this).closest('#reviewBtn1');
+      let reviewId = $(this).closest('.container').attr('id').replace('review', '');
+      console.log(reviewId);
 
 
       // AJAX 요청을 보냅니다.
@@ -45,15 +47,16 @@ let wirteReview = {
         type: 'POST',
         data: likeForm.serialize(),
         success: function() {
-          review.hide();
-          reviewBtn2.hide();
+          $('#review'+reviewId).hide();
+          $('#reviewBtn'+reviewId).hide();
+          //console.log(reviewBtn1);
           let htmlDiv =
                   `
-                  <div class="col-12 col-lg-3 align-self-center" id="reviewBtn1">
+                      <div class="col-12 col-lg-3 align-self-center" id="reviewBtn1">
                           <p>후기작성완료</p>
-                        </div>
+                      </div>
                   `
-          reviewBtn1.html(htmlDiv);
+          $('#reviewBox').append(htmlDiv);
           alert("후기를 남겨주셔서 감사합니다♡");
         }
       });
@@ -83,8 +86,8 @@ let wirteReview = {
      <c:choose>
        <c:when test="${obj.reserveStatus == '결제완료'}">
           <div class="list-group shadow mb-5">
-            <div class="row">
-                <div class="col-lg-4 align-self-center mb-4 mb-lg-0">
+            <div class="row" >
+              <div class="col-lg-4 align-self-center mb-4 mb-lg-0">
                   <a class="list-group-item list-group-item-action p-4" href="/room/detail?id=${obj.roomId}">
                     <div class="d-flex align-items-center mb-3">
                       <h2 class="h5 mb-0">${obj.hostName}</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="/img/avatar/avatar-0.jpg" alt="Jack London">
@@ -100,8 +103,8 @@ let wirteReview = {
                     </c:choose>
                   </a>
                 </div>
-              <div class="col-lg-8" style="padding-top: 16px;">
-                <div class="row">
+              <div class="col-lg-8" style="padding-top: 16px;" >
+                <div class="row" id="reviewBox">
                   <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">
                     <h6 class="label-heading">객실형태</h6>
                     <p class="text-sm fw-bold">${obj.roomType}</p>
@@ -122,7 +125,7 @@ let wirteReview = {
                   </div>
                   <c:choose>
                     <c:when test="${obj.reviewId == null}">
-                    <div class="col-12 col-lg-3 align-self-center" id="reviewBtn1" class="reviewBtn1">
+                    <div class="col-12 col-lg-3 align-self-center" id="reviewBtn${obj.reserveId}" class="reviewBtn1">
                       <button  id="reviewBtn2" class="btn btn-outline-primary" class="reviewBtn2" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview${obj.reserveId}" aria-expanded="false" aria-controls="leaveReview">
                         후기 남기기</button>
                     </div>
@@ -136,7 +139,7 @@ let wirteReview = {
                 </div>
               </div>
             </div>
-            <div class="container" id="review" class="review">
+            <div class="container" id="review${obj.reserveId}" class="review">
               <div class="row" >
                 <div class="collapse mt-4" id="leaveReview${obj.reserveId}" style="padding-left: 30px; padding-right: 30px;">
                   <h5 class="mb-4">후기</h5>
