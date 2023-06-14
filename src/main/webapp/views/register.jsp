@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
 <script>
 
   let idCheck = {
@@ -133,7 +134,7 @@
     </div>
     <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
       <!-- Image-->
-      <div class="bg-cover h-100 me-n3" style="background-image: url(img/photo/photo-1497436072909-60f360e1d4b1.jpg);"></div>
+      <div class="bg-cover h-100 me-n3" style="background-image: url(img/photo/madrid.jpg);"></div>
     </div>
   </div>
 </div>

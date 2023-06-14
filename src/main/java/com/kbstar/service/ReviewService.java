@@ -46,7 +46,11 @@ public class ReviewService implements KBService<Integer, Review> {
 
     @Override
     public List<Review> get() throws Exception {
-        return null;
+        return mapper.selectall();
+    }
+
+    public List<Review> getRoomReview(Integer roomId)throws Exception{
+        return mapper.getRoomReview(roomId);
     }
 
 }
