@@ -89,9 +89,9 @@
                                     <div>Julie</div>
                                 </div>
                             </div>
-                            <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();">
+                            <div class="card-img-overlay-top text-end"><button class="card-fav-icon position-relative z-index-40" href="javascript: void();">
                                 <img class="svg-icon" src="/img/whiteheart.png">
-                            </a></div>
+                            </button></div>
                         </div>
                         <div class="card-body d-flex align-items-center">
                             <div class="w-100">

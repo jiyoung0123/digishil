@@ -16,10 +16,25 @@ public class LikeImplController {
 
     @RequestMapping("/likeAdd")
     public String likeAdd(Like like, String guestId, int roomId) throws Exception{
-        log.info("-------------------------"+like);
+        Like getLike = null;
+        try{
 
-        likeService.register(like);
-        return "true";
+            getLike = likeService.getLike(like);
+            if(getLike == null){
+                likeService.register(like);
+                return "true";
+            }
+            if(guestId == ""){
+                return "login";
+            }if(getLike != null){
+                likeService.remove(getLike.getLikeId());
+                return "delete";
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return "false";
+        }
+        return "false";
     }
 
 }

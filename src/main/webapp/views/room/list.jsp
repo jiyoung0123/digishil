@@ -2,35 +2,37 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/5f198f7eda.js" crossorigin="anonymous"></script>
 <script>
     $(document).on('click', '#likeFormBtn', function(e) {
         e.preventDefault();  // 기본 동작(폼 제출)을 막음
 
+        let likeForm = $(this).closest('form');  // 클릭된 버튼의 가장 가까운 form 요소를 선택
+        let likeHeart = $(this).closest('#likeHeart');  // 클릭된 버튼의 가장 가까운 form 요소를 선택
+
         $.ajax({
             url: '/likeAdd',
             type: 'post',
+            data: likeForm.serialize(),
             data: $('#likeForm').serialize(),
             success: function (response) {
-                if (response == true) {
-                    alert('성공');
+                if (response == 'true') {
+                    let heart = '<i id="likeHeart" class="fa-solid fa-heart" style="color: #fff700;"></i>';
+                    $(likeHeart).replaceWith(heart);
+                    alert('찜했습니다');
+                }else if(response == 'login'){
+                    alert('로그인하세요');
+                }else if(response == 'delete'){
+                    let heartDel = '<i class="fa-regular fa-heart" style="color: #ffffff;"></i>';
+                    $(likeHeart).replaceWith(heartDel);
+                    alert('찜 해제');
+                }else{
+                    alert('실패');
                 }
             }
         });
     });
-    // $('#likeFormBtn').click(function(e) {
-    //     e.preventDefault();  // 기본 동작(폼 제출)을 막음
-    //
-    //     $.ajax({
-    //         url: '/likeAdd',
-    //         type: 'post',
-    //         data: $('#likeForm').serialize(),
-    //         success: function (response) {
-    //             if (response == true) {
-    //                 alert('성공');
-    //             }
-    //         }
-    //     })
-    // });
+
 </script>
 
 <div class="container-fluid">
@@ -129,14 +131,12 @@
                                                 <div>${roomList.hostName}</div>
                                             </div>
                                         </div>
-                                        <form id="likeForm" >  <%--action="/likeAdd" method="post"--%>
+                                        <form id="likeForm">
                                             <input type="hidden" name="guestId" value="${loginGuest.guestId}">
                                             <input type="hidden" name="roomId" value="${roomList.roomId}">
                                             <div class="card-img-overlay-top text-end">
                                                 <button id="likeFormBtn" class="card-fav-icon position-relative z-index-40" type="button">
-                                                    <svg class="svg-icon text-white">
-                                                        <use xlink:href="#heart-1"> </use>
-                                                    </svg>
+                                                    <i class="fa-regular fa-heart" style="color: #ffffff;"></i>
                                                 </button>
                                             </div>
                                         </form>
@@ -170,7 +170,7 @@
                                                 <div>${roomSearchList.hostName}</div>
                                             </div>
                                         </div>
-                                        <form id="likeForm" >  <%--action="/likeAdd" method="post"--%>
+                                        <form id="likeForm">
                                             <input type="hidden" name="guestId" value="${loginGuest.guestId}">
                                             <input type="hidden" name="roomId" value="${roomSearchList.roomId}">
                                             <div class="card-img-overlay-top text-end">

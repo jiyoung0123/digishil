@@ -3,7 +3,16 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kbstar.mapper.LikeMapper">
+    <select id="getLike" parameterType="Like">
+        SELECT * FROM likeList
+        WHERE guestId=${guestId} and roomId=${roomId}
+    </select>
+
     <insert id="insert" parameterType="Like">
         INSERT INTO likeList (likeId, roomId, guestId) VALUES (likeListSeq.NEXTVAL, #{roomId}, #{guestId})
     </insert>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM likeList
+        WHERE likeId=#{likeId}
+    </delete>
 </mapper>

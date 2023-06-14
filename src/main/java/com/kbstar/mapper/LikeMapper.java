@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface LikeMapper extends KBMapper<Integer, Like> {
+    Like getLike(Like like) throws Exception;
 }

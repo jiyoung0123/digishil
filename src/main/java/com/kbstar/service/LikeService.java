@@ -45,4 +45,8 @@ public class LikeService implements KBService<Integer, Like> {
     public List<Like> get() throws Exception {
         return mapper.selectall();
     }
+
+    public Like getLike(Like like) throws Exception {
+        return mapper.getLike(like);
+    }
 }
