@@ -8,22 +8,21 @@
         e.preventDefault();  // 기본 동작(폼 제출)을 막음
 
         let likeForm = $(this).closest('form');  // 클릭된 버튼의 가장 가까운 form 요소를 선택
-        let likeHeart = $(this).closest('#likeHeart');  // 클릭된 버튼의 가장 가까운 form 요소를 선택
+        let likeHeart = $(this).closest('form').find('#likeHeart');
 
         $.ajax({
             url: '/likeAdd',
             type: 'post',
             data: likeForm.serialize(),
-            data: $('#likeForm').serialize(),
             success: function (response) {
                 if (response == 'true') {
-                    let heart = '<i id="likeHeart" class="fa-solid fa-heart" style="color: #fff700;"></i>';
+                    let heart = '<i id="likeHeart" class="fa-solid fa-heart" style="color: #fff700;">'+'</i>';
                     $(likeHeart).replaceWith(heart);
                     alert('찜했습니다');
                 }else if(response == 'login'){
                     alert('로그인하세요');
                 }else if(response == 'delete'){
-                    let heartDel = '<i class="fa-regular fa-heart" style="color: #ffffff;"></i>';
+                    let heartDel = '<i id="likeHeart" class="fa-regular fa-heart" style="color: #ffffff;">'+'</i>';
                     $(likeHeart).replaceWith(heartDel);
                     alert('찜 해제');
                 }else{
@@ -131,12 +130,12 @@
                                                 <div>${roomList.hostName}</div>
                                             </div>
                                         </div>
-                                        <form id="likeForm">
+                                        <form id="likeForm_${roomList.roomId}">
                                             <input type="hidden" name="guestId" value="${loginGuest.guestId}">
                                             <input type="hidden" name="roomId" value="${roomList.roomId}">
                                             <div class="card-img-overlay-top text-end">
                                                 <button id="likeFormBtn" class="card-fav-icon position-relative z-index-40" type="button">
-                                                    <i class="fa-regular fa-heart" style="color: #ffffff;"></i>
+                                                    <i id="likeHeart" class="fa-regular fa-heart" style="color: #ffffff;"></i>
                                                 </button>
                                             </div>
                                         </form>

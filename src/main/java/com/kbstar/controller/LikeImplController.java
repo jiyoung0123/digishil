@@ -18,15 +18,16 @@ public class LikeImplController {
     public String likeAdd(Like like, String guestId, int roomId) throws Exception{
         Like getLike = null;
         try{
-
+            if(guestId == ""){
+                return "login";
+            }
             getLike = likeService.getLike(like);
+            log.info("-------------------------------"+getLike);
             if(getLike == null){
                 likeService.register(like);
                 return "true";
             }
-            if(guestId == ""){
-                return "login";
-            }if(getLike != null){
+            if(getLike != null){
                 likeService.remove(getLike.getLikeId());
                 return "delete";
             }

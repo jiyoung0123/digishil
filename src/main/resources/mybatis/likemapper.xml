@@ -5,7 +5,7 @@
 <mapper namespace="com.kbstar.mapper.LikeMapper">
     <select id="getLike" parameterType="Like">
         SELECT * FROM likeList
-        WHERE guestId=${guestId} and roomId=${roomId}
+        WHERE guestId=#{guestId} and roomId=#{roomId}
     </select>
 
     <insert id="insert" parameterType="Like">
