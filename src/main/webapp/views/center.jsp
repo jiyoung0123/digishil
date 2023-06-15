@@ -114,7 +114,7 @@
             <div class="swiper-wrapper pb-5">
                 <!-- Slides-->
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/searchList?roomLoc=서울"></a><img class="bg-image" src="/img/photo/야경.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/room/searchList?roomLoc=서울"></a><img class="bg-image" src="/img/photo/야경.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">서울</h6>
                             <p class="card-text text-sm">Seoul</p>
@@ -122,7 +122,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/searchList?roomLoc=부산"></a><img class="bg-image" src="/img/photo/busan1.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/room/searchList?roomLoc=부산"></a><img class="bg-image" src="/img/photo/busan1.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">부산</h6>
                             <p class="card-text text-sm">Busan</p>
@@ -130,7 +130,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/searchList?roomLoc=제주"></a><img class="bg-image" src="/img/photo/jeju.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/room/searchList?roomLoc=제주"></a><img class="bg-image" src="/img/photo/jeju.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">제주</h6>
                             <p class="card-text text-sm">Jeju</p>
@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/searchList?roomLoc=강원도"></a><img class="bg-image" src="/img/photo/kang.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/room/searchList?roomLoc=강원도"></a><img class="bg-image" src="/img/photo/kang.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">강원도</h6>
                             <p class="card-text text-sm">KangWonDo</p>
@@ -146,7 +146,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/searchList?roomLoc=경주"></a><img class="bg-image" src="/img/photo/kang1.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/room/searchList?roomLoc=경주"></a><img class="bg-image" src="/img/photo/kang1.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">경주</h6>
                             <p class="card-text text-sm">GyeongJu</p>

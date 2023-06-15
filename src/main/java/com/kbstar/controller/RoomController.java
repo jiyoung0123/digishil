@@ -89,15 +89,12 @@ public class RoomController {
 
     @RequestMapping("/searchList")
     public String searchList(Model model, String roomLoc) throws Exception {
-
-
-        List<Review> list = null;
-
-//        list = reviewService.getRoomReview(room.getRoomId());
-//
-//        model.addAttribute("roomReviewList", list);
-//        model.addAttribute("roomDetail",room);
-//        model.addAttribute("center",dir+"detail");
+        List<Room> list = null;
+        list = roomService.getRoomLocList(roomLoc);
+        model.addAttribute("roomLoc", roomLoc);
+        model.addAttribute("roomLocList", list);
+        model.addAttribute("center",dir+"searchList");
+        log.info("---------------------------------------------------------"+list.toString());
         return "index";
     }
 

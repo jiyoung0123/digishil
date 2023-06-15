@@ -60,4 +60,14 @@
         </where>
     </select>
 
+    <select id="getRoomLocList" parameterType="String" resultType="Room">
+        SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress, room.roomloc, room.roominfo,
+               room.roomintro, room.roomclean, room.roompet, room.roomwprice, room.roomcap, room.roomtype, room.roomlat,
+               room.roomlng, room.roomimage1, room.roomimage2, room.roomimage3, room.roomimage4, room.roomimage5,
+               room.roomimage6, room.roomlikes, host.hostImage, host.hostName, host.hostIntro
+        FROM room
+        JOIN host ON room.hostId = host.hostId
+        WHERE room.roomLoc=#{roomLoc}
+    </select>
+
 </mapper>
