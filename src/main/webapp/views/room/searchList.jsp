@@ -2,7 +2,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://kit.fontawesome.com/5f198f7eda.js" crossorigin="anonymous"></script>
-
+<style>
+    #heart-icon::before {
+        content: "\2665";
+        color: white;
+        background-color: grey;
+        /*border: 3px solid red;*/
+        border-radius: 50%;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        font-size: 35px;
+        line-height: 1em;
+        text-align: center;
+    }
+</style>
 <div class="container-fluid pt-5 pb-3 border-bottom px-lg-5">
     <div class="row" style="padding-left: 50px; padding-right: 50px;">
         <div class="col-xl-8">
@@ -47,9 +61,9 @@
                             <div class="card-img-overlay-top text-end">
                                 <a>
                                     <i class="fa-solid fa-heart" style="font-size:35px; color: red !important;"></i>
-                                    <i id="likeHeart" class="fa-regular fa-heart" style="font-size:35px; color:grey;"></i>
                                 </a>
                             </div>
+
                         </div>
                         <div class="card-body d-flex align-items-center">
                             <div class="w-100">
