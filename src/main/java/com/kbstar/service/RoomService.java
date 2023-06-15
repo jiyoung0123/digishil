@@ -48,9 +48,9 @@ public class RoomService implements KBService<Integer, Room> {
         return mapper.getpage();
     }
 
-    public Page<Room> getPage2(int pageNo) throws Exception {
-        PageHelper.startPage(pageNo, 6); // 3: 한화면에 출력되는 개수
-        return mapper.getpage2();
+    public Page<Room> getPage2(int pageNo, String s) throws Exception {
+        PageHelper.startPage(pageNo,6); // 3: 한화면에 출력되는 개수
+        return mapper.getpage2(s);
     }
 
     public Page<Room> roomSearch(int pageNo, RoomSearch rs) throws Exception {

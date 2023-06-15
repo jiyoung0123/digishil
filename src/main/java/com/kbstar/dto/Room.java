@@ -35,4 +35,6 @@ public class Room {
     private String hostImage;
     private String hostName;
     private String hostIntro;
+    private int likeId;
+    private String guestId;
 }
