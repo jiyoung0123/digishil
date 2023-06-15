@@ -38,14 +38,14 @@
                   <div class="col-10 ms-auto col-lg-7">
                     <div class="row">
                       <div class="col-md-8 py-3">
-                        <c:choose>
-                          <c:when test="${obj.recent.recentSender != guestId}">
-                            <p class="text-sm mb-0">${obj.recent.recentContents} &nbsp; &nbsp; &nbsp; &nbsp;  <svg class="svg-icon text-primary svg-icon-sd"><use xlink:href="#read-email-1"> </use></svg></p>
-                          </c:when>
-                          <c:otherwise>
-                            <p class="text-sm mb-0">${obj.recent.recentContents} &nbsp; &nbsp; &nbsp; &nbsp; <svg class="svg-icon text-primary svg-icon-sd"><use xlink:href="#paper-plane-1"> </use></svg></p>
-                          </c:otherwise>
-                        </c:choose>
+              <c:choose>
+                <c:when test="${obj.recent.recentSender != guestId}">
+                  <p class="text-sm mb-0">${obj.recent.recentContents} &nbsp; &nbsp; &nbsp; &nbsp;  <i class='far fa-paper-plane' style='font-size:20px;color:deepskyblue'>Your Turn</i></p>
+                </c:when>
+                <c:otherwise>
+                  <p class="text-sm mb-0">${obj.recent.recentContents}</p>
+                </c:otherwise>
+              </c:choose>
 
                       </div>
                       <div class="col-md-4 text-end py-3">
