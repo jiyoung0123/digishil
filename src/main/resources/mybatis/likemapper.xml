@@ -15,4 +15,15 @@
         DELETE FROM likeList
         WHERE likeId=#{likeId}
     </delete>
+    <select id="likeList" parameterType="String">
+        SELECT l.likeId, l.roomId, l.guestId , room.hostId, room.roomPrice, room.roomname, room.roomaddress, room.roomloc, room.roominfo,
+               room.roomintro, room.roomclean, room.roompet, room.roomwprice, room.roomcap, room.roomtype, room.roomlat,
+               room.roomlng, room.roomimage1, room.roomimage2, room.roomimage3, room.roomimage4, room.roomimage5,
+               room.roomimage6, room.roomlikes, host.hostImage, host.hostName
+        FROM likeList l
+        JOIN room ON l.roomId = room.roomId
+        JOIN host ON room.hostId = host.hostId
+        WHERE l.guestId=#{guestId}
+    </select>
+
 </mapper>

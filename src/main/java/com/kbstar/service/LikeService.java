@@ -1,5 +1,7 @@
 package com.kbstar.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.kbstar.dto.Like;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.LikeMapper;
@@ -48,5 +50,10 @@ public class LikeService implements KBService<Integer, Like> {
 
     public Like getLike(Like like) throws Exception {
         return mapper.getLike(like);
+    }
+
+    public Page<Like> likeList(int pageNo, String s) throws Exception {
+        PageHelper.startPage(pageNo, 6);
+        return mapper.likeList(s);
     }
 }
