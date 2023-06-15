@@ -62,6 +62,12 @@ public class MainController {
         return "redirect:/";
     }
 
+    @RequestMapping("/searchList")
+    public String searchList(Model model){
+        model.addAttribute("center", "searchList");
+        return "index";
+    }
+
 
 
 

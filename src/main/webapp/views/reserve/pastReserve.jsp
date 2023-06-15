@@ -49,7 +49,6 @@ let wirteReview = {
         success: function() {
           $('#review'+reviewId).hide();
           $('#reviewBtn'+reviewId).hide();
-          //console.log(reviewBtn1);
           let htmlDiv =
                   `
                       <div class="col-12 col-lg-3 align-self-center" id="reviewBtn1">
