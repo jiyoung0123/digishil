@@ -19,4 +19,8 @@ public class RoomSearch {
 
 //    private Date reserveCheckIn;
 //    private Date reserveCheckOut;
+
+    public RoomSearch(String roomLoc){
+        this.roomLoc = roomLoc;
+    }
 }

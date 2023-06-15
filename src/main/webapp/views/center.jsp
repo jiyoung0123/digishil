@@ -29,12 +29,6 @@
                             <div class="col-lg-4 d-flex align-items-center form-group">
                                 <input class="form-control border-0 shadow-0" type="text" name="roomName" placeholder="지역, 이름 등 키워드를 입력하세요">
                             </div>
-<%--                            <div class="col-lg-3 d-flex align-items-center form-group">--%>
-<%--                                <div class="input-label-absolute input-label-absolute-right w-100">--%>
-<%--                                    <label class="label-absolute" for="location"><i class="fa fa-crosshairs"></i><span class="sr-only">City</span></label>--%>
-<%--                                    <input class="form-control border-0 shadow-0" type="text" name="location" placeholder="Location" id="location">--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
                             <div class="col-lg-3 d-flex align-items-center form-group no-divider">
                                 <select class="selectpicker" title="상세지역을 선택하세요" data-style="btn-form-control" name="roomLoc">
                                     <option value="S">서울</option>
@@ -48,7 +42,7 @@
                                 <select class="selectpicker" title="객실 타입을 선택하세요" data-style="btn-form-control" name="roomType">
                                     <option value="small">아파트</option>
                                     <option value="medium">오피스텔</option>
-                                    <option value="large">주택</option>
+                                    <option value="large">독채</option>
                                     <option value="x-large">기상천외한숙소</option>
                                 </select>
                             </div>
@@ -79,7 +73,6 @@
                         </svg>
                     </div>
                     <h3 class="h5">가장 완벽한 단기 임대</h3>
-<%--                    <p class="text-muted">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in</p>--%>
                 </div>
             </div>
             <div class="col-lg-4 mb-3 mb-lg-0 text-center">
@@ -101,7 +94,6 @@
                         </svg>
                     </div>
                     <h3 class="h5">휴가를 즐기세요!</h3>
-<%--                    <p class="text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar </p>--%>
                 </div>
             </div>
         </div>
@@ -122,7 +114,7 @@
             <div class="swiper-wrapper pb-5">
                 <!-- Slides-->
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/야경.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/searchList?roomLoc=서울"></a><img class="bg-image" src="/img/photo/야경.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">서울</h6>
                             <p class="card-text text-sm">Seoul</p>
@@ -130,7 +122,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/busan1.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/searchList?roomLoc=부산"></a><img class="bg-image" src="/img/photo/busan1.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">부산</h6>
                             <p class="card-text text-sm">Busan</p>
@@ -138,7 +130,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/jeju.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/searchList?roomLoc=제주"></a><img class="bg-image" src="/img/photo/jeju.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">제주</h6>
                             <p class="card-text text-sm">Jeju</p>
@@ -146,7 +138,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/kang.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/searchList?roomLoc=강원도"></a><img class="bg-image" src="/img/photo/kang.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">강원도</h6>
                             <p class="card-text text-sm">KangWonDo</p>
@@ -154,7 +146,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide h-auto px-2">
-                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="/img/photo/kang1.jpg" alt="Card image">
+                    <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="/searchList?roomLoc=경주"></a><img class="bg-image" src="/img/photo/kang1.jpg" alt="Card image">
                         <div class="card-body overlay-content">
                             <h6 class="card-title text-shadow text-uppercase">경주</h6>
                             <p class="card-text text-sm">GyeongJu</p>
