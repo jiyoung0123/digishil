@@ -8,8 +8,8 @@
         id:null,
         stompClient:null,
         init:function(){
-            this.id = $('#adm_id').text();
-
+            this.id = 'host1@host.com';
+            websocket.connect();
             $("#disconnect").click(function() {
                 websocket.disconnect();
             });
@@ -19,12 +19,13 @@
             $("#sendme").click(function() {
                 websocket.sendMe();
             });
-            $("#sendto").click(function() {
+            $('#sendTo').click(function() {
+                console.log('sendTo clicked');
                 websocket.sendTo();
             });
         },
         connect:function(){
-            var sid = this.id;
+            var sid = 'host1@host.com';
             var socket = new SockJS('http://127.0.0.1:8088/ws');
             socket.withCredentials = false;
             this.stompClient = Stomp.over(socket);
@@ -33,21 +34,14 @@
                 websocket.setConnected(true);
                 console.log('Connected: ' + frame);
                 this.subscribe('/send', function(msg) {
-                    $("#all").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1
-                        + "</h4>");
+
                 });
                 this.subscribe('/send/'+sid, function(msg) {
-                    $("#me").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1+ "</h4>");
+
+
                 });
                 this.subscribe('/send/to/'+sid, function(msg) {
-                    $("#to").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1
-                        + "</h4>");
+
                 });
             });
         },
@@ -76,9 +70,10 @@
         sendTo:function(){
             var msg = JSON.stringify({
                 'sendid' : this.id,
-                'receiveid' : $('#target').val(),
-                'content1' : $('#totext').val()
+                'receiveid' : 'host1@host.com',
+                'content1' : '등록되었습니다'
             });
+            console.log(msg);
             this.stompClient.send('/receiveto', {}, msg);
         },
         sendMe:function(){
@@ -90,13 +85,13 @@
         }
     };
     $(function(){
-        websocket.connect();
+        websocket.init();
     })
 </script>
 
 <%--맨 위에 사진 부분--%>
 <section class="hero-home">
   <div>
-      <button class="btn btn-warning"> button </button>
+      <button type="button"class="btn btn-warning" id="sendTo"> button </button>
   </div>
 </section>

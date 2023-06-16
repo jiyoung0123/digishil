@@ -17,7 +17,13 @@
                     return;
                 }else{
                     reserveForm.send();
+                    websocket.sendTo();
                 }
+
+
+
+
+
             })
         },
         send:function(){
@@ -42,6 +48,7 @@
 
     $(function(){
         reserveForm.init();
+
     })
 </script>
 
