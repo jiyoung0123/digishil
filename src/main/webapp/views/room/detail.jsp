@@ -11,19 +11,16 @@
     let reserveForm = {
 
         init:function(){
+            let hostId =`${roomDetail.hostId}`;
+            console.log(hostId);
             $('#reserveBtn').click(function(){
                 if(reserveDate==''){
                     $('#checkDate').text("예약일을 입력하세요");
                     return;
                 }else{
                     reserveForm.send();
-                    websocket.sendTo();
+                    websocket.sendTo(hostId);
                 }
-
-
-
-
-
             })
         },
         send:function(){

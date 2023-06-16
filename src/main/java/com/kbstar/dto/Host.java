@@ -2,6 +2,7 @@ package com.kbstar.dto;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -9,7 +10,7 @@ import java.util.Date;
 @Setter
 @Getter
 @ToString
-public class Host {
+public class Host implements Serializable {
     private String hostId;
     private String hostName;
     private String hostPwd;

@@ -41,7 +41,7 @@
         id:null,
         stompClient:null,
         init:function(){
-            this.id = 'host1@host.com';
+            this.id = ${loginGuest.guestId};
             websocket.connect();
             $("#disconnect").click(function() {
                 websocket.disconnect();
@@ -54,11 +54,11 @@
             });
             $('#sendTo').click(function() {
                 console.log('sendTo clicked');
-                websocket.sendTo();
+                websocket.sendTo(sid);
             });
         },
         connect:function(){
-            var sid = 'host1@host.com';
+            var sid = ${loginHost.hostId};
             var socket = new SockJS('http://127.0.0.1:8088/ws');
             socket.withCredentials = false;
             this.stompClient = Stomp.over(socket);
@@ -100,9 +100,9 @@
             });
             this.stompClient.send("/receiveall", {}, msg);
         },
-        sendTo:function(){
+        sendTo:function(sid){
             var msg = JSON.stringify({
-                'sendid' : this.id,
+                'sendid' :  sid,
                 'receiveid' : 'host1@host.com',
                 'content1' : '등록되었습니다'
             });
