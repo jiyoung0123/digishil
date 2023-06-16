@@ -34,6 +34,65 @@
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script>
+    // let socket;
+    // //connect부분은 쓰레기 코드인데 어떻게 객체화해야할지 모르겠어서 대충하겠다...너무 지친다...
+    // function connect() {
+    //     var url = "http://127.0.0.1:8088/wss"; // WebSocket 엔드포인트 URL
+    //
+    //     // WebSocket 생성
+    //     socket = new WebSocket(url);
+    //
+    //     // WebSocket 이벤트 핸들러 정의
+    //     socket.onopen = function(event) {
+    //         console.log("WebSocket opened");
+    //         // 서버로 메시지 전송 예시
+    //         socket.send(1);
+    //     };
+    //
+    //
+    //     //소켓 메세지
+    //     socket.onmessage = function(event) {
+    //         let reader = new FileReader();
+    //         reader.onload = function() {
+    //             let notificationRecieved =
+    //                 `
+    //       <div class="spinner-grow text-danger spinner-grow-sm"></div>
+    //             `;
+    //             $('#notificationBell').append(notificationRecieved);
+    //         };
+    //         reader.readAsText(event.data);
+    //     };
+    //
+    //
+    //
+    //     socket.onclose = function(event) {
+    //         console.log("WebSocket closed");
+    //     };
+    //
+    //
+    //     socket.onerror = function(error) {
+    //         console.error("WebSocket error:", error);
+    //     };
+    //
+    //
+    //
+    // }
+    //
+    //
+    // function disconnect() {
+    //     if (socket) {
+    //         socket.close();
+    //         console.log("WebSocket disconnected");
+    //     }
+    // }
+    //
+    // $(()=>{
+    //     connect();
+    // })
+
+</script>
 <body style="padding-top: 72px;">
 <header class="header">
     <!-- Navbar-->
@@ -49,6 +108,11 @@
                     </div>
                 </form>
             </div>
+    <div class="d-flex align-items-center justify-content-end" id="notificationBell">
+        <svg class="svg-icon text-primary svg-icon-sd"><use xlink:href="#customer-suppot-1"> </use></svg>
+        <i class='fas fa-bell' style='font-size:24px'></i>
+        <div class="spinner-grow text-danger spinner-grow-sm"></div>
+    </div>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <!-- Navbar Collapse -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
