@@ -166,7 +166,9 @@
                         <c:forEach var="roomSearchList" items="${roomSearchList.getList()}">
                             <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
                                 <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="/room/detail?id=${roomSearchList.roomId}"></a>
+                                    <div class="card-img-top overflow-hidden gradient-overlay">
+                                        <img class="img-fluid" src="/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/>
+                                        <a class="tile-link" href="/room/detail?id=${roomSearchList.roomId}"></a>
                                         <div class="card-img-overlay-bottom z-index-20">
                                             <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="/img/avatar/avatar-0.jpg" alt="Pamela"/>
                                                 <div>${roomSearchList.hostName}</div>

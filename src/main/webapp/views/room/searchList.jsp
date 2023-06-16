@@ -2,21 +2,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://kit.fontawesome.com/5f198f7eda.js" crossorigin="anonymous"></script>
-<style>
-    #heart-icon::before {
-        content: "\2665";
-        color: white;
-        background-color: grey;
-        /*border: 3px solid red;*/
-        border-radius: 50%;
-        display: inline-block;
-        width: 1em;
-        height: 1em;
-        font-size: 35px;
-        line-height: 1em;
-        text-align: center;
-    }
-</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+<script>
+    let hostIntro = {
+        init : function(){
+            $('#hostIntro').click(
+                function(){
+                    alert("호스트정보");
+                }
+            );
+        }
+    };
+    $(function(){
+        hostIntro.init();
+    });
+
+</script>
 <div class="container-fluid pt-5 pb-3 border-bottom px-lg-5">
     <div class="row" style="padding-left: 50px; padding-right: 50px;">
         <div class="col-xl-8">
@@ -49,22 +52,24 @@
                 <!-- place item-->
                 <div class="col-sm-6 col-xl-3 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
                     <div class="card h-100 border-0 shadow">
-                        <div class="card-img-top overflow-hidden gradient-overlay">
-                            <img class="img-fluid" src="/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/>
-                            <a class="tile-link" href="/room/detail?id=${obj.roomId}"></a>
-                            <div class="card-img-overlay-bottom z-index-20">
-                                    <div class="d-flex text-white text-sm align-items-center">
-                                        <img class="avatar avatar-border-white flex-shrink-0 me-2" src="/img/avatar/avatar-0.jpg" alt="Pamela"/>
-                                        <div>${obj.hostName}</div>
-                                    </div>
-                            </div>
-                            <div class="card-img-overlay-top text-end">
-                                <a>
-                                    <i class="fa-solid fa-heart" style="font-size:35px; color: red !important;"></i>
-                                </a>
-                            </div>
 
+                        <div class="card-img-top overflow-hidden gradient-overlay">
+                            <a href="/room/detail?id=${obj.roomId}">
+                                <img class="img-fluid" src="/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/>
+                                <div class="card-img-overlay-bottom z-index-20">
+                                    <div class="d-flex text-white text-sm align-items-center">
+                                        <button id="hostIntro" type="button" class="btn">
+                                            <img class="avatar avatar-border-white flex-shrink-0 me-2" src="/img/avatar/avatar-0.jpg" alt="Pamela"/>
+                                        </button>
+                                        <div style="font-size: 20px;">${obj.hostName}</div>
+                                    </div>
+                                </div>
+                                <div class="card-img-overlay-top text-end">
+                                        <i class="fa-solid fa-heart" style="font-size:35px; color: red !important;"></i>
+                                </div>
+                            </a>
                         </div>
+
                         <div class="card-body d-flex align-items-center">
                             <div class="w-100">
                                 <h6 class="card-title"><a class="text-decoration-none text-dark" href="/room/detail?id=${obj.roomId}">${obj.roomName}</a></h6>

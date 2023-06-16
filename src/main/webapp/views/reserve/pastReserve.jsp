@@ -86,6 +86,7 @@ let wirteReview = {
        <c:when test="${obj.reserveStatus == '결제완료'}">
           <div class="list-group shadow mb-5">
             <div class="row" >
+
               <div class="col-lg-4 align-self-center mb-4 mb-lg-0">
                   <a class="list-group-item list-group-item-action p-4" href="/room/detail?id=${obj.roomId}">
                     <div class="d-flex align-items-center mb-3">
@@ -102,6 +103,7 @@ let wirteReview = {
                     </c:choose>
                   </a>
                 </div>
+
               <div class="col-lg-8" style="padding-top: 16px;" >
                 <div class="row" id="reviewBox${obj.reserveId}">
                   <div class="col-6 col-md-4 col-lg-3 py-3 mb-3 mb-lg-0">

@@ -73,6 +73,13 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/randomChat")
+    public String randomChat(Model model){
+        model.addAttribute("center", "randomChat");
+        return "index";
+    }
+
+
 
 
 
