@@ -138,7 +138,9 @@
                                                     <c:if test="${roomList.likeId != ''}">
                                                         <i id="likeHeart" class="fa-solid fa-heart" style="color: #fff700;"></i>
                                                     </c:if>
-                                                    <i id="likeHeart" class="fa-regular fa-heart" style="color: #ffffff;"></i>
+                                                    <c:if test="${roomList.likeId == ''}">
+                                                        <i id="likeHeart" class="fa-regular fa-heart" style="color: #ffffff;"></i>
+                                                    </c:if>
                                                 </button>
                                             </div>
                                         </form>

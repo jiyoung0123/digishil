@@ -122,7 +122,7 @@ let wirteReview = {
                         <h6 class="label-heading">예약날짜(결제일자)</h6>
                         <p class="text-sm fw-bold"><fmt:formatDate value="${obj.reservePayDate}" pattern="yyyy, MMM dd"/></p>
                     <h6 class="label-heading">객실주소</h6>
-                    <p class="text-sm fw-bold mb-0">${obj.roomAddress}</p>
+                    <p class="text-sm fw-bold mb-0">${obj.roomAddress1}</p>
                   </div>
                   <c:choose>
                     <c:when test="${obj.reviewId == null}">

@@ -67,7 +67,7 @@
                       </c:otherwise>
                     </c:choose>
                     <h6 class="label-heading">객실주소</h6>
-                    <p class="text-sm fw-bold mb-0">${obj.roomAddress}</p>
+                    <p class="text-sm fw-bold mb-0">${obj.roomAddress1}</p>
                   </div>
                   <div class="col-12 col-lg-3 align-self-center">
                       <c:choose>

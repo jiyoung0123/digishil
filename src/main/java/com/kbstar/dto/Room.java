@@ -12,7 +12,7 @@ public class Room {
     private String hostId;
     private int roomPrice;
     private String roomName;
-    private String roomAddress;
+    private String roomAddress1;
     private String roomLoc;
     private String roomInfo;
     private String roomIntro;

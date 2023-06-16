@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kbstar.mapper.RoomMapper">
     <select id="selectall" resultType="Room">
-        SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress, room.roomloc, room.roominfo,
+        SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress1, room.roomloc, room.roominfo,
                room.roomintro, room.roomclean, room.roompet, room.roomwprice, room.roomcap, room.roomtype, room.roomlat,
                room.roomlng, room.roomimage1, room.roomimage2, room.roomimage3, room.roomimage4, room.roomimage5,
                room.roomimage6, room.roomlikes, host.hostImage, host.hostName
@@ -12,7 +12,7 @@
         JOIN host ON room.hostId = host.hostId
     </select>
     <select id="getpage" resultType="Room">
-        SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress, room.roomloc, room.roominfo,
+        SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress1, room.roomloc, room.roominfo,
                room.roomintro, room.roomclean, room.roompet, room.roomwprice, room.roomcap, room.roomtype, room.roomlat,
                room.roomlng, room.roomimage1, room.roomimage2, room.roomimage3, room.roomimage4, room.roomimage5,
                room.roomimage6, room.roomlikes, host.hostImage, host.hostName
@@ -20,7 +20,7 @@
         JOIN host ON room.hostId = host.hostId
     </select>
     <select id="getpage2" parameterType="String">
-        SELECT r.roomId, r.hostId, r.roomPrice, r.roomname, r.roomaddress, r.roomloc, r.roominfo,
+        SELECT r.roomId, r.hostId, r.roomPrice, r.roomname, r.roomaddress1, r.roomloc, r.roominfo,
                r.roomintro, r.roomclean, r.roompet, r.roomwprice, r.roomcap, r.roomtype, r.roomlat,
                r.roomlng, r.roomimage1, r.roomimage2, r.roomimage3, r.roomimage4, r.roomimage5,
                r.roomimage6, r.roomlikes, h.hostImage, h.hostName, l.guestId ,l.likeId
@@ -29,7 +29,7 @@
         LEFT JOIN likeList l ON r.roomId = l.roomId AND l.guestId = #{guestId}
     </select>
     <select id="select" parameterType="Integer" resultType="Room">
-        SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress, room.roomloc, room.roominfo,
+        SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress1, room.roomloc, room.roominfo,
                room.roomintro, room.roomclean, room.roompet, room.roomwprice, room.roomcap, room.roomtype, room.roomlat,
                room.roomlng, room.roomimage1, room.roomimage2, room.roomimage3, room.roomimage4, room.roomimage5,
                room.roomimage6, room.roomlikes, host.hostImage, host.hostName, host.hostIntro
@@ -38,7 +38,7 @@
         WHERE roomId=#{roomId}
     </select>
     <select id="roomSearch" parameterType="roomSearch" resultType="room">
-        SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress, room.roomloc, room.roominfo,
+        SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress1, room.roomloc, room.roominfo,
         room.roomintro, room.roomclean, room.roompet, room.roomwprice, room.roomcap, room.roomtype, room.roomlat,
         room.roomlng, room.roomimage1, room.roomimage2, room.roomimage3, room.roomimage4, room.roomimage5,
         room.roomimage6, room.roomlikes, host.hostImage, host.hostName, host.hostIntro
@@ -61,7 +61,7 @@
     </select>
 
     <select id="getRoomLocList" parameterType="String" resultType="Room">
-        SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress, room.roomloc, room.roominfo,
+        SELECT room.roomId, room.hostId, room.roomPrice, room.roomname, room.roomaddress1, room.roomloc, room.roominfo,
                room.roomintro, room.roomclean, room.roompet, room.roomwprice, room.roomcap, room.roomtype, room.roomlat,
                room.roomlng, room.roomimage1, room.roomimage2, room.roomimage3, room.roomimage4, room.roomimage5,
                room.roomimage6, room.roomlikes, host.hostImage, host.hostName, host.hostIntro

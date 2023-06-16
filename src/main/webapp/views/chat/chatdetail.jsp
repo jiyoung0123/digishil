@@ -274,7 +274,7 @@
                                   <div class="d-flex align-items-center justify-content-between">
                                       <div>
                                           <h6> <a class="text-reset" href="detail-rooms.html">${reserveInfo[0].roomName}</a></h6>
-                                          <p class="text-muted text-sm mb-0">${reserveInfo[0].roomAddress}</p>
+                                          <p class="text-muted text-sm mb-0">${reserveInfo[0].roomAddress1}</p>
                                           <div class="mt-n1"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
                                           </div>
                                       </div><a href="detail-rooms.html"><img class="ms-3 rounded flex-shrink-0" src="img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></a>

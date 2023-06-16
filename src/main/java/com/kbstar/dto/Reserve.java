@@ -38,7 +38,7 @@ public class Reserve {
     private String hostName;
     private String roomType;
     private String roomName;
-    private String roomAddress;
+    private String roomAddress1;
     private String roomLoc;
     private String hostImage;
     private int roomWPrice;
