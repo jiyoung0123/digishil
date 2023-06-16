@@ -38,7 +38,7 @@
 <div class="container-fluid pt-5 pb-3 border-bottom px-lg-5">
     <div class="row">
         <div class="col-xl-8">
-            <h1>${loginGuest.guestName}님의 찜한 숙소 목록</h1>
+            <h1>${loginGuest.guestName}님의 <span style="color:rgb(77,102,247)">찜</span> 목록</h1>
         </div>
     </div>
 </div>
